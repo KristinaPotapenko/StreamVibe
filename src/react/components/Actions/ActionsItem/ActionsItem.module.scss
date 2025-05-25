@@ -1,0 +1,23 @@
+@use "../../../../styles/abstracts/media" as *;
+@use "../../../../styles/abstracts/mixins" as *;
+
+.actionsItem {
+  transition: all 0.5s ease;
+
+  @include hover {
+    transform: scale(1.05);
+  }
+
+  a {
+    @include flex-center;
+
+    &:focus-visible {
+      outline: none;
+      transform: scale(1.05);
+    }
+  }
+
+  svg {
+    @include square(32px);
+  }
+}
