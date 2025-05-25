@@ -1,0 +1,29 @@
+@use "../../../../styles/abstracts/media" as *;
+@use "../../../../styles/abstracts/mixins" as *;
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: var(--input-height);
+  padding: 18px 24px;
+  font-weight: 600;
+  color: var(--primary-color-light);
+  background-color: var(--color-red-45);
+  border: 2px solid transparent;
+  border-radius: var(--border-radius-small);
+  outline: none;
+  cursor: pointer;
+
+  @include hover {
+    background-color: var(--color-red-55);
+  }
+
+  &:focus {
+    border: 2px solid var(--color-red-80);
+  }
+
+  svg {
+    @include square(28px);
+  }
+}
