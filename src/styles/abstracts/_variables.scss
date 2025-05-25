@@ -1,0 +1,51 @@
+:root {
+  --primary-color-dark: #000000;
+  --primary-color-light: #ffffff;
+
+  --color-black-06: #0f0f0f;
+  --color-black-08: #141414;
+  --color-black-10: #1a1a1a;
+  --color-black-12: #1f1f1f;
+  --color-black-15: #262626;
+  --color-black-20: #333333;
+  --color-black-25: #404040;
+  --color-black-30: #4d4d4d;
+
+  --color-gray-60: #999999;
+  --color-gray-65: #a6a6a6;
+  --color-gray-70: #b3b3b3;
+  --color-gray-75: #bfbfbf;
+  --color-gray-90: #e4e4e7;
+  --color-gray-95: #f1f1f3;
+  --color-gray-97: #f7f7f8;
+  --color-gray-99: #fcfcfd;
+
+  --color-red-45: #e50000;
+  --color-red-50: #ff0000;
+  --color-red-55: #ff1a1a;
+  --color-red-60: #ff3333;
+  --color-red-80: #ff9999;
+  --color-red-90: #ffcccc;
+  --color-red-95: #ffe5e5;
+  --color-red-99: #fffafa;
+
+  --border-dark-10: 1px solid var(--color-black-10);
+  --border-dark-15: 1px solid var(--color-black-15);
+  --border-dark-small-12: 1px solid var(--color-black-12);
+  --border-dark-big-12: 4px solid var(--color-black-12);
+  --border-radius-small: 8px;
+  --border-radius-medius: 12px;
+  --border-radius-large: 20px;
+
+  --font-family-base: "Manrope";
+
+  --container-padding-x: 16px;
+
+  --input-height: 64px;
+  --button-height: 68px;
+
+  --icon-size: 56px;
+  --icon-size-big: 72px;
+
+  --transition-duration: 0.3s;
+}
