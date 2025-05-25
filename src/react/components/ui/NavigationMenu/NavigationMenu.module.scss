@@ -1,0 +1,13 @@
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 10px;
+  background-color: var(--color-black-06);
+  border: var(--border-dark-big-12);
+  border-radius: var(--border-radius-medius);
+}
+
+nav {
+  display: flex;
+}
