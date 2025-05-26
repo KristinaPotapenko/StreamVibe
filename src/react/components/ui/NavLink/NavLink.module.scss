@@ -1,0 +1,25 @@
+@use "../../../../styles/abstracts/media" as *;
+
+.active,
+.link:hover,
+.link:active,
+.link:focus {
+  color: var(--primary-color-light);
+  background-color: var(--color-black-10);
+  border: var(--border-dark-10);
+  border-radius: var(--border-radius-small);
+}
+
+.link {
+  display: block;
+  padding: 14px 24px;
+  color: var(--color-gray-75);
+  border: 1px solid transparent;
+  transition: all 0.5s ease;
+  cursor: pointer;
+
+  &:active,
+  &:focus {
+    border: 1px solid var(--color-gray-75);
+  }
+}
