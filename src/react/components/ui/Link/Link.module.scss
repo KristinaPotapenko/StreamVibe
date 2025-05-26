@@ -1,24 +1,42 @@
 @use "../../../../styles/abstracts/media" as *;
-
-.active,
-.link:hover,
-.link:active,
-.link:focus {
-  color: var(--primary-color-light);
-  background-color: var(--color-black-10);
-  border: var(--border-dark-10);
-  border-radius: var(--border-radius-small);
-}
+@use "../../../../styles/abstracts/mixins" as *;
 
 .link {
-  display: block;
-  padding: 14px 24px;
-  color: var(--color-gray-75);
-  border: 1px solid transparent;
-  transition: all 0.5s ease;
+  @include flex-center;
+
+  gap: 4px;
+  min-height: var(--input-height);
+  padding: 18px 24px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--primary-color-light);
+  background-color: var(--color-red-45);
+  border: 2px solid transparent;
+  border-radius: var(--border-radius-small);
+  outline: none;
   cursor: pointer;
 
-  &:active,
+  @include hover {
+    background-color: var(--color-red-55);
+  }
+
+  &:focus {
+    border: 2px solid var(--color-red-80);
+  }
+
+  svg {
+    @include square(28px);
+  }
+}
+
+.link.isDark {
+  background-color: var(--color-black-08);
+  border: var(--border-dark-15);
+
+  @include hover {
+    background-color: var(--color-black-12);
+  }
+
   &:focus {
     border: 1px solid var(--color-gray-75);
   }

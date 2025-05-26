@@ -1,15 +1,13 @@
-import { NavLink } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import styles from "./Link.module.scss";
 
-export const Link = ({ children, ...props }) => {
+export const Link = ({ isDark = false, children, ...props }) => {
   return (
-    <NavLink
-      className={({ isActive }) =>
-        isActive ? `${styles.link} ${styles.active}` : styles.link
-      }
+    <RouterLink
+      className={`${styles.link} ${isDark && styles.isDark}`}
       {...props}
     >
       {children}
-    </NavLink>
+    </RouterLink>
   );
 };
