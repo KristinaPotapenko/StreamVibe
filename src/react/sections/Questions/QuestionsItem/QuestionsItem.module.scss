@@ -1,0 +1,149 @@
+@use "../../../../styles/abstracts/media" as *;
+@use "../../../../styles/abstracts/mixins" as *;
+
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 34px;
+  transition: all 0.4s ease-out;
+
+  &:not(:nth-last-of-type(-n + 2))::after {
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      rgba(229, 0, 0, 0) 0%,
+      rgba(229, 0, 0, 1) 17%,
+      rgba(229, 0, 0, 0.11) 100%
+    );
+    transition: opacity 0.3s ease;
+  }
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: align-items 0.3s ease;
+}
+
+.numberWrapper {
+  @include flex-center;
+
+  padding: 20px;
+  background-color: var(--color-black-12);
+  border: var(--border-dark-15);
+  border-radius: var(--border-radius-small);
+  transition: transform 0.3s ease;
+}
+
+.number {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--primary-color-light);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--primary-color-light);
+  transition: color 0.3s ease;
+}
+
+.description {
+  display: block;
+  margin: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out, opacity 0.4s ease 0.1s, margin 0.3s ease;
+}
+
+.button {
+  @include reset-button;
+  @include square(30px);
+  @include flex-center;
+
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  cursor: pointer;
+
+  @include hover {
+    transform: scale(1.1);
+  }
+
+  &:before,
+  &:after {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 2.5px;
+    background-color: var(--primary-color-light);
+    border-radius: 100px;
+    transition: all 0.4s ease-out;
+  }
+
+  &:before {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}
+.questionActive.wrapper {
+  align-items: start;
+  padding-bottom: 40px;
+}
+
+.questionActive {
+  .inner {
+    align-items: start;
+  }
+
+  .numberWrapper {
+    transform: scale(1.05);
+  }
+
+  .title {
+    filter: brightness(110%);
+  }
+
+  .content {
+    gap: 20px;
+
+    .description {
+      display: block;
+      max-height: 500px;
+      opacity: 1;
+      margin-top: 10px;
+    }
+  }
+
+  .button {
+    transform: rotate(180deg);
+
+    &:before {
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    &:after {
+      transform: translate(-50%, -50%) rotate(180deg);
+    }
+  }
+}
