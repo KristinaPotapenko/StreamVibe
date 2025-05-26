@@ -1,0 +1,63 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  background-color: var(--color-black-10);
+  border: var(--border-dark-15);
+  border-radius: var(--border-radius-medius);
+}
+
+.title {
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-color-light);
+}
+
+.description {
+  margin-bottom: 50px;
+}
+
+.priceBlock {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 40px;
+  margin-bottom: 50px;
+}
+
+.priceContainer {
+  transition: all 0.5s ease-out;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.priceContainer.animating {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.price {
+  display: inline-block;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--primary-color-light);
+  transition: all 0.5s ease-out;
+}
+
+.period {
+  display: inline-block;
+  margin: 0;
+  font-weight: 500;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+
+  a {
+    width: 100%;
+  }
+}

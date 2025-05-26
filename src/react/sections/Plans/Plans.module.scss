@@ -1,0 +1,31 @@
+@use "../../../styles/abstracts/media" as *;
+@use "../../../styles/abstracts/mixins" as *;
+
+.button {
+  @include reset-button;
+
+  padding: 14px 24px;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-gray-60);
+  cursor: pointer;
+
+  @include hover {
+    color: var(--color-gray-75);
+  }
+}
+
+.button.isActive {
+  min-height: var(--input-height);
+  padding: 18px 24px;
+  color: var(--primary-color-light);
+  background-color: var(--color-black-12);
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-medius);
+  outline: none;
+
+  &:active,
+  &:focus {
+    border: 1px solid var(--color-gray-75);
+  }
+}
