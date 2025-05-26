@@ -1,0 +1,17 @@
+.section {
+  padding: 100px 80px 20px 80px;
+
+  background: linear-gradient(
+      90deg,
+      rgba(15, 15, 15, 1) 2%,
+      rgba(20, 15, 15, 0.97) 16%,
+      rgba(34, 14, 14, 0.91) 28%,
+      rgba(229, 0, 0, 0.38) 100%
+    ),
+    url("../../../assets/home-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: var(--border-dark-15);
+  border-radius: var(--border-radius-medius);
+}
