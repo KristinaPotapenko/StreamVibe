@@ -1,9 +1,9 @@
-import { Link } from "../../Link/Link";
+import { NavLink } from "../../NavLink/NavLink";
 
 export const NavigationItem = ({ children, ...props }) => {
   return (
     <li>
-      <Link {...props}>{children}</Link>
+      <NavLink {...props}>{children}</NavLink>
     </li>
   );
 };
