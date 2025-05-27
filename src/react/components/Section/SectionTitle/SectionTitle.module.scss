@@ -1,5 +1,8 @@
+@use "../../../../styles/abstracts/mixins" as *;
+
 .title {
-  font-size: 38px;
+  @include fluid-text(38, 20);
+
   font-weight: 700;
   color: var(--primary-color-light);
 }
