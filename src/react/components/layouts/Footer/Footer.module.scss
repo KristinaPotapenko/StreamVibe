@@ -1,28 +1,53 @@
 @use "../../../../styles/abstracts/media" as *;
+@use "../../../../styles/abstracts/mixins" as *;
 
 .footer {
   width: 100%;
   padding-top: 100px;
   padding-bottom: 50px;
   background-color: var(--color-black-06);
+
+  @include desktop {
+    padding-top: 80px;
+    padding-bottom: 40px;
+  }
+
+  @include tablet {
+    padding-top: 50px;
+    padding-bottom: 20px;
+  }
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
   gap: 100px;
+
+  @include mobile {
+    gap: 50px;
+  }
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
   gap: 24px;
+
+  @include mobile {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
 }
 
 .item {
   display: flex;
   flex-direction: column;
   gap: 14px;
+
+  @include mobile {
+    gap: 8px;
+  }
 }
 
 .heading,
@@ -34,10 +59,15 @@
 }
 
 .heading {
+  @include fluid-text(20, 16);
+
   margin-bottom: 10px;
-  font-size: 20px;
   font-weight: 600;
   color: var(--primary-color-light);
+
+  @include mobile {
+    margin-bottom: 8px;
+  }
 }
 
 .copyrightBlock {
@@ -46,6 +76,13 @@
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 20px;
+  }
 
   &::after {
     content: "";
@@ -64,6 +101,10 @@
   align-items: center;
   gap: 40px;
 
+  @include mobile {
+    gap: 32px;
+  }
+
   .link {
     position: relative;
 
@@ -76,6 +117,10 @@
       width: 1px;
       height: 100%;
       background-color: var(--color-black-15);
+
+      @include mobile {
+        right: -16px;
+      }
     }
   }
 }
