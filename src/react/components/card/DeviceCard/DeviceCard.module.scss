@@ -1,10 +1,11 @@
+@use "../../../../styles/abstracts/media" as *;
 @use "../../../../styles/abstracts/mixins" as *;
 
 .wrapper {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  padding: 15px;
+  padding: 50px;
   background: linear-gradient(
     45deg,
     rgba(229, 0, 0, 0) 0%,
@@ -13,6 +14,16 @@
   background-color: var(--color-black-06);
   border: var(--border-dark-15);
   border-radius: var(--border-radius-medius);
+
+  @include desktop {
+    gap: 24px;
+    padding: 40px;
+  }
+
+  @include tablet {
+    gap: 20px;
+    padding: 24px;
+  }
 }
 
 .header {
@@ -20,6 +31,14 @@
   align-items: center;
   gap: 16px;
   flex-grow: 1;
+
+  @include desktop {
+    gap: 14px;
+  }
+
+  @include tablet {
+    gap: 12px;
+  }
 }
 
 .icon {
@@ -33,6 +52,14 @@
   svg {
     @include square(40px);
 
+    @include desktop {
+      @include square(30px);
+    }
+
+    @include tablet {
+      @include square(24px);
+    }
+
     path {
       fill: var(--color-red-45);
     }
@@ -40,7 +67,8 @@
 }
 
 .title {
-  font-size: 24px;
+  @include fluid-text(24, 18);
+
   font-weight: 600;
   color: var(--primary-color-light);
 }
