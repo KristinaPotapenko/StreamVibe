@@ -24,8 +24,16 @@
     border: 2px solid var(--color-red-80);
   }
 
+  @include desktop {
+    padding: 14px 20px;
+  }
+
   svg {
     @include square(28px);
+
+    @include tablet {
+      @include square(24px);
+    }
   }
 }
 
