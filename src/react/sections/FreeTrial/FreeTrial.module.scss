@@ -1,3 +1,5 @@
+@use "../../../styles/abstracts/media" as *;
+
 .section {
   padding: 100px 80px 20px 80px;
 
@@ -14,4 +16,29 @@
   background-repeat: no-repeat;
   border: var(--border-dark-15);
   border-radius: var(--border-radius-medius);
+
+  @include desktop {
+    padding: 90px 60px 30px 60px;
+  }
+
+  @include mobile {
+    padding: 50px 30px 10px 30px;
+  }
+}
+.section > :first-child {
+  @include mobile {
+    align-items: center;
+  }
+
+  h3 {
+    @include mobile {
+      text-align: center;
+    }
+  }
+
+  p {
+    @include mobile {
+      text-align: center;
+    }
+  }
 }
