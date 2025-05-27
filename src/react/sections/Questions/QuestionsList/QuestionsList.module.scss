@@ -1,5 +1,11 @@
+@use "../../../../styles/abstracts/media" as *;
+
 .wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: space-between;
+
+  @include tablet {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

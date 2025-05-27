@@ -1,7 +1,7 @@
 import { useState } from "react";
-import styles from "./QuestionsList.module.scss";
 import { questionsInfo } from "../questionsInfo";
 import { QuestionsItem } from "../QuestionsItem/QuestionsItem";
+import styles from "./QuestionsList.module.scss";
 
 export const QuestionsList = () => {
   const [activeQuestion, setActiveQuestion] = useState(null);
