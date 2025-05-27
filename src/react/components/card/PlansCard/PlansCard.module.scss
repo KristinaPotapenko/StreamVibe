@@ -1,3 +1,6 @@
+@use "../../../../styles/abstracts/media" as *;
+@use "../../../../styles/abstracts/mixins" as *;
+
 .card {
   display: flex;
   flex-direction: column;
@@ -5,17 +8,42 @@
   background-color: var(--color-black-10);
   border: var(--border-dark-15);
   border-radius: var(--border-radius-medius);
+
+  @include desktop {
+    padding: 40px;
+  }
+
+  @include tablet {
+    padding: 24px;
+  }
 }
 
 .title {
+  @include fluid-text(24, 18);
+
   margin-bottom: 16px;
-  font-size: 24px;
   font-weight: 700;
   color: var(--primary-color-light);
+
+  @include desktop {
+    margin-bottom: 12px;
+  }
+
+  @include tablet {
+    margin-bottom: 10px;
+  }
 }
 
 .description {
   margin-bottom: 50px;
+
+  @include desktop {
+    margin-bottom: 40px;
+  }
+
+  @include tablet {
+    margin-bottom: 30px;
+  }
 }
 
 .priceBlock {
@@ -24,6 +52,15 @@
   align-items: flex-end;
   min-height: 40px;
   margin-bottom: 50px;
+
+  @include desktop {
+    min-height: 30px;
+    margin-bottom: 40px;
+  }
+
+  @include tablet {
+    margin-bottom: 30px;
+  }
 }
 
 .priceContainer {
@@ -38,8 +75,9 @@
 }
 
 .price {
+  @include fluid-text(40, 24);
+
   display: inline-block;
-  font-size: 40px;
   font-weight: 600;
   line-height: 1;
   color: var(--primary-color-light);
@@ -56,6 +94,20 @@
   display: flex;
   gap: 20px;
   width: 100%;
+
+  @include desktop {
+    gap: 16px;
+  }
+
+  @include tablet {
+    gap: 12px;
+    width: 60%;
+  }
+
+  @include mobile {
+    justify-content: space-between;
+    width: 100%;
+  }
 
   a {
     width: 100%;

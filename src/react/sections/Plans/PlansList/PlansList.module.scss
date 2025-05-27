@@ -1,5 +1,16 @@
+@use "../../../../styles/abstracts/media" as *;
+
 .wrapper {
   display: flex;
   justify-content: space-between;
   gap: 30px;
+
+  @include desktop {
+    gap: 20px;
+  }
+
+  @include tablet {
+    flex-direction: column;
+    justify-content: center;
+  }
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "../../ui/Link/Link";
 import styles from "./PlansCard.module.scss";
+import { ROUTES } from "../../../../utils/routes";
 
 export const PlansCard = ({
   id,
@@ -43,8 +44,10 @@ export const PlansCard = ({
         </div>
       </div>
       <div className={styles.buttons}>
-        <Link isDark={true}>Start Free Trial</Link>
-        <Link>Choose Plan</Link>
+        <Link isDark={true} to="/login">
+          Start Free Trial
+        </Link>
+        <Link to={ROUTES.SUBSCRIPTIONS}>Choose Plan</Link>
       </div>
     </li>
   );
