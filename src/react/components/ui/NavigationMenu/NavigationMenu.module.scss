@@ -1,3 +1,5 @@
+@use "../../../../styles/abstracts/media" as *;
+
 .nav {
   display: flex;
   align-items: center;
@@ -6,6 +8,16 @@
   background-color: var(--color-black-06);
   border: var(--border-dark-big-12);
   border-radius: var(--border-radius-medius);
+
+  @include desktop {
+    gap: 16px;
+    padding: 8px;
+  }
+
+  @include tablet {
+    background-color: transparent;
+    border: none;
+  }
 }
 
 nav {

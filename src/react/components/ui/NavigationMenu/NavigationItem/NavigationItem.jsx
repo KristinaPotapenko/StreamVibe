@@ -1,9 +1,11 @@
 import { NavLink } from "../../NavLink/NavLink";
 
-export const NavigationItem = ({ children, ...props }) => {
+export const NavigationItem = ({ onClick, children, ...props }) => {
   return (
     <li>
-      <NavLink {...props}>{children}</NavLink>
+      <NavLink onClick={() => onClick()} {...props}>
+        {children}
+      </NavLink>
     </li>
   );
 };
