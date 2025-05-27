@@ -19,5 +19,13 @@
 
   svg {
     @include square(32px);
+
+    @include desktop {
+      @include square(30px);
+    }
+
+    @include tablet {
+      @include square(26px);
+    }
   }
 }

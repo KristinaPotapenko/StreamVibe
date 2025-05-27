@@ -1,5 +1,11 @@
+@use "../../../styles/abstracts/media" as *;
+
 .actions {
   display: flex;
   align-items: center;
   gap: 30px;
+
+  @include desktop {
+    gap: 16px;
+  }
 }

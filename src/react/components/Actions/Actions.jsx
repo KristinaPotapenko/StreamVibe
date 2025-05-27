@@ -1,11 +1,11 @@
 import { ActionsItem } from "./ActionsItem/ActionsItem";
 import styles from "./Actions.module.scss";
 
-export const Actions = () => {
+export const Actions = ({ ...props }) => {
   return (
     <ul className={styles.actions}>
-      <ActionsItem href="search" />
-      <ActionsItem href="support" />
+      <ActionsItem {...props} href="search" />
+      <ActionsItem {...props} href="support" />
     </ul>
   );
 };
