@@ -1,0 +1,33 @@
+@use "../../../../styles/abstracts/mixins" as *;
+@use "../../../../styles/abstracts/media" as *;
+
+.sliderButton {
+  @include flex-center;
+  @include square(var(--icon-size));
+
+  background-color: var(--color-black-10);
+  border: var(--border-dark-small-12);
+  border-radius: var(--border-radius-small);
+  outline: none;
+  cursor: pointer;
+
+  @include hover {
+    svg {
+      transform: scale(1.1);
+    }
+  }
+
+  &:active {
+    border: 1px solid var(--color-gray-75);
+  }
+
+  svg {
+    @include square(28px);
+
+    transition: all 0.5s ease;
+  }
+}
+
+.isRight {
+  transform: rotate(180deg);
+}

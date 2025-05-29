@@ -1,0 +1,18 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.dot {
+  display: inline-block;
+  width: 16px;
+  height: 4px;
+  background-color: var(--color-black-20);
+  border-radius: 100px;
+}
+
+.active {
+  width: 23px;
+  background-color: var(--color-red-45);
+}

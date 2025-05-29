@@ -1,0 +1,15 @@
+@use "../../../../styles/abstracts/media" as *;
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background-color: var(--color-black-06);
+  border: var(--border-dark-small-12);
+  border-radius: var(--border-radius-medius);
+
+  @include mobile {
+    display: none;
+  }
+}
