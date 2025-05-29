@@ -105,5 +105,7 @@
 
   svg {
     @include square(24px);
+
+    transition: all 0.3s ease;
   }
 }
