@@ -5,4 +5,5 @@ export const ROUTES = {
   TV: "/tv/:id",
   SUPPORT: "/support",
   SUBSCRIPTIONS: "/subscriptions",
+  SEARCH: "/search",
 };
