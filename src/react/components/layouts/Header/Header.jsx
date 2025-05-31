@@ -4,6 +4,7 @@ import { Actions } from "../../Actions/Actions";
 import { Logo } from "../../ui/Logo/Logo";
 import { useNoScroll } from "../../../../scripts/hook/useNoScroll";
 import styles from "./Header.module.scss";
+import { ActionsItem } from "../../Actions/ActionsItem/ActionsItem";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +20,18 @@ export const Header = () => {
         <Logo />
         <div className={`${styles.links} ${isOpen ? styles.isActive : ""}`}>
           <NavigationMenu onClick={handleChangeOpen} />
-          <Actions onClick={handleChangeOpen} />
+          <Actions>
+            <ActionsItem
+              onClick={handleChangeOpen}
+              href="search"
+              route="SEARCH"
+            />
+            <ActionsItem
+              onClick={handleChangeOpen}
+              href="support"
+              route="SUPPORT"
+            />
+          </Actions>
           <button onClick={() => setIsOpen()} className={styles.closeButton}>
             <svg className="icon">
               <use xlinkHref="/assets/icon/sprite.svg#close" />
