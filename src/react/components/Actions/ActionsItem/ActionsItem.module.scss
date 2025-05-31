@@ -29,3 +29,25 @@
     }
   }
 }
+
+.actionsItem.accent {
+  @include square(var(--icon-size));
+  @include flex-center;
+
+  background-color: var(--color-black-06);
+  border: var(--border-dark-15);
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+
+  @include hover {
+    svg {
+      transform: scale(1.1);
+    }
+  }
+
+  svg {
+    @include square(24px);
+
+    transition: all 0.3s ease;
+  }
+}
