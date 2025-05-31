@@ -3,6 +3,7 @@ import { SliderButton } from "../SliderButton/SliderButton";
 import styles from "./ScrollSlider.module.scss";
 
 export const ScrollSlider = ({
+  transparent,
   totalSlides,
   visibleItems,
   activeSlide,
@@ -25,7 +26,9 @@ export const ScrollSlider = ({
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={`${styles.wrapper} ${transparent ? styles.transparent : ""}`}
+    >
       <SliderButton onClick={handlePrevSlide} />
       <Pagination
         slides={totalSlides}
