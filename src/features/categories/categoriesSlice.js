@@ -5,9 +5,6 @@ import axios from "axios";
 const options = {
   method: "GET",
   url: `${BASE_URL}/3/genre/movie/list?language=en`,
-  params: {
-    language: "en",
-  },
   headers: {
     accept: "application/json",
     Authorization:
