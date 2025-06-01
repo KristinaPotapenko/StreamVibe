@@ -1,0 +1,23 @@
+@use "../../../../styles/abstracts/mixins" as *;
+
+.wrapper {
+  position: relative;
+  padding: 50px;
+  border: var(--border-dark-15);
+  border-radius: var(--border-radius-medius);
+}
+
+.blockName {
+  @include flex-center;
+
+  position: absolute;
+  top: -25px;
+  left: 50px;
+  height: 50px;
+  padding: 10px 24px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--primary-color-light);
+  background-color: var(--color-red-45);
+  border-radius: var(--border-radius-small);
+}
