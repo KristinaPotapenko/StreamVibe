@@ -5,7 +5,7 @@
 
 .sliderBg {
   height: 100%;
-  margin: 100px 16px 0 16px;
+  margin-top: 100px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -18,23 +18,4 @@
   left: 50%;
   transform: translate(-50%, -10%);
   width: 80%;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 50px;
-}
-
-.description {
-  max-width: 1090px;
-  text-align: center;
-  margin-bottom: 24px;
-}
-
-.actions {
-  display: flex;
-  gap: 30px;
 }

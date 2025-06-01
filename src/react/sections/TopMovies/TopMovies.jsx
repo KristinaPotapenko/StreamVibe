@@ -1,11 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Actions } from "../../components/Actions/Actions";
-import { ActionsItem } from "../../components/Actions/ActionsItem/ActionsItem";
-import { SectionTitle } from "../../components/Section/SectionTitle/SectionTitle";
-import { ScrollSlider } from "../../components/Slider/ScrollSlider/ScrollSlider";
-import { Link } from "../../components/ui/Link/Link";
 import { useEffect, useState } from "react";
-import { getTopMovies } from "../../../features/topRatedMovies/topMoviesReducerSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { getTopMovies } from "../../../features/topRatedMovies/topMoviesSlice";
+import { TopMoviesContent } from "./TopMoviesContent/TopMoviesContent";
+import { ScrollSlider } from "../../components/Slider/ScrollSlider/ScrollSlider";
 import styles from "./TopMovies.module.scss";
 
 export const TopMovies = () => {
@@ -29,25 +26,7 @@ export const TopMovies = () => {
         }}
       >
         <div className={styles.slider}>
-          <div className={styles.content}>
-            <SectionTitle title={topMovies[activeSlide]?.original_title} />
-            <p className={styles.description}>
-              {topMovies[activeSlide]?.overview}
-            </p>
-            <div className={styles.actions}>
-              <Link>
-                <svg className="icon">
-                  <use xlinkHref="/assets/icon/sprite.svg#play" />
-                </svg>
-                Play Now
-              </Link>
-              <Actions>
-                <ActionsItem accent={true} href="plus" />
-                <ActionsItem accent={true} href="like" />
-                <ActionsItem accent={true} href="volume" />
-              </Actions>
-            </div>
-          </div>
+          <TopMoviesContent topMovies={topMovies} activeSlide={activeSlide} />
           <ScrollSlider
             transparent={true}
             totalSlides={topMovies.length}

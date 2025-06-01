@@ -5,9 +5,6 @@ import axios from "axios";
 const options = {
   method: "GET",
   url: `${BASE_URL}/3/movie/top_rated?language=en-US`,
-  params: {
-    language: "en",
-  },
   headers: {
     accept: "application/json",
     Authorization:
@@ -16,7 +13,7 @@ const options = {
 };
 
 export const getTopMovies = createAsyncThunk(
-  "topMovie/getTopMovies",
+  "topMovies/getTopMovies",
   async (_, thunkAPI) => {
     try {
       const response = await axios.request(options);
@@ -27,7 +24,7 @@ export const getTopMovies = createAsyncThunk(
   }
 );
 
-const topMoviesReducer = createSlice({
+const topMoviesSlice = createSlice({
   name: "topMovies",
   initialState: {
     topMovies: [],
@@ -39,4 +36,4 @@ const topMoviesReducer = createSlice({
   },
 });
 
-export default topMoviesReducer.reducer;
+export default topMoviesSlice.reducer;
