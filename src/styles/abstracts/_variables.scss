@@ -36,10 +36,6 @@
   --border-dark-small-12: 1px solid var(--color-black-12);
   --border-dark-big-12: 4px solid var(--color-black-12);
 
-  @include desktop {
-    --border-dark-big-12: 3px solid var(--color-black-12);
-  }
-
   --border-radius-small: 8px;
   --border-radius-medius: 12px;
   --border-radius-large: 20px;
@@ -51,23 +47,23 @@
   --input-height: 64px;
   --button-height: 68px;
 
-  @include desktop {
-    --input-height: 54px;
-    --button-height: 52px;
-  }
-
   --icon-size: 56px;
   --icon-size-big: 72px;
 
-  @include desktop {
-    --icon-size: 54px;
-    --icon-size-big: 54px;
-  }
+  --transition-duration: 0.3s;
 
   @include tablet {
     --icon-size: 44px;
     --icon-size-big: 44px;
   }
 
-  --transition-duration: 0.3s;
+  @include desktop {
+    --border-dark-big-12: 3px solid var(--color-black-12);
+
+    --input-height: 54px;
+    --button-height: 52px;
+
+    --icon-size: 54px;
+    --icon-size-big: 54px;
+  }
 }
