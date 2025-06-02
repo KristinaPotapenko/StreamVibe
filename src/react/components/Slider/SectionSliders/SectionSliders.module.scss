@@ -1,3 +1,4 @@
+@use "../../../../styles/abstracts/media" as *;
 @use "../../../../styles/abstracts/mixins" as *;
 
 .wrapper {
@@ -5,6 +6,10 @@
   padding: 50px;
   border: var(--border-dark-15);
   border-radius: var(--border-radius-medius);
+
+  @include desktop {
+    padding: 40px;
+  }
 }
 
 .blockName {
@@ -20,4 +25,12 @@
   color: var(--primary-color-light);
   background-color: var(--color-red-45);
   border-radius: var(--border-radius-small);
+
+  @include desktop {
+    top: -20px;
+    left: 40px;
+    height: 40px;
+    padding: 8px 20px;
+    font-size: 16px;
+  }
 }
