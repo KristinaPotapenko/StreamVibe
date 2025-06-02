@@ -48,6 +48,7 @@
   svg {
     @include square(24px);
 
+    color: var(--primary-color-light);
     transition: all 0.3s ease;
   }
 }
