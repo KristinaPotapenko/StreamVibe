@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import categoriesReducer from "./categories/categoriesSlice";
-import topMoviesReducer from "./topRatedMovies/topMoviesReducerSlice";
+import genresMoviesReducer from "./movies/genresMovies/genresMoviesSlice";
+import topMoviesReducer from "./movies/topRatedMovies/topMoviesSlice";
 
 export const store = configureStore({
   reducer: {
-    categoriesList: categoriesReducer,
+    genresMovies: genresMoviesReducer,
     topMovies: topMoviesReducer,
   },
 });
