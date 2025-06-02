@@ -3,6 +3,7 @@ import { GenresMovies } from "./Genres/GenresMovies";
 import { TopGenresMovies } from "./TopGenres/TopGenresMovies";
 import { TrendingMovies } from "./Trending/TrendingMovies";
 import { NewReleasesMovies } from "./NewReleases/NewReleasesMovies";
+import { MustWatchMovies } from "./MustWatch/MustWatchMovies";
 import styles from "./Movies.module.scss";
 
 export const Movies = () => {
@@ -21,6 +22,9 @@ export const Movies = () => {
           </li>
           <li className={styles.slider}>
             <NewReleasesMovies />
+          </li>
+          <li className={styles.slider}>
+            <MustWatchMovies />
           </li>
         </ul>
       </SectionSliders>
