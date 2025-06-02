@@ -2,6 +2,7 @@ import { SectionSliders } from "../../components/Slider/SectionSliders/SectionSl
 import { GenresMovies } from "./Genres/GenresMovies";
 import { TopGenresMovies } from "./TopGenres/TopGenresMovies";
 import { TrendingMovies } from "./Trending/TrendingMovies";
+import { NewReleasesMovies } from "./NewReleases/NewReleasesMovies";
 import styles from "./Movies.module.scss";
 
 export const Movies = () => {
@@ -17,6 +18,9 @@ export const Movies = () => {
           </li>
           <li className={styles.slider}>
             <TrendingMovies />
+          </li>
+          <li className={styles.slider}>
+            <NewReleasesMovies />
           </li>
         </ul>
       </SectionSliders>
