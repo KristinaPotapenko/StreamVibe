@@ -18,7 +18,7 @@ import Thriller from "../../../assets/categories/thriller.png?react";
 import War from "../../../assets/categories/war.png?react";
 import Western from "../../../assets/categories/western.png?react";
 
-export const categoriesImage = [
+export const genresMoviesImage = [
   { id: 28, img: Action },
   { id: 12, img: Adventure },
   { id: 16, img: Animation },
