@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTopMovies } from "../../../features/topRatedMovies/topMoviesSlice";
+import { getTopMovies } from "../../../features/movies/topRatedMovies/topMoviesSlice";
 import { TopMoviesContent } from "./TopMoviesContent/TopMoviesContent";
 import { ScrollSlider } from "../../components/Slider/ScrollSlider/ScrollSlider";
 import styles from "./TopMovies.module.scss";
