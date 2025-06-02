@@ -1,0 +1,28 @@
+@use "../../../styles/abstracts/mixins" as *;
+
+.icon {
+  @include square(18px);
+  @include flex-center;
+
+  position: relative;
+}
+
+svg.full {
+  color: var(--color-red-45);
+}
+
+.partial {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+
+  svg {
+    color: var(--color-red-45);
+  }
+}
+
+.empty use {
+  color: var(--color-gray-60);
+}
