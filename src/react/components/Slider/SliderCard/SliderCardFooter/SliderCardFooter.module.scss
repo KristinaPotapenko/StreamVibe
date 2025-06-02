@@ -16,6 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 4px;
 }
 
@@ -49,10 +50,13 @@
     @include square(18px);
 
     color: var(--color-gray-60);
-    transform: rotate(0);
   }
 }
 
 .info {
   font-weight: 500;
+}
+
+.infoReleased {
+  text-align: center;
 }

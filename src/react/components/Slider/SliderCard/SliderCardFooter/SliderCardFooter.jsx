@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./SliderCardFooter.module.scss";
+import { Rate } from "../../../Rate/Rate";
 
 export const SliderCardCategoriesFooter = ({ name }) => {
   return (
@@ -46,6 +47,43 @@ export const SliderCardTrendingFooter = ({ name, average, popularity }) => {
             <use xlinkHref="/assets/icon/sprite.svg#like" />
           </svg>
           <p className={styles.info}>{popularity}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const SliderCardReleasesFooter = ({ name, releaseDate }) => {
+  const formattedDate = new Date(releaseDate).toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
+  return (
+    <div className={styles.footer}>
+      <p className={styles.text}>{name}</p>
+      <div className={styles.infoWrapper}>
+        <p className={`${styles.info} ${styles.infoReleased}`}>
+          Released at {formattedDate}
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export const SliderCardMustWatchFooter = ({ name, average, popularity }) => {
+  return (
+    <div className={styles.footer}>
+      <p className={styles.text}>{name}</p>
+      <div className={styles.details}>
+        <div className={styles.infoWrapper}>
+          <svg className="icon">
+            <use xlinkHref="/assets/icon/sprite.svg#like" />
+          </svg>
+          <p className={styles.info}>{popularity}</p>
+        </div>
+        <div className={styles.infoWrapper}>
+          <Rate average={average} />
         </div>
       </div>
     </div>

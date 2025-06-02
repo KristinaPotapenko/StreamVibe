@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useWindowWidth } from "../../../../scripts/hook/useWindowWidth";
 import { SectionHeader } from "../../Section/SectionHeader/sectionHeader";
 import { ScrollSlider } from "../ScrollSlider/ScrollSlider";
@@ -6,21 +6,20 @@ import { SliderCard } from "../SliderCard/SliderCard";
 import {
   SliderCardCategoriesFooter,
   SliderCardGenresFooter,
+  SliderCardMustWatchFooter,
+  SliderCardReleasesFooter,
   SliderCardTrendingFooter,
 } from "../SliderCard/SliderCardFooter/SliderCardFooter";
 import styles from "./Slider.module.scss";
 
-export const Slider = ({
-  title,
-  description,
-  list,
-  activeSlide,
-  setActiveSlide,
-  categoriesImage,
-  footer,
-}) => {
+export const Slider = ({ title, description, list, image, footer }) => {
   const baseURL = `https://image.tmdb.org/t/p/w500/`;
   const windowWidth = useWindowWidth();
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    setActiveSlide(0);
+  }, [windowWidth]);
 
   const { slides, cardWidth, transform } = useMemo(() => {
     let slidesCount;
@@ -68,14 +67,14 @@ export const Slider = ({
                 key={slide.id}
                 id={slide.id}
                 src={
-                  categoriesImage
-                    ? categoriesImage.find((item) => item.id === slide.id)?.img
+                  image
+                    ? image.find((item) => item.id === slide.id)?.img
                     : baseURL + slide?.backdrop_path
                 }
                 name={slide.name}
                 cardWidth={cardWidth}
               >
-                {footer === "categories" && (
+                {footer === "genres" && (
                   <SliderCardCategoriesFooter name={slide.name} />
                 )}
                 {footer === "topGenres" && (
@@ -83,9 +82,22 @@ export const Slider = ({
                 )}
                 {footer === "trending" && (
                   <SliderCardTrendingFooter
-                    name={slide.original_title}
+                    name={slide.title ? slide.title : slide.name}
                     average={parseInt(slide.vote_average)}
                     popularity={parseInt(slide.popularity)}
+                  />
+                )}
+                {footer === "releases" && (
+                  <SliderCardReleasesFooter
+                    name={slide.original_title}
+                    releaseDate={slide.release_date}
+                  />
+                )}
+                {footer === "mustWatch" && (
+                  <SliderCardMustWatchFooter
+                    name={slide.original_title}
+                    average={slide.vote_average}
+                    popularity={parseInt(slide.vote_count)}
                   />
                 )}
               </SliderCard>

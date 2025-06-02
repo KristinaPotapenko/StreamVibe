@@ -58,15 +58,17 @@
   gap: 16px;
   flex-grow: 1;
 
-  svg {
-    @include square(30px);
+  a {
+    svg {
+      @include square(30px);
 
-    transform: rotate(180deg);
-    transition: transform 0.5s ease;
-    cursor: pointer;
+      transform: rotate(180deg);
+      transition: transform 0.5s ease;
+      cursor: pointer;
 
-    @include hover {
-      transform: rotate(180deg) scale(1.1);
+      @include hover {
+        transform: rotate(180deg) scale(1.1);
+      }
     }
   }
 }
