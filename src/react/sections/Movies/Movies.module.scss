@@ -1,0 +1,11 @@
+@use "../../../styles/abstracts/media" as *;
+
+.sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+
+  @include desktop {
+    gap: 80px;
+  }
+}
