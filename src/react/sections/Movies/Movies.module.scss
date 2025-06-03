@@ -8,4 +8,12 @@
   @include desktop {
     gap: 80px;
   }
+
+  @include tablet {
+    gap: 60px;
+  }
+
+  @include mobile {
+    gap: 50px;
+  }
 }
