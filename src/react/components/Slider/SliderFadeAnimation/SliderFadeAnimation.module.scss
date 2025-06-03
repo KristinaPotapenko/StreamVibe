@@ -1,0 +1,25 @@
+.fadeWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.fadeWrapper.entering {
+  animation: slideFadeIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.fadeWrapper.entered {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
