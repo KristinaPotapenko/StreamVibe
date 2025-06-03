@@ -1,3 +1,4 @@
+@use "../../../../../styles/abstracts/media" as *;
 @use "../../../../../styles/abstracts/mixins" as *;
 
 .text {
@@ -21,12 +22,17 @@
 }
 
 .textSup {
+  @include fluid-text(14, 12);
+
   padding: 10px;
-  font-size: 14px;
   font-weight: 600;
   color: var(--primary-color-light);
   background-color: var(--color-red-45);
   border-radius: var(--border-radius-small);
+
+  @include mobile {
+    padding: 8px;
+  }
 }
 
 .footer {
@@ -35,6 +41,10 @@
   gap: 8px;
   height: 100%;
   width: 100%;
+
+  @include mobile {
+    gap: 4px;
+  }
 }
 
 .infoWrapper {
@@ -45,6 +55,13 @@
   background-color: var(--color-black-08);
   border: var(--border-dark-15);
   border-radius: 50px;
+
+  @include mobile {
+    flex-wrap: wrap;
+    gap: 2px;
+    padding: 4px;
+    border-radius: var(--border-radius-medius);
+  }
 
   svg {
     @include square(18px);
