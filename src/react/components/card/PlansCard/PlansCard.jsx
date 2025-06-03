@@ -3,28 +3,23 @@ import { Link } from "../../ui/Link/Link";
 import styles from "./PlansCard.module.scss";
 import { ROUTES } from "../../../../utils/routes";
 
-export const PlansCard = ({
-  id,
-  title,
-  description,
-  price,
-  isActiveTabsMonthly,
-}) => {
+export const PlansCard = ({ id, title, description, price, activeTabs }) => {
   const [displayPrice, setDisplayPrice] = useState(price);
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     setIsAnimating(true);
     const timer = setTimeout(() => {
-      const newPrice = !isActiveTabsMonthly
-        ? (price * 12 - (price * 12 * 10) / 100).toFixed(2)
-        : price;
+      const newPrice =
+        activeTabs === 1
+          ? (price * 12 - (price * 12 * 10) / 100).toFixed(2)
+          : price;
       setDisplayPrice(newPrice);
       setIsAnimating(false);
     }, 250);
 
     return () => clearTimeout(timer);
-  }, [isActiveTabsMonthly, price]);
+  }, [activeTabs, price]);
 
   return (
     <li className={styles.card}>
@@ -39,7 +34,7 @@ export const PlansCard = ({
         >
           <p className={styles.price}>${displayPrice}</p>
           <p className={styles.period}>
-            {isActiveTabsMonthly ? "/month" : "/year"}
+            {activeTabs === 0 ? "/month" : "/year"}
           </p>
         </div>
       </div>
