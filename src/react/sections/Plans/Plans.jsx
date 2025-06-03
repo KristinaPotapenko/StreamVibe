@@ -2,10 +2,9 @@ import { useState } from "react";
 import { SectionHeader } from "../../components/Section/SectionHeader/sectionHeader";
 import { Tabs } from "../../components/ui/Tabs/Tabs";
 import { PlansList } from "./PlansList/PlansList";
-import styles from "./Plans.module.scss";
 
 export const Plans = () => {
-  const [isActiveTabsMonthly, setIsActiveTabsMonthly] = useState(true);
+  const [activeTabs, setActiveTabs] = useState(0);
 
   return (
     <section className="section container">
@@ -13,26 +12,13 @@ export const Plans = () => {
         title="Choose the plan that's right for you"
         description="Join StreamVibe and select from our flexible subscription options tailored to suit your viewing preferences. Get ready for non-stop entertainment!"
       >
-        <Tabs>
-          <button
-            onClick={() => setIsActiveTabsMonthly(true)}
-            className={`${styles.button} ${
-              isActiveTabsMonthly && styles.isActive
-            }`}
-          >
-            Monthly
-          </button>
-          <button
-            onClick={() => setIsActiveTabsMonthly(false)}
-            className={`${styles.button} ${
-              !isActiveTabsMonthly && styles.isActive
-            }`}
-          >
-            Yearly
-          </button>
-        </Tabs>
+        <Tabs
+          tabs={["Monthly", "Yearly"]}
+          activeTabs={activeTabs}
+          setActiveTabs={setActiveTabs}
+        />
       </SectionHeader>
-      <PlansList isActiveTabsMonthly={isActiveTabsMonthly} />
+      <PlansList activeTabs={activeTabs} />
     </section>
   );
 };

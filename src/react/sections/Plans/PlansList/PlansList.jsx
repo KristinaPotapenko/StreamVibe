@@ -2,7 +2,7 @@ import { PlansCard } from "../../../components/card/PlansCard/PlansCard";
 import { plantsInfo } from "../plansInfo";
 import styles from "./PlansList.module.scss";
 
-export const PlansList = ({ isActiveTabsMonthly }) => {
+export const PlansList = ({ activeTabs }) => {
   return (
     <ul className={styles.wrapper}>
       {plantsInfo.map((plan) => {
@@ -13,7 +13,7 @@ export const PlansList = ({ isActiveTabsMonthly }) => {
             title={plan.title}
             description={plan.description}
             price={plan.price}
-            isActiveTabsMonthly={isActiveTabsMonthly}
+            activeTabs={activeTabs}
           />
         );
       })}
