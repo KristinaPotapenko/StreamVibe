@@ -10,6 +10,10 @@
   @include desktop {
     padding: 40px;
   }
+
+  @include mobile {
+    display: contents;
+  }
 }
 
 .blockName {
@@ -32,5 +36,9 @@
     height: 40px;
     padding: 8px 20px;
     font-size: 16px;
+  }
+
+  @include mobile {
+    display: none;
   }
 }
