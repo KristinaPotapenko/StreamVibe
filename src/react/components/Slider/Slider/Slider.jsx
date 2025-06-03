@@ -89,13 +89,13 @@ export const Slider = ({ title, description, list, image, footer }) => {
                 )}
                 {footer === "releases" && (
                   <SliderCardReleasesFooter
-                    name={slide.original_title}
+                    name={slide.title ? slide.title : slide.name}
                     releaseDate={slide.release_date}
                   />
                 )}
                 {footer === "mustWatch" && (
                   <SliderCardMustWatchFooter
-                    name={slide.original_title}
+                    name={slide.title ? slide.title : slide.name}
                     average={slide.vote_average}
                     popularity={parseInt(slide.vote_count)}
                   />
