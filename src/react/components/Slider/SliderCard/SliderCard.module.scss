@@ -48,6 +48,10 @@
     min-height: 200px;
     border-radius: var(--border-radius-medius);
     object-fit: cover;
+
+    @include mobile {
+      min-height: 120px;
+    }
   }
 }
 
@@ -68,6 +72,10 @@
 
       @include hover {
         transform: rotate(180deg) scale(1.1);
+      }
+
+      @include mobile {
+        @include square(24px);
       }
     }
   }
