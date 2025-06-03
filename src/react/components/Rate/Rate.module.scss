@@ -5,6 +5,13 @@
   @include flex-center;
 
   position: relative;
+  line-height: 0;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 svg.full {
