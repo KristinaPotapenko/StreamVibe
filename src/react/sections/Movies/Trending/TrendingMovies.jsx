@@ -8,7 +8,6 @@ export const TrendingMovies = () => {
   const { trendingMovies } = useSelector(
     ({ trendingMovies }) => trendingMovies
   );
-  console.log(trendingMovies);
 
   useEffect(() => {
     dispatch(getTrendingNowMovies());
