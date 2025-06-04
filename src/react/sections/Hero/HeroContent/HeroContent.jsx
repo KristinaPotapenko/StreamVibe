@@ -1,7 +1,8 @@
-import { Button } from "../../../components/ui/Button/Button";
+import { ROUTES } from "../../../../utils/routes";
+import { Link } from "../../../components/ui/Link/Link";
 import styles from "./HeroContent.module.scss";
 
-export const HeroContent = () => {
+export const HeroContent = ({ path }) => {
   return (
     <div className={styles.content}>
       <h1 className={styles.title}>The Best Streaming Experience</h1>
@@ -12,12 +13,12 @@ export const HeroContent = () => {
         classic movies, popular TV shows, and more. You can also create your own
         watchlists, so you can easily find the content you want to watch.
       </p>
-      <Button type="button">
+      <Link to={ROUTES.MOVIES_TV}>
         <svg className="icon">
           <use xlinkHref="assets/icon/sprite.svg#play" />
         </svg>
         Start Watching Now
-      </Button>
+      </Link>
     </div>
   );
 };
