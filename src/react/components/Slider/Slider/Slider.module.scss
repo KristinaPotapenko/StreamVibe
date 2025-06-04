@@ -1,18 +1,19 @@
 @use "../../../../styles/abstracts/media" as *;
 
+.sliderContainer {
+  position: relative;
+}
+
 .sliderWrapper {
   position: relative;
-  overflow: hidden;
   width: 100%;
+  overflow: hidden;
 
   @include mobile {
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 24px;
-
     scrollbar-width: none;
-    -ms-overflow-style: none;
+    margin-bottom: 20px;
 
     &::-webkit-scrollbar {
       display: none;
@@ -24,8 +25,34 @@
   display: flex;
   gap: 30px;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
 
   @include tablet {
     gap: 20px;
   }
+
+  @include mobile {
+    gap: 16px;
+    scroll-snap-type: x mandatory;
+  }
+}
+
+.progressBar {
+  width: 80px;
+  height: 6px;
+  margin: 0 auto;
+  background-color: var(--color-black-20);
+  border-radius: var(--border-radius-large);
+  overflow: hidden;
+
+  @include mobile-above {
+    display: none;
+  }
+}
+
+.progressFill {
+  height: 100%;
+  background-color: var(--color-red-45);
+  border-radius: var(--border-radius-large);
+  transition: width 0.3s ease;
 }

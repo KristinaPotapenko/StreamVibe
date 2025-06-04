@@ -14,6 +14,7 @@ export const MustWatchMovies = () => {
   }, [dispatch]);
   return (
     <Slider
+      type="movie"
       title="Must - Watch Movies"
       list={mustWatchMovies}
       footer="mustWatch"

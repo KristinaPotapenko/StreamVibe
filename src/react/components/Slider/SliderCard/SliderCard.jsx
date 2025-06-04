@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import styles from "./SliderCard.module.scss";
+import { getRouteWithId } from "../../../../scripts/helpers/getRouteWithId";
+import { ROUTES } from "../../../../utils/routes";
 
-export const SliderCard = ({ id, src, cardWidth, children }) => {
+export const SliderCard = ({ type, id, src, cardWidth, children }) => {
+  const path =
+    type === "movie"
+      ? getRouteWithId(ROUTES.MOVIE, id)
+      : getRouteWithId(ROUTES.TV, id);
   return (
     <li
       className={styles.card}
@@ -9,7 +15,7 @@ export const SliderCard = ({ id, src, cardWidth, children }) => {
         minWidth: cardWidth,
       }}
     >
-      <Link to={`/categories${id}`}>
+      <Link to={path}>
         <div className={styles.image}>
           <img src={src} alt="Categories" />
         </div>

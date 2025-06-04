@@ -14,6 +14,11 @@ export const TrendingMovies = () => {
   }, [dispatch]);
 
   return (
-    <Slider title="Trending Now" list={trendingMovies} footer="trending" />
+    <Slider
+      type="movie"
+      title="Trending Now"
+      list={trendingMovies}
+      footer="trending"
+    />
   );
 };

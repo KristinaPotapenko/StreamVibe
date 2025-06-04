@@ -14,6 +14,7 @@ export const GenresMovies = () => {
 
   return (
     <Slider
+      type="movie"
       title="Our Genres"
       list={genresMovies}
       image={genresMoviesImage}

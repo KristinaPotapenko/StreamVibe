@@ -12,6 +12,11 @@ export const MustWatchTV = () => {
   }, [dispatch]);
 
   return (
-    <Slider title="Must - Watch Movies" list={mustWatchTV} footer="mustWatch" />
+    <Slider
+      type="tv"
+      title="Must - Watch Movies"
+      list={mustWatchTV}
+      footer="mustWatch"
+    />
   );
 };

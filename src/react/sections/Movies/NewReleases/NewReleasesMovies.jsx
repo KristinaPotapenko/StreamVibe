@@ -13,6 +13,11 @@ export const NewReleasesMovies = () => {
     dispatch(getNewRealeasesMovies());
   }, [dispatch]);
   return (
-    <Slider title="New Releases" list={newRealeasesMovies} footer="releases" />
+    <Slider
+      type="movie"
+      title="New Releases"
+      list={newRealeasesMovies}
+      footer="releases"
+    />
   );
 };

@@ -14,6 +14,7 @@ export const TopGenresTV = () => {
 
   return (
     <Slider
+      type="tv"
       title="Popular Top 10 In Genres"
       list={genresTV}
       image={genresTVImage}

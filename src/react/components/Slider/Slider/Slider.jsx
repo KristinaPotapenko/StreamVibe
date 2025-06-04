@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useWindowWidth } from "../../../../scripts/hook/useWindowWidth";
 import { SectionHeader } from "../../Section/SectionHeader/sectionHeader";
 import { ScrollSlider } from "../ScrollSlider/ScrollSlider";
@@ -12,13 +12,28 @@ import {
 } from "../SliderCard/SliderCardFooter/SliderCardFooter";
 import styles from "./Slider.module.scss";
 
-export const Slider = ({ title, description, list, image, footer }) => {
+export const Slider = ({ type, title, description, list, image, footer }) => {
   const baseURL = `https://image.tmdb.org/t/p/w500/`;
   const windowWidth = useWindowWidth();
   const [activeSlide, setActiveSlide] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const sliderRef = useRef();
 
   useEffect(() => {
     setActiveSlide(0);
+  }, [windowWidth]);
+
+  useEffect(() => {
+    if (windowWidth < 768 && sliderRef.current) {
+      const handleScroll = () => {
+        const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
+        const newProgress = (scrollLeft / (scrollWidth - clientWidth)) * 100;
+        setProgress(newProgress);
+      };
+      sliderRef.current.addEventListener("scroll", handleScroll);
+      return () =>
+        sliderRef.current?.removeEventListener("scroll", handleScroll);
+    }
   }, [windowWidth]);
 
   const { slides, cardWidth, transform } = useMemo(() => {
@@ -59,51 +74,71 @@ export const Slider = ({ title, description, list, image, footer }) => {
           visibleItems={slides}
         />
       </SectionHeader>
-      <div className={styles.sliderWrapper}>
-        <ul className={styles.cards} style={{ transform: transform }}>
-          {list.map((slide) => {
-            return (
-              <SliderCard
-                key={slide.id}
-                id={slide.id}
-                src={
-                  image
-                    ? image.find((item) => item.id === slide.id)?.img
-                    : baseURL + slide?.backdrop_path
-                }
-                name={slide.name}
-                cardWidth={cardWidth}
-              >
-                {footer === "genres" && (
-                  <SliderCardCategoriesFooter name={slide.name} />
-                )}
-                {footer === "topGenres" && (
-                  <SliderCardGenresFooter name={slide.name} />
-                )}
-                {footer === "trending" && (
-                  <SliderCardTrendingFooter
-                    name={slide.title ? slide.title : slide.name}
-                    average={parseInt(slide.vote_average)}
-                    popularity={parseInt(slide.popularity)}
-                  />
-                )}
-                {footer === "releases" && (
-                  <SliderCardReleasesFooter
-                    name={slide.title ? slide.title : slide.name}
-                    releaseDate={slide.release_date}
-                  />
-                )}
-                {footer === "mustWatch" && (
-                  <SliderCardMustWatchFooter
-                    name={slide.title ? slide.title : slide.name}
-                    average={slide.vote_average}
-                    popularity={parseInt(slide.vote_count)}
-                  />
-                )}
-              </SliderCard>
-            );
-          })}
-        </ul>
+      <div className={styles.sliderContainer}>
+        <div className={styles.sliderWrapper} ref={sliderRef}>
+          <ul
+            className={styles.cards}
+            style={windowWidth > 767 ? { transform } : undefined}
+          >
+            {list.map((slide) => {
+              return (
+                <SliderCard
+                  key={slide.id}
+                  type={type}
+                  id={slide.id}
+                  src={
+                    image
+                      ? image.find((item) => item.id === slide.id)?.img
+                      : baseURL + slide?.backdrop_path
+                  }
+                  name={slide.name}
+                  cardWidth={cardWidth}
+                >
+                  {footer === "genres" && (
+                    <SliderCardCategoriesFooter
+                      type={type}
+                      id={slide.id}
+                      name={slide.name}
+                    />
+                  )}
+                  {footer === "topGenres" && (
+                    <SliderCardGenresFooter
+                      type={type}
+                      id={slide.id}
+                      name={slide.name}
+                    />
+                  )}
+                  {footer === "trending" && (
+                    <SliderCardTrendingFooter
+                      name={slide.title ? slide.title : slide.name}
+                      average={parseInt(slide.vote_average)}
+                      popularity={parseInt(slide.popularity)}
+                    />
+                  )}
+                  {footer === "releases" && (
+                    <SliderCardReleasesFooter
+                      name={slide.title ? slide.title : slide.name}
+                      releaseDate={slide.release_date}
+                    />
+                  )}
+                  {footer === "mustWatch" && (
+                    <SliderCardMustWatchFooter
+                      name={slide.title ? slide.title : slide.name}
+                      average={slide.vote_average}
+                      popularity={parseInt(slide.vote_count)}
+                    />
+                  )}
+                </SliderCard>
+              );
+            })}
+          </ul>
+        </div>
+        <div className={styles.progressBar}>
+          <div
+            className={styles.progressFill}
+            style={{ width: `${progress}%` }}
+          ></div>
+        </div>
       </div>
     </>
   );

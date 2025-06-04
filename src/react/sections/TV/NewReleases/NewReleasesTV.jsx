@@ -14,6 +14,11 @@ export const NewReleasesTV = () => {
   }, [dispatch]);
 
   return (
-    <Slider title="New Releases" list={newRealeasesTV} footer="releases" />
+    <Slider
+      type="tv"
+      title="New Releases"
+      list={newRealeasesTV}
+      footer="releases"
+    />
   );
 };
