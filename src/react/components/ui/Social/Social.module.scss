@@ -8,6 +8,10 @@
   @include tablet {
     gap: 10px;
   }
+
+  @include mobile {
+    flex-wrap: wrap;
+  }
 }
 
 .item {
