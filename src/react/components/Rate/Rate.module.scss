@@ -15,7 +15,7 @@ svg {
 }
 
 svg.full {
-  color: var(--color-red-45);
+  color: var(--color-red-45) !important;
 }
 
 .partial {
@@ -26,7 +26,7 @@ svg.full {
   overflow: hidden;
 
   svg {
-    color: var(--color-red-45);
+    color: var(--color-red-45) !important;
   }
 }
 

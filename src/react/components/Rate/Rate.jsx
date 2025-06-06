@@ -28,7 +28,7 @@ export const Rate = ({ average }) => {
               </div>
             </div>
           );
-        } else if (index + 1 <= emptyStars) {
+        } else if (index + 1 <= 5) {
           return (
             <svg key={index} className={`${styles.empty} icon`}>
               <use xlinkHref="/assets/icon/sprite.svg#star" />
