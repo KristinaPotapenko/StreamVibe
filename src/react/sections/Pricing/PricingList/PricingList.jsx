@@ -1,13 +1,13 @@
-import { PlansCard } from "../../../components/card/PlansCard/PlansCard";
-import { plantsInfo } from "../plansInfo";
-import styles from "./PlansList.module.scss";
+import { PricingCard } from "../../../components/card/PricingCard/PricingCard";
+import { pricingInfo } from "../pricingInfo";
+import styles from "./PricingList.module.scss";
 
-export const PlansList = ({ activeTabs }) => {
+export const PricingList = ({ activeTabs }) => {
   return (
     <ul className={styles.wrapper}>
-      {plantsInfo.map((plan) => {
+      {pricingInfo.map((plan) => {
         return (
-          <PlansCard
+          <PricingCard
             key={plan.id}
             id={plan.id}
             title={plan.title}

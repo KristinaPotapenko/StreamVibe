@@ -2,7 +2,7 @@ import { Hero } from "../../sections/Hero/Hero";
 import { Categories } from "../../sections/Categories/Categories";
 import { Devices } from "../../sections/Devices/Devices";
 import { Questions } from "../../sections/Questions/Questions";
-import { Plans } from "../../sections/Plans/Plans";
+import { Pricing } from "../../sections/Pricing/Pricing";
 import { FreeTrial } from "../../sections/FreeTrial/FreeTrial";
 
 export const Home = () => {
@@ -12,7 +12,7 @@ export const Home = () => {
       <Categories />
       <Devices />
       <Questions />
-      <Plans />
+      <Pricing />
       <FreeTrial />
     </>
   );

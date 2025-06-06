@@ -1,4 +1,4 @@
-export const plantsInfo = [
+export const pricingInfo = [
   {
     id: 1,
     title: "Basic Plan",

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "../../ui/Link/Link";
-import styles from "./PlansCard.module.scss";
 import { ROUTES } from "../../../../utils/routes";
+import styles from "./PricingCard.module.scss";
 
-export const PlansCard = ({ id, title, description, price, activeTabs }) => {
+export const PricingCard = ({ id, title, description, price, activeTabs }) => {
   const [displayPrice, setDisplayPrice] = useState(price);
   const [isAnimating, setIsAnimating] = useState(false);
 
