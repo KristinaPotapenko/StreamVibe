@@ -8,6 +8,7 @@ import genresTVReducer from "./tv/genresTV/genresTVSlice";
 import trendingNowTVReducer from "./tv/trendingNowTV/trendingNowTVSlice";
 import newRealeasesTVReducer from "./tv/newReleasesTV/newReleasesTVSlice";
 import mustWatchTVReducer from "./tv/mustWatchTV/mustWatchTVSlice";
+import mediaReducer from "./media/mediaSlice";
 
 export const store = configureStore({
   reducer: {
@@ -20,5 +21,6 @@ export const store = configureStore({
     trendingNowTV: trendingNowTVReducer,
     newRealeasesTV: newRealeasesTVReducer,
     mustWatchTV: mustWatchTVReducer,
+    media: mediaReducer,
   },
 });
