@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { ROUTES } from "../../../../utils/routes";
 import { getNewRealeasesTV } from "../../../../features/tv/newReleasesTV/newReleasesTVSlice";
 import { Slider } from "../../../components/Slider/Slider/Slider";
 
@@ -15,7 +16,8 @@ export const NewReleasesTV = () => {
 
   return (
     <Slider
-      type="tv"
+      id="tvNewReleases"
+      route={ROUTES.TV_DETAILS}
       title="New Releases"
       list={newRealeasesTV}
       footer="releases"

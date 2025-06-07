@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getGenresTV } from "../../../../features/tv/genresTV/genresTVSlice";
+import { ROUTES } from "../../../../utils/routes";
 import { genresTVImage } from "../Genres/genresTVImage";
+import { getGenresTV } from "../../../../features/tv/genresTV/genresTVSlice";
 import { Slider } from "../../../components/Slider/Slider/Slider";
 
 export const TopGenresTV = () => {
@@ -14,7 +15,7 @@ export const TopGenresTV = () => {
 
   return (
     <Slider
-      type="tv"
+      route={ROUTES.TV_TOPGENRE}
       title="Popular Top 10 In Genres"
       list={genresTV}
       image={genresTVImage}

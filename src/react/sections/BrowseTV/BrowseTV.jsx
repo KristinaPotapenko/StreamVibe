@@ -4,11 +4,11 @@ import { TopGenresTV } from "./TopGenres/TopGenresTV";
 import { TrendingTV } from "./Trending/TrendingTV";
 import { NewReleasesTV } from "./NewReleases/NewReleasesTV";
 import { MustWatchTV } from "./MustWatch/MustWatchTV";
-import styles from "./TV.module.scss";
+import styles from "./BrowseTV.module.scss";
 
-export const TV = () => {
+export const BrowseTV = () => {
   return (
-    <section className="section container">
+    <section id="tv" className={`section container ${styles.section}`}>
       <SectionSliders name="TV">
         <ul className={styles.sliders}>
           <li className={styles.slider}>

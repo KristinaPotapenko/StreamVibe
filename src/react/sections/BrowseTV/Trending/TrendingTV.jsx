@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { ROUTES } from "../../../../utils/routes";
 import { getTrendingNowTV } from "../../../../features/tv/trendingNowTV/trendingNowTVSlice";
 import { Slider } from "../../../components/Slider/Slider/Slider";
 
@@ -13,7 +14,8 @@ export const TrendingTV = () => {
 
   return (
     <Slider
-      type="tv"
+      id="tvTrending"
+      route={ROUTES.TV_DETAILS}
       title="Trending Shows Now"
       list={trendingNowTV}
       footer="trending"
