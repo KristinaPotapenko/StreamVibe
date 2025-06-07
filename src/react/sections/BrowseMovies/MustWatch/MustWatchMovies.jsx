@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { ROUTES } from "../../../../utils/routes";
 import { getMustWatchMovies } from "../../../../features/movies/mustWatchMovies/mustWatchMoviesSlice";
 import { Slider } from "../../../components/Slider/Slider/Slider";
 
@@ -14,7 +15,7 @@ export const MustWatchMovies = () => {
   }, [dispatch]);
   return (
     <Slider
-      type="movie"
+      route={ROUTES.MOVIE_DETAILS}
       title="Must - Watch Movies"
       list={mustWatchMovies}
       footer="mustWatch"

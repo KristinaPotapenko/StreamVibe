@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Slider } from "../../../components/Slider/Slider/Slider";
+import { ROUTES } from "../../../../utils/routes";
 import { getTrendingNowMovies } from "../../../../features/movies/trendingNowMovies/trendingNowMoviesSlice";
+import { Slider } from "../../../components/Slider/Slider/Slider";
 
 export const TrendingMovies = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export const TrendingMovies = () => {
 
   return (
     <Slider
-      type="movie"
+      route={ROUTES.MOVIE_DETAILS}
       title="Trending Now"
       list={trendingMovies}
       footer="trending"

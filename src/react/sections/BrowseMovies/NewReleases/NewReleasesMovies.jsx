@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { ROUTES } from "../../../../utils/routes";
 import { getNewRealeasesMovies } from "../../../../features/movies/newReleasesMovies/newReleasesMoviesSlice";
 import { Slider } from "../../../components/Slider/Slider/Slider";
 
@@ -14,7 +15,7 @@ export const NewReleasesMovies = () => {
   }, [dispatch]);
   return (
     <Slider
-      type="movie"
+      route={ROUTES.MOVIE_DETAILS}
       title="New Releases"
       list={newRealeasesMovies}
       footer="releases"
