@@ -7,6 +7,10 @@
   gap: 8px;
   margin-bottom: 50px;
 
+  h2 {
+    text-align: center;
+  }
+
   @include desktop {
     gap: 4px;
     margin-bottom: 50px;
