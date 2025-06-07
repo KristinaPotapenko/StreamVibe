@@ -1,18 +1,13 @@
 import { Link } from "react-router-dom";
-import styles from "./SliderCardFooter.module.scss";
+import { scrollToTop } from "../../../../../scripts/helpers/scrollToTop";
 import { Rate } from "../../../Rate/Rate";
-import { getRouteWithId } from "../../../../../scripts/helpers/getRouteWithId";
-import { ROUTES } from "../../../../../utils/routes";
+import styles from "./SliderCardFooter.module.scss";
 
-export const SliderCardCategoriesFooter = ({ type, name, id }) => {
-  const path =
-    type === "movie"
-      ? getRouteWithId(ROUTES.MOVIE, id)
-      : getRouteWithId(ROUTES.TV, id);
+export const SliderCardCategoriesFooter = ({ path, name }) => {
   return (
     <>
       <p className={styles.text}>{name}</p>
-      <Link to={path}>
+      <Link to={path} onClick={scrollToTop}>
         <svg className="icon">
           <use xlinkHref="/assets/icon/sprite.svg#arrow" />
         </svg>
@@ -21,18 +16,14 @@ export const SliderCardCategoriesFooter = ({ type, name, id }) => {
   );
 };
 
-export const SliderCardGenresFooter = ({ type, name, id }) => {
-  const path =
-    type === "movie"
-      ? getRouteWithId(ROUTES.MOVIE, id)
-      : getRouteWithId(ROUTES.TV, id);
+export const SliderCardGenresFooter = ({ path, name }) => {
   return (
     <>
       <div className={styles.textWrapper}>
         <p className={styles.textSup}>Top 10 In</p>
         <p className={styles.text}>{name}</p>
       </div>
-      <Link to={path}>
+      <Link to={path} onClick={scrollToTop}>
         <svg className="icon">
           <use xlinkHref="/assets/icon/sprite.svg#arrow" />
         </svg>

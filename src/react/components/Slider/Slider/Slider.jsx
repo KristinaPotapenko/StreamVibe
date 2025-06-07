@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useWindowWidth } from "../../../../scripts/hook/useWindowWidth";
 import { SectionHeader } from "../../Section/SectionHeader/sectionHeader";
+import { baseImageURL } from "../../../../utils/constants";
+import { getRouteWithId } from "../../../../scripts/helpers/getRouteWithId";
 import { ScrollSlider } from "../ScrollSlider/ScrollSlider";
 import { SliderCard } from "../SliderCard/SliderCard";
 import {
@@ -12,8 +14,15 @@ import {
 } from "../SliderCard/SliderCardFooter/SliderCardFooter";
 import styles from "./Slider.module.scss";
 
-export const Slider = ({ type, title, description, list, image, footer }) => {
-  const baseURL = `https://image.tmdb.org/t/p/w500/`;
+export const Slider = ({
+  id,
+  route,
+  title,
+  description,
+  list,
+  image,
+  footer,
+}) => {
   const windowWidth = useWindowWidth();
   const [activeSlide, setActiveSlide] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -31,6 +40,7 @@ export const Slider = ({ type, title, description, list, image, footer }) => {
         setProgress(newProgress);
       };
       sliderRef.current.addEventListener("scroll", handleScroll);
+
       return () =>
         sliderRef.current?.removeEventListener("scroll", handleScroll);
     }
@@ -66,7 +76,7 @@ export const Slider = ({ type, title, description, list, image, footer }) => {
 
   return (
     <>
-      <SectionHeader title={title} description={description}>
+      <SectionHeader id={id} title={title} description={description}>
         <ScrollSlider
           activeSlide={activeSlide}
           setActiveSlide={setActiveSlide}
@@ -84,27 +94,25 @@ export const Slider = ({ type, title, description, list, image, footer }) => {
               return (
                 <SliderCard
                   key={slide.id}
-                  type={type}
+                  path={getRouteWithId(route, slide.id)}
                   id={slide.id}
                   src={
                     image
                       ? image.find((item) => item.id === slide.id)?.img
-                      : baseURL + slide?.backdrop_path
+                      : baseImageURL + slide?.backdrop_path
                   }
                   name={slide.name}
                   cardWidth={cardWidth}
                 >
                   {footer === "genres" && (
                     <SliderCardCategoriesFooter
-                      type={type}
-                      id={slide.id}
+                      path={getRouteWithId(route, slide.id)}
                       name={slide.name}
                     />
                   )}
                   {footer === "topGenres" && (
                     <SliderCardGenresFooter
-                      type={type}
-                      id={slide.id}
+                      path={getRouteWithId(route, slide.id)}
                       name={slide.name}
                     />
                   )}

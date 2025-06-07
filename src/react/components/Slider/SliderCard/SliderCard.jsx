@@ -1,13 +1,8 @@
 import { Link } from "react-router-dom";
+import { scrollToTop } from "../../../../scripts/helpers/scrollToTop";
 import styles from "./SliderCard.module.scss";
-import { getRouteWithId } from "../../../../scripts/helpers/getRouteWithId";
-import { ROUTES } from "../../../../utils/routes";
 
-export const SliderCard = ({ type, id, src, cardWidth, children }) => {
-  const path =
-    type === "movie"
-      ? getRouteWithId(ROUTES.MOVIE, id)
-      : getRouteWithId(ROUTES.TV, id);
+export const SliderCard = ({ path, src, cardWidth, children }) => {
   return (
     <li
       className={styles.card}
@@ -15,7 +10,7 @@ export const SliderCard = ({ type, id, src, cardWidth, children }) => {
         minWidth: cardWidth,
       }}
     >
-      <Link to={path}>
+      <Link to={path} onClick={scrollToTop}>
         <div className={styles.image}>
           <img src={src} alt="Categories" />
         </div>
