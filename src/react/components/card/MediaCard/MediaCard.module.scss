@@ -1,0 +1,126 @@
+@use "../../../../styles/abstracts/media" as *;
+@use "../../../../styles/abstracts/mixins" as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2px;
+
+  padding: 30px;
+  background-color: var(--color-black-10);
+  border: var(--border-dark-15);
+  border-radius: var(--border-radius-medius);
+
+  a {
+    @include flex-center;
+
+    transition: all 0.8s ease;
+    cursor: pointer;
+
+    @include hover {
+      transform: scale(1.03);
+    }
+  }
+}
+
+.image {
+  position: relative;
+  border-radius: var(--border-radius-medius);
+
+  &::before {
+    content: "";
+
+    @include square(100%);
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    background-image: linear-gradient(
+      180deg,
+      rgba(26, 26, 26, 0) 0%,
+      rgba(26, 26, 26, 1) 100%
+    );
+  }
+
+  img {
+    min-height: 250px;
+    border-radius: var(--border-radius-medius);
+    object-fit: cover;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  flex-grow: 1;
+}
+
+.title {
+  font-weight: 600;
+  color: var(--primary-color-light);
+}
+
+.infoWrapper {
+  display: flex;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.infoWrapper:first-child {
+  flex-grow: 1;
+}
+.info {
+  margin: 0;
+}
+
+.infoBlock {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  @include mobile {
+    gap: 2px;
+  }
+
+  svg:nth-of-type(1) {
+    @include square(20px);
+
+    color: var(--color-gray-60);
+  }
+}
+
+.infoReleased {
+  display: flex;
+  padding: 6px 16px;
+  text-align: center;
+  background-color: var(--color-black-08);
+  border: var(--border-dark-15);
+  border-radius: 50px;
+}
+
+.rateBlock {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  background-color: var(--color-black-08);
+  border: var(--border-dark-15);
+  border-radius: 50px;
+
+  @include mobile {
+    flex-wrap: wrap;
+    gap: 2px;
+    padding: 4px;
+    border-radius: var(--border-radius-medius);
+  }
+
+  svg {
+    @include square(18px);
+
+    color: var(--color-gray-60);
+  }
+}
