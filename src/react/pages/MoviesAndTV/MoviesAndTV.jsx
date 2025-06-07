@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Tabs } from "../../components/ui/Tabs/Tabs";
-import { Movies } from "../../sections/Movies/Movies";
-import { TopMovies } from "../../sections/TopMovies/TopMovies";
-import { TV } from "../../sections/TV/TV";
 import { useWindowWidth } from "../../../scripts/hook/useWindowWidth";
+import { TopMovies } from "../../sections/TopMovies/TopMovies";
+import { Tabs } from "../../components/ui/Tabs/Tabs";
+import { BrowseMovies } from "../../sections/BrowseMovies/BrowseMovies";
+import { BrowseTV } from "../../sections/BrowseTV/BrowseTV";
 import styles from "./MoviesAndTV.module.scss";
 
 export const MoviesAndTV = () => {
@@ -17,34 +17,36 @@ export const MoviesAndTV = () => {
     <>
       <TopMovies />
       {isMobile && (
-        <>
-          <Tabs
-            tabs={["Movies", "Shows"]}
-            activeTabs={activeTabs}
-            setActiveTabs={setActiveTabs}
-          />
-          <div className={styles.tabsContent}>
-            <div
-              className={`${styles.tabPanel} ${
-                activeTabs === 0 ? styles.active : ""
-              }`}
-            >
-              <Movies />
+        <section className="section container">
+          <>
+            <Tabs
+              tabs={["Movies", "TV"]}
+              activeTabs={activeTabs}
+              setActiveTabs={setActiveTabs}
+            />
+            <div className={styles.tabsContent}>
+              <div
+                className={`${styles.tabPanel} ${
+                  activeTabs === 0 ? styles.active : ""
+                }`}
+              >
+                <BrowseMovies />
+              </div>
+              <div
+                className={`${styles.tabPanel} ${
+                  activeTabs === 1 ? styles.active : ""
+                }`}
+              >
+                <BrowseTV />
+              </div>
             </div>
-            <div
-              className={`${styles.tabPanel} ${
-                activeTabs === 1 ? styles.active : ""
-              }`}
-            >
-              <TV />
-            </div>
-          </div>
-        </>
+          </>
+        </section>
       )}
       {isDesktop && (
         <>
-          <Movies />
-          <TV />
+          <BrowseMovies />
+          <BrowseTV />
         </>
       )}
     </>
