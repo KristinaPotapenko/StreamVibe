@@ -1,0 +1,50 @@
+@use "../../../styles/abstracts/media" as *;
+@use "../../../styles/abstracts/mixins" as *;
+
+section.section {
+  height: 100vh;
+  margin-top: 100px;
+  margin-bottom: 8px;
+
+  @include mobile {
+    margin-top: 80px;
+    margin-bottom: 0;
+  }
+}
+.sliderBg {
+  @include square(100%);
+
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: var(--border-radius-medius);
+  transition: background-image 0.3s ease;
+
+  .sliderBg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.2) 50%
+    );
+    z-index: 1;
+  }
+}
+
+.sliderContent {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -10%);
+  width: 80%;
+
+  @include mobile {
+    transform: translate(-50%, -30%);
+  }
+}

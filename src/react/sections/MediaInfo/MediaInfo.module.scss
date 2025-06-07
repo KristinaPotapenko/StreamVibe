@@ -1,0 +1,89 @@
+@use "../../../styles/abstracts/mixins" as *;
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.infoWrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 30px;
+}
+
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 50px;
+  background-color: var(--color-black-10);
+  border: var(--border-dark-15);
+  border-radius: var(--border-radius-medius);
+}
+
+.subtitle,
+.description {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.description {
+  color: var(--primary-color-light);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  img {
+    max-width: 60px;
+  }
+}
+
+.infoName {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  svg {
+    max-width: 24px;
+    max-height: 24px;
+  }
+}
+
+.infoContent {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+
+  .image {
+    max-width: 100px;
+    object-fit: contain;
+    border-radius: var(--border-radius-medius);
+  }
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 8px 14px;
+  background-color: var(--color-black-08);
+  border: var(--border-dark-15);
+  border-radius: var(--border-radius-small);
+}
+
+.rate {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  svg {
+    @include square(18px);
+  }
+}
