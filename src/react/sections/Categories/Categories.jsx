@@ -4,6 +4,7 @@ import { getGenresMovies } from "../../../features/movies/genresMovies/genresMov
 import { Slider } from "../../components/Slider/Slider/Slider";
 import { genresMoviesImage } from "./genresMoviesImage";
 import styles from "./Categories.module.scss";
+import { ROUTES } from "../../../utils/routes";
 
 export const Categories = () => {
   const dispatch = useDispatch();
@@ -14,9 +15,9 @@ export const Categories = () => {
   }, [dispatch]);
 
   return (
-    <section className={`section container ${styles.section}`}>
+    <section id="categories" className={`section container ${styles.section}`}>
       <Slider
-        type="movie"
+        route={ROUTES.MOVIES_GENRE}
         title="Explore our wide variety of categories"
         description="Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new"
         list={genresMovies}
