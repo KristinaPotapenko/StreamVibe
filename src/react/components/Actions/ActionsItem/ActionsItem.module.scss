@@ -28,6 +28,12 @@
       @include square(26px);
     }
   }
+
+  button {
+    @include reset-button;
+
+    cursor: pointer;
+  }
 }
 
 .actionsItem.accent {
