@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { baseImageURL } from "../../../utils/constants";
 import { getTopMovies } from "../../../features/movies/topRatedMovies/topMoviesSlice";
-import { TopMoviesContent } from "./TopMoviesContent/TopMoviesContent";
+import { MediaContent } from "../../components/MediaContent/MediaContent";
 import { ScrollSlider } from "../../components/Slider/ScrollSlider/ScrollSlider";
 import { SliderFadeAnimation } from "../../components/Slider/SliderFadeAnimation/SliderFadeAnimation";
 import styles from "./TopMovies.module.scss";
@@ -10,7 +11,6 @@ export const TopMovies = () => {
   const dispatch = useDispatch();
   const { topMovies } = useSelector(({ topMovies }) => topMovies);
   const [activeSlide, setActiveSlide] = useState(0);
-  const baseURL = `https://image.tmdb.org/t/p/w500/`;
 
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
@@ -42,17 +42,18 @@ export const TopMovies = () => {
   return (
     <section className={`section container ${styles.section}`}>
       <div
-        key={topMovies[activeSlide]?.id}
         className={styles.sliderBg}
         style={{
-          backgroundImage: `linear-gradient(0deg,rgba(0, 0, 0, 1) 16%, rgba(20, 20, 20, 0.26) 100%), url(${baseURL}${topMovies[activeSlide]?.backdrop_path})`,
+          backgroundImage: `linear-gradient(0deg,rgba(0, 0, 0, 1) 16%, rgba(20, 20, 20, 0.26) 100%), url(${baseImageURL}${topMovies[activeSlide]?.backdrop_path})`,
         }}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
         <SliderFadeAnimation activeSlide={activeSlide}>
           <div className={styles.sliderContent}>
-            <TopMoviesContent topMovies={topMovies} activeSlide={activeSlide} />
+            {topMovies.length > 0 && (
+              <MediaContent media={topMovies} activeSlide={activeSlide} />
+            )}
             <ScrollSlider
               transparent={true}
               totalSlides={topMovies.length}
