@@ -35,3 +35,16 @@
     }
   }
 }
+
+.isDark {
+  background-color: var(--color-black-08);
+  border: var(--border-dark-15);
+
+  @include hover {
+    background-color: var(--color-black-08);
+  }
+
+  &:focus {
+    border: 1px solid var(--color-gray-65);
+  }
+}
