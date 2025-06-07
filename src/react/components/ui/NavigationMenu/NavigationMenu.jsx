@@ -9,7 +9,7 @@ export const NavigationMenu = ({ ...props }) => {
         <NavigationItem {...props} to={ROUTES.HOME}>
           Home
         </NavigationItem>
-        <NavigationItem {...props} to={ROUTES.MOVIES_TV}>
+        <NavigationItem {...props} to={ROUTES.BROWSE}>
           Movies & Shows
         </NavigationItem>
         <NavigationItem {...props} to={ROUTES.SUPPORT}>

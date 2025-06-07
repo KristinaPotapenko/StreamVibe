@@ -7,7 +7,7 @@ export const AppRoutes = () => {
   return (
     <Routes>
       <Route index element={<Home />} />
-      <Route path={ROUTES.MOVIES_TV} element={<MoviesAndTV />} />
+      <Route path={ROUTES.BROWSE} element={<MoviesAndTV />} />
     </Routes>
   );
 };
