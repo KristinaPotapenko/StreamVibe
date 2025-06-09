@@ -6,19 +6,22 @@ import { ActionsItem } from "../Actions/ActionsItem/ActionsItem";
 import { SectionTitle } from "../Section/SectionTitle/SectionTitle";
 import styles from "./MediaContent.module.scss";
 
-export const MediaContent = ({ media, activeSlide }) => {
-  const movie = Array.isArray(media) ? media[activeSlide] : media;
-
+export const MediaContent = ({ media, isMovie }) => {
   return (
     <div className={styles.content}>
       <SectionTitle
         title={
-          movie.original_title ? movie.original_title : movie?.original_name
+          media.original_title ? media.original_title : media?.original_name
         }
       />
-      <p className={styles.description}>{movie?.overview}</p>
+      <p className={styles.description}>{media?.overview}</p>
       <div className={styles.actions}>
-        <Link to={getRouteWithId(ROUTES.MOVIE_DETAILS, movie?.id)}>
+        <Link
+          to={getRouteWithId(
+            isMovie ? ROUTES.MOVIE_DETAILS : ROUTES.TV_DETAILS,
+            media?.id
+          )}
+        >
           <svg className="icon">
             <use xlinkHref="/assets/icon/sprite.svg#play" />
           </svg>

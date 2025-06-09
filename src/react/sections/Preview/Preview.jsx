@@ -2,7 +2,7 @@ import { baseImageURL, FALLBACK_IMAGE } from "../../../utils/constants";
 import { MediaContent } from "../../components/MediaContent/MediaContent";
 import styles from "./Preview.module.scss";
 
-export const Preview = ({ media }) => {
+export const Preview = ({ media, isMovie }) => {
   return (
     <section className={`section container ${styles.section}`}>
       <div
@@ -16,7 +16,7 @@ export const Preview = ({ media }) => {
         }}
       >
         <div className={styles.sliderContent}>
-          <MediaContent media={media} />
+          <MediaContent media={media} isMovie={isMovie} />
         </div>
       </div>
     </section>
