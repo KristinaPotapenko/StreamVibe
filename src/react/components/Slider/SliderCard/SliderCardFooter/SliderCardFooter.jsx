@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { scrollToTop } from "../../../../../scripts/helpers/scrollToTop";
+import { formattingDate } from "../../../../../scripts/helpers/formattingDate";
 import { Rate } from "../../../Rate/Rate";
 import styles from "./SliderCardFooter.module.scss";
 
@@ -55,11 +56,8 @@ export const SliderCardTrendingFooter = ({ name, average, popularity }) => {
 };
 
 export const SliderCardReleasesFooter = ({ name, releaseDate }) => {
-  const formattedDate = new Date(releaseDate).toLocaleDateString("en-GB", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  });
+  const formattedDate = formattingDate(releaseDate);
+
   return (
     <div className={styles.footer}>
       <p className={styles.text}>{name}</p>
