@@ -25,7 +25,7 @@ export const Media = () => {
   return (
     <>
       {isMediaLoaded && <Preview media={currentMedia} />}
-      {isMediaLoaded && <MediaInfo media={currentMedia} />}
+      {isMediaLoaded && <MediaInfo media={currentMedia} isMovie={isMovie} />}
       <FreeTrial />
     </>
   );

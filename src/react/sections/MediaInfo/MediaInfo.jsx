@@ -2,7 +2,7 @@ import { MediaMain } from "./MediaMain/MediaMain";
 import { MediaAside } from "./MediaAside/MediaAside";
 import styles from "./MediaInfo.module.scss";
 
-export const MediaInfo = ({ media }) => {
+export const MediaInfo = ({ media, isMovie }) => {
   const date = media.release_date ? media.release_date : media?.first_air_date;
 
   return (
@@ -11,6 +11,8 @@ export const MediaInfo = ({ media }) => {
         <MediaMain
           description={media?.overview}
           companies={media?.production_companies}
+          isMovie={isMovie}
+          seasons={!isMovie ? media?.seasons : null}
         />
         <MediaAside
           year={date.split("-")[0]}

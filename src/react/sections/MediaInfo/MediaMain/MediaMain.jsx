@@ -1,18 +1,27 @@
 import { baseImageURL } from "../../../../utils/constants";
+import { MediaBlock } from "../MediaBlocks/MediaBlock";
+import { SeasonItem } from "../MediaBlocks/SeasonItem/SeasonItem";
 import { Reviews } from "../../../components/Reviews/Reviews";
 import { Button } from "../../../components/ui/Button/Button";
 import styles from ".././MediaInfo.module.scss";
 
-export const MediaMain = ({ description, companies }) => {
+export const MediaMain = ({ description, companies, isMovie, seasons }) => {
   return (
     <div className={styles.infoWrapper}>
-      <div className={styles.infoBlock}>
-        <p className={styles.subtitle}>Description</p>
+      {!isMovie && (
+        <MediaBlock subtitle="Seasons and Episodes">
+          <ul className={styles.seasons}>
+            {seasons.map((season) => {
+              return <SeasonItem key={season.id} season={season} />;
+            })}
+          </ul>
+        </MediaBlock>
+      )}
+      <MediaBlock subtitle="Description">
         <p className={styles.description}>{description}</p>
-      </div>
+      </MediaBlock>
       {companies.length > 0 && (
-        <div className={styles.infoBlock}>
-          <p className={styles.subtitle}>Companies</p>
+        <MediaBlock subtitle="Companies">
           <div className={styles.infoContent}>
             {companies.map((companie) => (
               <img
@@ -27,20 +36,21 @@ export const MediaMain = ({ description, companies }) => {
               />
             ))}
           </div>
-        </div>
+        </MediaBlock>
       )}
-      <div className={styles.infoBlock}>
-        <div className={styles.infoHeader}>
-          <p className={styles.subtitle}>Reviews</p>
+      <MediaBlock
+        subtitle="Reviews"
+        action={
           <Button isDark={true}>
             <svg className="icon">
               <use xlinkHref="/assets/icon/sprite.svg#plus" />
             </svg>
             Add Your Review
           </Button>
-        </div>
+        }
+      >
         <Reviews />
-      </div>
+      </MediaBlock>
     </div>
   );
 };
