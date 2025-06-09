@@ -1,4 +1,6 @@
 import { baseImageURL } from "../../../../utils/constants";
+import { Reviews } from "../../../components/Reviews/Reviews";
+import { Button } from "../../../components/ui/Button/Button";
 import styles from ".././MediaInfo.module.scss";
 
 export const MediaMain = ({ description, companies }) => {
@@ -26,7 +28,16 @@ export const MediaMain = ({ description, companies }) => {
         </div>
       )}
       <div className={styles.infoBlock}>
-        <p className={styles.subtitle}>Reviews</p>
+        <div className={styles.infoHeader}>
+          <p className={styles.subtitle}>Reviews</p>
+          <Button isDark={true}>
+            <svg className="icon">
+              <use xlinkHref="/assets/icon/sprite.svg#plus" />
+            </svg>
+            Add Your Review
+          </Button>
+        </div>
+        <Reviews />
       </div>
     </div>
   );
