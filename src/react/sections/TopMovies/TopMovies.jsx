@@ -44,7 +44,11 @@ export const TopMovies = () => {
       <div
         className={styles.sliderBg}
         style={{
-          backgroundImage: `linear-gradient(0deg,rgba(0, 0, 0, 1) 16%, rgba(20, 20, 20, 0.26) 100%), url(${baseImageURL}${topMovies[activeSlide]?.backdrop_path})`,
+          backgroundImage: `linear-gradient(0deg,rgba(0, 0, 0, 1) 16%, rgba(20, 20, 20, 0.26) 100%), url(${
+            topMovies[activeSlide].backdrop_path
+              ? baseImageURL + topMovies[activeSlide]?.backdrop_path
+              : "https://img.freepik.com/premium-vector/gallery-simple-icon-vector-image-picture-sign-neumorphism-style-mobile-app-web-ui-vector-eps-10_532800-801.jpg"
+          })`,
         }}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}

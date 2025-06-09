@@ -82,7 +82,13 @@ export const MediaAside = ({
             </div>
             <ul className={styles.infoContent}>
               <li className={styles.infoItem}>
-                <img src={`${baseImageURL}${director.logo_path}`} />
+                <img
+                  src={`${
+                    director.logo_path
+                      ? baseImageURL + director.logo_path
+                      : "https://img.freepik.com/premium-vector/gallery-simple-icon-vector-image-picture-sign-neumorphism-style-mobile-app-web-ui-vector-eps-10_532800-801.jpg"
+                  }`}
+                />
                 <p className={styles.description}>{director.name}</p>
               </li>
             </ul>

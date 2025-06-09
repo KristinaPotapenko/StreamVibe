@@ -20,7 +20,11 @@ export const MediaMain = ({ description, companies }) => {
                   <img
                     key={companie.id}
                     className={styles.image}
-                    src={`${baseImageURL}${companie.logo_path}`}
+                    src={`${
+                      companie.logo_path
+                        ? baseImageURL + companie.logo_path
+                        : "https://img.freepik.com/premium-vector/gallery-simple-icon-vector-image-picture-sign-neumorphism-style-mobile-app-web-ui-vector-eps-10_532800-801.jpg"
+                    }`}
                   />
                 )
             )}
