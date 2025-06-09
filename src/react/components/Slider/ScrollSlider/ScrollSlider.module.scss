@@ -21,3 +21,27 @@
   border: none;
   border-radius: none;
 }
+
+.wrapper.small {
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+}
+
+.wrapper.small button {
+  background-color: var(--color-black-08);
+  border: var(--border-dark-15);
+  border-radius: 100%;
+  transition: all 0.5s ease;
+
+  svg {
+    color: var(--color-gray-60);
+  }
+
+  @include hover {
+    svg {
+      color: var(--primary-color-light);
+      transform: scale(1.05);
+    }
+  }
+}

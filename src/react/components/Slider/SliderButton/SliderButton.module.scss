@@ -9,6 +9,7 @@
   border: var(--border-dark-small-12);
   border-radius: var(--border-radius-small);
   outline: none;
+  transition: all 0.5s ease;
   cursor: pointer;
 
   svg {
