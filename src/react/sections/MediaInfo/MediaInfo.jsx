@@ -17,7 +17,7 @@ export const MediaInfo = ({ media }) => {
           languages={media?.spoken_languages}
           rating={parseInt(media?.vote_average)}
           gernes={media?.genres}
-          director={media?.production_companies[0]}
+          director={media?.production_companies?.[0]}
           runtime={media?.runtime}
         />
       </div>
