@@ -11,6 +11,10 @@
   outline: none;
   cursor: pointer;
 
+  svg {
+    color: var(--primary-color-light);
+  }
+
   @include hover {
     svg {
       transform: scale(1.1);
