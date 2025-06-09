@@ -1,4 +1,4 @@
-import { baseImageURL } from "../../../../utils/constants";
+import { baseImageURL, FALLBACK_IMAGE } from "../../../../utils/constants";
 import { MediaBlock } from "../MediaBlocks/MediaBlock";
 import { SeasonItem } from "../MediaBlocks/SeasonItem/SeasonItem";
 import { Reviews } from "../../../components/Reviews/Reviews";
@@ -30,7 +30,7 @@ export const MediaMain = ({ description, companies, isMovie, seasons }) => {
                 src={`${
                   companie.logo_path
                     ? baseImageURL + companie.logo_path
-                    : "https://img.freepik.com/premium-vector/gallery-simple-icon-vector-image-picture-sign-neumorphism-style-mobile-app-web-ui-vector-eps-10_532800-801.jpg"
+                    : FALLBACK_IMAGE
                 }`}
                 alt={companie.name}
               />

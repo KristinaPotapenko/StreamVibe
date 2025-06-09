@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { getRouteWithId } from "../../../../scripts/helpers/getRouteWithId";
 import { ROUTES } from "../../../../utils/routes";
 import { scrollToTop } from "../../../../scripts/helpers/scrollToTop";
-import { baseImageURL } from "../../../../utils/constants";
+import { baseImageURL, FALLBACK_IMAGE } from "../../../../utils/constants";
 import { Rate } from "../../Rate/Rate";
 import styles from "./MediaCard.module.scss";
 
@@ -24,7 +24,7 @@ export const MediaCard = ({ media, type }) => {
             src={
               media.backdrop_path
                 ? baseImageURL + media.backdrop_path
-                : "https://img.freepik.com/premium-vector/gallery-simple-icon-vector-image-picture-sign-neumorphism-style-mobile-app-web-ui-vector-eps-10_532800-801.jpg"
+                : FALLBACK_IMAGE
             }
             alt={media.title}
           />

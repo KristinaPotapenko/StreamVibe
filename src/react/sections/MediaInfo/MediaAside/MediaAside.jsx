@@ -1,4 +1,4 @@
-import { baseImageURL } from "../../../../utils/constants";
+import { baseImageURL, FALLBACK_IMAGE } from "../../../../utils/constants";
 import { Rate } from "../../../components/Rate/Rate";
 import styles from ".././MediaInfo.module.scss";
 
@@ -86,7 +86,7 @@ export const MediaAside = ({
                   src={`${
                     director.logo_path
                       ? baseImageURL + director.logo_path
-                      : "https://img.freepik.com/premium-vector/gallery-simple-icon-vector-image-picture-sign-neumorphism-style-mobile-app-web-ui-vector-eps-10_532800-801.jpg"
+                      : FALLBACK_IMAGE
                   }`}
                   alt={director.name}
                 />

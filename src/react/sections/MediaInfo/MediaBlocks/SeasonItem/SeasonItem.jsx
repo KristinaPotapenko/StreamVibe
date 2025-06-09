@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { formattingDate } from "../../../../../scripts/helpers/formattingDate";
-import { baseImageURL } from "../../../../../utils/constants";
+import { baseImageURL, FALLBACK_IMAGE } from "../../../../../utils/constants";
 import { Rate } from "../../../../components/Rate/Rate";
 import { SliderButton } from "../../../../components/Slider/SliderButton/SliderButton";
 import styles from "../../MediaInfo.module.scss";
@@ -31,7 +31,7 @@ export const SeasonItem = ({ season }) => {
           src={`${
             season?.poster_path
               ? baseImageURL + season?.poster_path
-              : "https://img.freepik.com/premium-vector/gallery-simple-icon-vector-image-picture-sign-neumorphism-style-mobile-app-web-ui-vector-eps-10_532800-801.jpg"
+              : FALLBACK_IMAGE
           }`}
           alt={season?.name}
         />
