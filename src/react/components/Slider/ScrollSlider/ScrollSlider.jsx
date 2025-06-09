@@ -32,13 +32,13 @@ export const ScrollSlider = ({
         small ? styles.small : ""
       }`}
     >
-      <SliderButton onClick={handlePrevSlide} />
+      <SliderButton onClick={handlePrevSlide} isGray={small} />
       <Pagination
         slides={totalSlides}
         visibleItems={visibleItems}
         activeSlide={activeSlide}
       />
-      <SliderButton onClick={handleNextSlide} isRight={true} />
+      <SliderButton onClick={handleNextSlide} isRight={true} isGray={small} />
     </div>
   );
 };
