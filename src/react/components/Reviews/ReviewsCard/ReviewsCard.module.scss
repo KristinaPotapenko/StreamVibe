@@ -1,0 +1,51 @@
+@use "../../../../styles/abstracts/media" as *;
+@use "../../../../styles/abstracts/mixins" as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px;
+  background-color: var(--color-black-06);
+  border: var(--border-dark-15);
+  border-radius: var(--border-radius-medius);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  gap: 24px;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.name,
+.location {
+  font-weight: 500;
+}
+
+.name {
+  @include fluid-text(20, 16);
+
+  color: var(--primary-color-light);
+}
+
+.rate {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 10px;
+  background-color: var(--color-black-08);
+  border: var(--border-dark-15);
+  border-radius: 50px;
+
+  svg {
+    @include square(18px);
+  }
+}
