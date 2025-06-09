@@ -7,7 +7,7 @@
   padding: 10px;
   background-color: var(--color-black-06);
   border: var(--border-dark-15);
-  border-radius: var(--border-radius-medius);
+  border-radius: var(--border-radius-medium);
 
   li {
     @include mobile {
@@ -51,7 +51,7 @@
   color: var(--primary-color-light);
   background-color: var(--color-black-12);
   border: 1px solid transparent;
-  border-radius: var(--border-radius-medius);
+  border-radius: var(--border-radius-medium);
   outline: none;
 
   &:active,

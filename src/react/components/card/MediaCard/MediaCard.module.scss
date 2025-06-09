@@ -10,7 +10,7 @@
   padding: 30px;
   background-color: var(--color-black-10);
   border: var(--border-dark-15);
-  border-radius: var(--border-radius-medius);
+  border-radius: var(--border-radius-medium);
 
   a {
     @include flex-center;
@@ -26,7 +26,7 @@
 
 .image {
   position: relative;
-  border-radius: var(--border-radius-medius);
+  border-radius: var(--border-radius-medium);
 
   &::before {
     content: "";
@@ -46,7 +46,7 @@
 
   img {
     min-height: 250px;
-    border-radius: var(--border-radius-medius);
+    border-radius: var(--border-radius-medium);
     object-fit: cover;
   }
 }
@@ -115,7 +115,7 @@
     flex-wrap: wrap;
     gap: 2px;
     padding: 4px;
-    border-radius: var(--border-radius-medius);
+    border-radius: var(--border-radius-medium);
   }
 
   svg {

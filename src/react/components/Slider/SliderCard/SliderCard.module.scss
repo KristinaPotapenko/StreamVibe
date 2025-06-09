@@ -10,7 +10,7 @@
   padding: 30px;
   background-color: var(--color-black-10);
   border: var(--border-dark-15);
-  border-radius: var(--border-radius-medius);
+  border-radius: var(--border-radius-medium);
 
   a {
     @include flex-center;
@@ -27,7 +27,7 @@
 .image {
   position: relative;
   max-width: 235px;
-  border-radius: var(--border-radius-medius);
+  border-radius: var(--border-radius-medium);
 
   &::before {
     content: "";
@@ -46,7 +46,7 @@
 
   img {
     min-height: 200px;
-    border-radius: var(--border-radius-medius);
+    border-radius: var(--border-radius-medium);
     object-fit: cover;
 
     @include mobile {

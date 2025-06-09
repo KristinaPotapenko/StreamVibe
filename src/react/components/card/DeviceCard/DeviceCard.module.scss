@@ -13,7 +13,7 @@
   );
   background-color: var(--color-black-06);
   border: var(--border-dark-15);
-  border-radius: var(--border-radius-medius);
+  border-radius: var(--border-radius-medium);
 
   @include desktop {
     gap: 24px;
@@ -47,7 +47,7 @@
 
   background-color: var(--color-black-08);
   border: var(--border-dark-small-12);
-  border-radius: var(--border-radius-medius);
+  border-radius: var(--border-radius-medium);
 
   svg {
     @include square(40px);

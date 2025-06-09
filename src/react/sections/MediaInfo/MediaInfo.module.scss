@@ -44,7 +44,7 @@
   padding: 50px;
   background-color: var(--color-black-10);
   border: var(--border-dark-15);
-  border-radius: var(--border-radius-medius);
+  border-radius: var(--border-radius-medium);
 
   @include desktop {
     gap: 20px;
@@ -138,7 +138,7 @@
     padding: 8px;
     max-width: 100px;
     object-fit: contain;
-    border-radius: var(--border-radius-medius);
+    border-radius: var(--border-radius-medium);
 
     @include tablet {
       max-width: 75px;

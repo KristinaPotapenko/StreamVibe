@@ -6,7 +6,7 @@
   padding: 24px 50px;
   background-color: var(--color-black-06);
   border: var(--border-dark-15);
-  border-radius: var(--border-radius-medius);
+  border-radius: var(--border-radius-medium);
 
   button svg {
     @include square(24px);
@@ -52,7 +52,7 @@
 
   img {
     max-width: 200px;
-    border-radius: var(--border-radius-medius);
+    border-radius: var(--border-radius-medium);
   }
 }
 
