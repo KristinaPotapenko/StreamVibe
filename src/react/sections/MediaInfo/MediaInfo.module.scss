@@ -130,13 +130,25 @@
     gap: 10px;
   }
 
+  img {
+    background-color: var(--color-gray-70);
+  }
+
   .image {
+    padding: 8px;
     max-width: 100px;
     object-fit: contain;
     border-radius: var(--border-radius-medius);
 
     @include tablet {
       max-width: 75px;
+    }
+  }
+
+  .infoItem {
+    img {
+      padding: 2px;
+      border-radius: 2px;
     }
   }
 }

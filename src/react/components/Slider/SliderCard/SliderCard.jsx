@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { scrollToTop } from "../../../../scripts/helpers/scrollToTop";
 import styles from "./SliderCard.module.scss";
 
-export const SliderCard = ({ path, src, cardWidth, children }) => {
+export const SliderCard = ({ path, src, alt, cardWidth, children }) => {
   return (
     <li
       className={styles.card}
@@ -12,7 +12,7 @@ export const SliderCard = ({ path, src, cardWidth, children }) => {
     >
       <Link to={path} onClick={scrollToTop}>
         <div className={styles.image}>
-          <img src={src} alt="Categories" />
+          <img src={src} alt={alt} />
         </div>
       </Link>
       <div className={styles.content}>{children}</div>

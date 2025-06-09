@@ -101,6 +101,7 @@ export const Slider = ({
                       ? image.find((item) => item.id === slide.id)?.img
                       : baseImageURL + slide?.backdrop_path
                   }
+                  alt={slide?.name ? slide?.name : "Slide"}
                   name={slide.name}
                   cardWidth={cardWidth}
                 >

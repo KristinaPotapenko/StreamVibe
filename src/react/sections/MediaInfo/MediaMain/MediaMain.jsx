@@ -14,20 +14,18 @@ export const MediaMain = ({ description, companies }) => {
         <div className={styles.infoBlock}>
           <p className={styles.subtitle}>Companies</p>
           <div className={styles.infoContent}>
-            {companies.map(
-              (companie) =>
-                companie.logo_path && (
-                  <img
-                    key={companie.id}
-                    className={styles.image}
-                    src={`${
-                      companie.logo_path
-                        ? baseImageURL + companie.logo_path
-                        : "https://img.freepik.com/premium-vector/gallery-simple-icon-vector-image-picture-sign-neumorphism-style-mobile-app-web-ui-vector-eps-10_532800-801.jpg"
-                    }`}
-                  />
-                )
-            )}
+            {companies.map((companie) => (
+              <img
+                key={companie.id}
+                className={styles.image}
+                src={`${
+                  companie.logo_path
+                    ? baseImageURL + companie.logo_path
+                    : "https://img.freepik.com/premium-vector/gallery-simple-icon-vector-image-picture-sign-neumorphism-style-mobile-app-web-ui-vector-eps-10_532800-801.jpg"
+                }`}
+                alt={companie.name}
+              />
+            ))}
           </div>
         </div>
       )}
