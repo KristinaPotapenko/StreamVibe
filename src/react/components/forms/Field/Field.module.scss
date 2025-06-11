@@ -1,0 +1,25 @@
+@use "../../../../styles/abstracts/media" as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include desktop {
+    gap: 12px;
+  }
+}
+
+.wrapper.big {
+  grid-column-start: 1;
+  grid-column-end: 3;
+
+  @include mobile {
+    grid-column-end: 2;
+  }
+}
+
+.wrapper.checkbox {
+  flex-direction: row;
+  align-items: center;
+}
