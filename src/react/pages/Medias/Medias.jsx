@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useFetchArguments } from "../../../scripts/hook/useFetchArguments";
-import { MediaCard } from "../../components/card/MediaCard/MediaCard";
 import { fetchMediaData } from "../../../features/media/mediaSlice";
+import { MediaCard } from "../../components/card/MediaCard/MediaCard";
 import styles from "./Medias.module.scss";
 
 export const Medias = () => {

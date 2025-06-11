@@ -3,7 +3,7 @@ import { Home } from "../react/pages/Home/Home";
 import { ROUTES } from "../utils/routes";
 import { MoviesAndTV } from "../react/pages/MoviesAndTV/MoviesAndTV";
 import { Media } from "../react/pages/Media/Media";
-import { Medias } from "../react/sections/Medias/Medias";
+import { Medias } from "../react/pages/Medias/Medias";
 
 export const AppRoutes = () => {
   return (
