@@ -1,0 +1,40 @@
+@use "../../../../styles/abstracts/media" as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 100%;
+
+  @include desktop {
+    gap: 10px;
+    min-height: fit-content;
+  }
+}
+
+.description {
+  margin-bottom: 36px;
+
+  @include desktop {
+    margin-bottom: 30px;
+  }
+
+  @include tablet {
+    margin-bottom: 20px;
+  }
+}
+
+.image {
+  flex-grow: 1;
+  max-width: 600px;
+  width: 100%;
+  border: var(--border-dark-15);
+  border-radius: var(--border-radius-small);
+  object-fit: cover;
+
+  @include tablet {
+    flex-grow: 0;
+    max-width: fit-content;
+    min-height: 350px;
+  }
+}
