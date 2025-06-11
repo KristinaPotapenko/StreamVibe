@@ -1,0 +1,18 @@
+@use "../../../styles/abstracts/media" as *;
+
+section.section {
+  display: flex;
+  justify-content: space-between;
+  gap: 36px;
+  margin: 140px auto 0;
+
+  @include tablet {
+    flex-direction: column;
+    justify-content: start;
+    gap: 50px;
+  }
+
+  @include mobile {
+    margin-top: 80px;
+  }
+}
