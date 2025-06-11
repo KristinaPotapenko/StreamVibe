@@ -4,6 +4,7 @@ import { ROUTES } from "../utils/routes";
 import { MoviesAndTV } from "../react/pages/MoviesAndTV/MoviesAndTV";
 import { Media } from "../react/pages/Media/Media";
 import { Medias } from "../react/pages/Medias/Medias";
+import { Support } from "../react/pages/Support/Support";
 
 export const AppRoutes = () => {
   return (
@@ -16,6 +17,7 @@ export const AppRoutes = () => {
       <Route path={ROUTES.TV_DETAILS} element={<Media />} />
       <Route path={ROUTES.TV_GENRE} element={<Medias />} />
       <Route path={ROUTES.TV_TOPGENRE} element={<Medias />} />
+      <Route path={ROUTES.SUPPORT} element={<Support />} />
     </Routes>
   );
 };
