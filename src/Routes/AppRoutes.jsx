@@ -5,6 +5,7 @@ import { MoviesAndTV } from "../react/pages/MoviesAndTV/MoviesAndTV";
 import { Media } from "../react/pages/Media/Media";
 import { Medias } from "../react/pages/Medias/Medias";
 import { Support } from "../react/pages/Support/Support";
+import { Subscription } from "../react/pages/Subscription/Subscription";
 
 export const AppRoutes = () => {
   return (
@@ -30,6 +31,7 @@ export const AppRoutes = () => {
         element={<Medias isFirstSection={true} />}
       />
       <Route path={ROUTES.SUPPORT} element={<Support />} />
+      <Route path={ROUTES.SUBSCRIPTIONS} element={<Subscription />} />
     </Routes>
   );
 };
