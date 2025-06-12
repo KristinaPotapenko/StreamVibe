@@ -4,6 +4,7 @@ import { ROUTES } from "../../../../utils/routes";
 import { Link } from "../../ui/Link/Link";
 import { Social } from "../../ui/Social/Social";
 import styles from "./Footer.module.scss";
+import { scrollToTop } from "../../../../scripts/helpers/scrollToTop";
 
 export const Footer = () => {
   const location = useLocation();
@@ -22,9 +23,7 @@ export const Footer = () => {
           <li className={styles.item}>
             <Link
               to={ROUTES.HOME}
-              onClick={() => {
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
+              onClick={scrollToTop}
               className={styles.heading}
             >
               Home
@@ -43,7 +42,11 @@ export const Footer = () => {
             </Link>
           </li>
           <li className={styles.item}>
-            <Link to={`${ROUTES.BROWSE}#movies`} className={styles.heading}>
+            <Link
+              to={`${ROUTES.BROWSE}#movies`}
+              onClick={scrollToTop}
+              className={styles.heading}
+            >
               Movies
             </Link>
             <Link to={`${ROUTES.BROWSE}#moviesGenres`} className={styles.link}>
@@ -69,7 +72,11 @@ export const Footer = () => {
             </Link>
           </li>
           <li className={styles.item}>
-            <Link to={`${ROUTES.BROWSE}#tv`} className={styles.heading}>
+            <Link
+              to={`${ROUTES.BROWSE}#tv`}
+              onClick={scrollToTop}
+              className={styles.heading}
+            >
               TV
             </Link>
             <Link to={`${ROUTES.BROWSE}#tvGenres`} className={styles.link}>
@@ -86,17 +93,37 @@ export const Footer = () => {
             </Link>
           </li>
           <li className={styles.item}>
-            <Link to={ROUTES.SUPPORT} className={styles.heading}>
+            <Link
+              to={ROUTES.SUPPORT}
+              onClick={scrollToTop}
+              className={styles.heading}
+            >
               Support
             </Link>
-            <Link className={styles.link}>Contact Us</Link>
+            <Link to={`${ROUTES.SUPPORT}#support`} className={styles.link}>
+              Contact Us
+            </Link>
           </li>
           <li className={styles.item}>
-            <Link to={ROUTES.SUBSCRIPTIONS} className={styles.heading}>
+            <Link
+              to={ROUTES.SUBSCRIPTIONS}
+              onClick={scrollToTop}
+              className={styles.heading}
+            >
               Subscription
             </Link>
-            <Link className={styles.link}>Plans</Link>
-            <Link className={styles.link}>Features</Link>
+            <Link
+              to={`${ROUTES.SUBSCRIPTIONS}#pricing`}
+              className={styles.link}
+            >
+              Plans
+            </Link>
+            <Link
+              to={`${ROUTES.SUBSCRIPTIONS}#features`}
+              className={styles.link}
+            >
+              Features
+            </Link>
           </li>
           <li className={styles.item}>
             <Link className={styles.heading}>Connect With Us</Link>

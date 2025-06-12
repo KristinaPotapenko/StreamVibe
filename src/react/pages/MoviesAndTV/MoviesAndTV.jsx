@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useWindowWidth } from "../../../scripts/hook/useWindowWidth";
 import { TopMovies } from "../../sections/TopMovies/TopMovies";
 import { Tabs } from "../../components/ui/Tabs/Tabs";
@@ -7,11 +8,20 @@ import { BrowseTV } from "../../sections/BrowseTV/BrowseTV";
 import styles from "./MoviesAndTV.module.scss";
 
 export const MoviesAndTV = () => {
+  const location = useLocation();
   const [activeTabs, setActiveTabs] = useState(0);
   const windowWidth = useWindowWidth();
 
   const isMobile = windowWidth < 768;
   const isDesktop = windowWidth >= 768;
+
+  useEffect(() => {
+    if (location.hash.includes("tv")) {
+      setActiveTabs(1);
+    } else {
+      setActiveTabs(0);
+    }
+  }, [location.hash]);
 
   return (
     <>
