@@ -3,11 +3,14 @@ import { SectionHeader } from "../../components/Section/SectionHeader/sectionHea
 import { Tabs } from "../../components/ui/Tabs/Tabs";
 import { PricingList } from "./PricingList/PricingList";
 
-export const Pricing = () => {
+export const Pricing = ({ isFirstSection = false }) => {
   const [activeTabs, setActiveTabs] = useState(0);
 
   return (
-    <section id="pricing" className="section container">
+    <section
+      id="pricing"
+      className={`section container ${isFirstSection ? "first-section" : ""}`}
+    >
       <SectionHeader
         title="Choose the plan that's right for you"
         description="Join StreamVibe and select from our flexible subscription options tailored to suit your viewing preferences. Get ready for non-stop entertainment!"
