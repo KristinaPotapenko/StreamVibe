@@ -1,0 +1,39 @@
+@use "../../../../styles/abstracts/media" as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.text {
+  padding: 24px;
+  font-weight: 500;
+  background-color: var(--color-black-06);
+  border: var(--border-dark-15);
+
+  @include mobile {
+    padding: 0;
+    color: var(--color-gray-95);
+    background-color: transparent;
+    border: none;
+  }
+}
+
+.name {
+  @include mobile {
+    color: var(--color-gray-60);
+  }
+}
+
+.fadeOut {
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.fadeIn {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}

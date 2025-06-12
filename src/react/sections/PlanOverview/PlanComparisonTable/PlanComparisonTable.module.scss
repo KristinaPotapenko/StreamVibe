@@ -1,0 +1,20 @@
+@use "../../../../styles/abstracts/media" as *;
+
+.tablet {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: var(--border-dark-15);
+  border-radius: var(--border-radius-medium);
+  overflow: hidden;
+
+  @include mobile {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 24px;
+    margin-top: 20px;
+    background-color: var(--color-black-06);
+    border: var(--border-dark-15);
+  }
+}

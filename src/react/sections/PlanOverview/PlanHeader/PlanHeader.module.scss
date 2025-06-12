@@ -1,0 +1,28 @@
+@use "../../../../styles/abstracts/media" as *;
+
+.title {
+  padding: 24px;
+  font-weight: 600;
+  color: var(--primary-color-light);
+  background-color: var(--color-black-06);
+  border: var(--border-dark-15);
+
+  @include mobile {
+    display: none;
+    padding: 0;
+  }
+}
+
+.popular {
+  padding: 6px;
+  margin-left: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--primary-color-light);
+  background-color: var(--color-red-45);
+  border-radius: calc(var(--border-radius-small) / 4);
+
+  @include mobile {
+    display: none;
+  }
+}
