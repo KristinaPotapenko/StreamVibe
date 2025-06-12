@@ -3,14 +3,9 @@
 
 section.section {
   height: 100vh;
-  margin-top: 140px;
   margin-bottom: 8px;
-
-  @include mobile {
-    margin-top: 80px;
-    margin-bottom: 0;
-  }
 }
+
 .sliderBg {
   @include square(100%);
 

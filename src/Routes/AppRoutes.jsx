@@ -12,11 +12,23 @@ export const AppRoutes = () => {
       <Route index element={<Home />} />
       <Route path={ROUTES.BROWSE} element={<MoviesAndTV />} />
       <Route path={ROUTES.MOVIE_DETAILS} element={<Media />} />
-      <Route path={ROUTES.MOVIES_GENRE} element={<Medias />} />
-      <Route path={ROUTES.MOVIES_TOPGENRE} element={<Medias />} />
+      <Route
+        path={ROUTES.MOVIES_GENRE}
+        element={<Medias isFirstSection={true} />}
+      />
+      <Route
+        path={ROUTES.MOVIES_TOPGENRE}
+        element={<Medias isFirstSection={true} />}
+      />
       <Route path={ROUTES.TV_DETAILS} element={<Media />} />
-      <Route path={ROUTES.TV_GENRE} element={<Medias />} />
-      <Route path={ROUTES.TV_TOPGENRE} element={<Medias />} />
+      <Route
+        path={ROUTES.TV_GENRE}
+        element={<Medias isFirstSection={true} />}
+      />
+      <Route
+        path={ROUTES.TV_TOPGENRE}
+        element={<Medias isFirstSection={true} />}
+      />
       <Route path={ROUTES.SUPPORT} element={<Support />} />
     </Routes>
   );

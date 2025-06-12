@@ -24,7 +24,9 @@ export const Media = () => {
 
   return (
     <>
-      {isMediaLoaded && <Preview media={currentMedia} isMovie={isMovie} />}
+      {isMediaLoaded && (
+        <Preview isFirstSection={true} media={currentMedia} isMovie={isMovie} />
+      )}
       {isMediaLoaded && <MediaInfo media={currentMedia} isMovie={isMovie} />}
       <FreeTrial />
     </>

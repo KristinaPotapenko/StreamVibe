@@ -15,7 +15,7 @@ export const MoviesAndTV = () => {
 
   return (
     <>
-      <TopMovies />
+      <TopMovies isFirstSection={true} />
       {isMobile && (
         <section className="section container">
           <>

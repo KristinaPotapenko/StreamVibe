@@ -5,7 +5,7 @@ import { SupportContact } from "../../sections/SupportContact/SupportContact";
 export const Support = () => {
   return (
     <div>
-      <SupportContact />
+      <SupportContact isFirstSection={true} />
       <Questions />
       <FreeTrial />
     </div>

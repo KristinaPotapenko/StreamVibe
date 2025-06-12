@@ -5,7 +5,7 @@ import { fetchMediaData } from "../../../features/media/mediaSlice";
 import { MediaCard } from "../../components/card/MediaCard/MediaCard";
 import styles from "./Medias.module.scss";
 
-export const Medias = () => {
+export const Medias = ({ isFirstSection = false }) => {
   const dispatch = useDispatch();
   const { movies, tvs } = useSelector(({ media }) => media);
 
@@ -23,7 +23,9 @@ export const Medias = () => {
   const isMediaLoaded = currentMedia && currentMedia.length > 0;
 
   return (
-    <section className="section container">
+    <section
+      className={`section container ${isFirstSection ? "first-section" : ""}`}
+    >
       <ul className={styles.media}>
         {isMediaLoaded &&
           currentMedia.map((media) => {

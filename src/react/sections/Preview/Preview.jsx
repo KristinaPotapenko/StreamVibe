@@ -2,9 +2,13 @@ import { baseImageURL, FALLBACK_IMAGE } from "../../../utils/constants";
 import { MediaContent } from "../../components/MediaContent/MediaContent";
 import styles from "./Preview.module.scss";
 
-export const Preview = ({ media, isMovie }) => {
+export const Preview = ({ isFirstSection = false, media, isMovie }) => {
   return (
-    <section className={`section container ${styles.section}`}>
+    <section
+      className={`section container ${isFirstSection ? "first-section" : ""} ${
+        styles.section
+      }`}
+    >
       <div
         className={styles.sliderBg}
         style={{

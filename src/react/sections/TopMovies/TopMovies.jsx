@@ -7,7 +7,7 @@ import { ScrollSlider } from "../../components/Slider/ScrollSlider/ScrollSlider"
 import { SliderFadeAnimation } from "../../components/Slider/SliderFadeAnimation/SliderFadeAnimation";
 import styles from "./TopMovies.module.scss";
 
-export const TopMovies = () => {
+export const TopMovies = ({ isFirstSection = false }) => {
   const dispatch = useDispatch();
   const { topMovies } = useSelector(({ topMovies }) => topMovies);
   const [activeSlide, setActiveSlide] = useState(0);
@@ -40,7 +40,11 @@ export const TopMovies = () => {
   };
 
   return (
-    <section className={`section container ${styles.section}`}>
+    <section
+      className={`section container ${isFirstSection ? "first-section" : ""} ${
+        styles.section
+      }`}
+    >
       <div
         className={styles.sliderBg}
         style={{
