@@ -127,7 +127,11 @@ export const Slider = ({
                   {footer === "releases" && (
                     <SliderCardReleasesFooter
                       name={slide.title ? slide.title : slide.name}
-                      releaseDate={slide.release_date}
+                      releaseDate={
+                        slide?.release_date
+                          ? slide?.release_date
+                          : slide?.first_air_date
+                      }
                     />
                   )}
                   {footer === "mustWatch" && (
