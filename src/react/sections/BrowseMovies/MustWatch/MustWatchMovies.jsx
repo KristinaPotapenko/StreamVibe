@@ -16,6 +16,7 @@ export const MustWatchMovies = () => {
   return (
     <Slider
       route={ROUTES.MOVIE_DETAILS}
+      routeMore={ROUTES.MOVIES_POPULAR}
       title="Must - Watch Movies"
       list={mustWatchMovies}
       footer="mustWatch"

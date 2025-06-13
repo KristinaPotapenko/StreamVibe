@@ -16,6 +16,7 @@ export const MustWatchTV = () => {
     <Slider
       id="tvMustWatch"
       route={ROUTES.TV_DETAILS}
+      routeMore={ROUTES.TV_POPULAR}
       title="Must - Watch TV"
       list={mustWatchTV}
       footer="mustWatch"

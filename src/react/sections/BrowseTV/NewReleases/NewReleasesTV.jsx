@@ -18,6 +18,7 @@ export const NewReleasesTV = () => {
     <Slider
       id="tvNewReleases"
       route={ROUTES.TV_DETAILS}
+      routeMore={ROUTES.TV_UPCOMING}
       title="New Releases"
       list={newRealeasesTV}
       footer="releases"

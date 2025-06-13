@@ -16,6 +16,7 @@ export const TrendingTV = () => {
     <Slider
       id="tvTrending"
       route={ROUTES.TV_DETAILS}
+      routeMore={ROUTES.TV_TRENDING}
       title="Trending Shows Now"
       list={trendingNowTV}
       footer="trending"

@@ -21,6 +21,18 @@ export const AppRoutes = () => {
         path={ROUTES.MOVIES_TOPGENRE}
         element={<Medias isFirstSection={true} />}
       />
+      <Route
+        path={ROUTES.MOVIES_TRENDING}
+        element={<Medias isFirstSection={true} />}
+      />
+      <Route
+        path={ROUTES.MOVIES_UPCOMING}
+        element={<Medias isFirstSection={true} />}
+      />
+      <Route
+        path={ROUTES.MOVIES_POPULAR}
+        element={<Medias isFirstSection={true} />}
+      />
       <Route path={ROUTES.TV_DETAILS} element={<Media />} />
       <Route
         path={ROUTES.TV_GENRE}
@@ -28,6 +40,18 @@ export const AppRoutes = () => {
       />
       <Route
         path={ROUTES.TV_TOPGENRE}
+        element={<Medias isFirstSection={true} />}
+      />
+      <Route
+        path={ROUTES.TV_TRENDING}
+        element={<Medias isFirstSection={true} />}
+      />
+      <Route
+        path={ROUTES.TV_UPCOMING}
+        element={<Medias isFirstSection={true} />}
+      />
+      <Route
+        path={ROUTES.TV_POPULAR}
         element={<Medias isFirstSection={true} />}
       />
       <Route path={ROUTES.SUPPORT} element={<Support />} />

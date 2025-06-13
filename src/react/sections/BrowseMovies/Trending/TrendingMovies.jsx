@@ -17,6 +17,7 @@ export const TrendingMovies = () => {
   return (
     <Slider
       route={ROUTES.MOVIE_DETAILS}
+      routeMore={ROUTES.MOVIES_TRENDING}
       title="Trending Now"
       list={trendingMovies}
       footer="trending"

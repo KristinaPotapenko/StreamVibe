@@ -63,6 +63,22 @@
   gap: 16px;
   flex-grow: 1;
 
+  .link {
+    @include fluid-text(20, 16);
+
+    padding: 14px;
+    width: 100%;
+    color: var(--primary-color-light);
+    text-align: center;
+    background-color: var(--color-black-06);
+    border: var(--border-dark-15);
+    border-radius: var(--border-radius-medium);
+
+    @include hover {
+      background-color: var(--color-black-08);
+    }
+  }
+
   a {
     svg {
       @include square(30px);

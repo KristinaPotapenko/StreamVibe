@@ -3,26 +3,23 @@ import { useWindowWidth } from "../../../../scripts/hook/useWindowWidth";
 import { SectionHeader } from "../../Section/SectionHeader/sectionHeader";
 import { baseImageURL } from "../../../../utils/constants";
 import { getRouteWithId } from "../../../../scripts/helpers/getRouteWithId";
+import { renderFooter } from "./renderFooter.jsx";
 import { ScrollSlider } from "../ScrollSlider/ScrollSlider";
 import { SliderCard } from "../SliderCard/SliderCard";
-import {
-  SliderCardCategoriesFooter,
-  SliderCardGenresFooter,
-  SliderCardMustWatchFooter,
-  SliderCardReleasesFooter,
-  SliderCardTrendingFooter,
-} from "../SliderCard/SliderCardFooter/SliderCardFooter";
 import styles from "./Slider.module.scss";
 
 export const Slider = ({
   id,
   route,
+  routeMore,
   title,
   description,
   list,
   image,
   footer,
 }) => {
+  const showMoreCard = ["trending", "releases", "mustWatch"];
+  const shouldShowMoreCard = showMoreCard.includes(footer);
   const windowWidth = useWindowWidth();
   const [activeSlide, setActiveSlide] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -72,7 +69,9 @@ export const Slider = ({
     };
   }, [windowWidth, activeSlide]);
 
-  const totalSlides = Math.ceil(list.length / slides);
+  const totalSlides = Math.ceil(
+    (shouldShowMoreCard ? list.length + 1 : list.length) / slides
+  );
 
   return (
     <>
@@ -105,45 +104,17 @@ export const Slider = ({
                   name={slide.name}
                   cardWidth={cardWidth}
                 >
-                  {footer === "genres" && (
-                    <SliderCardCategoriesFooter
-                      path={getRouteWithId(route, slide.id)}
-                      name={slide.name}
-                    />
-                  )}
-                  {footer === "topGenres" && (
-                    <SliderCardGenresFooter
-                      path={getRouteWithId(route, slide.id)}
-                      name={slide.name}
-                    />
-                  )}
-                  {footer === "trending" && (
-                    <SliderCardTrendingFooter
-                      name={slide.title ? slide.title : slide.name}
-                      average={parseInt(slide.vote_average)}
-                      popularity={parseInt(slide.popularity)}
-                    />
-                  )}
-                  {footer === "releases" && (
-                    <SliderCardReleasesFooter
-                      name={slide.title ? slide.title : slide.name}
-                      releaseDate={
-                        slide?.release_date
-                          ? slide?.release_date
-                          : slide?.first_air_date
-                      }
-                    />
-                  )}
-                  {footer === "mustWatch" && (
-                    <SliderCardMustWatchFooter
-                      name={slide.title ? slide.title : slide.name}
-                      average={slide.vote_average}
-                      popularity={parseInt(slide.vote_count)}
-                    />
-                  )}
+                  {renderFooter(footer, slide, route)}
                 </SliderCard>
               );
             })}
+            {shouldShowMoreCard && (
+              <SliderCard
+                typeMore={true}
+                path={routeMore}
+                cardWidth={cardWidth}
+              />
+            )}
           </ul>
         </div>
         <div className={styles.progressBar}>
