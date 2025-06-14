@@ -7,6 +7,7 @@ import { Rate } from "../../Rate/Rate";
 import styles from "./MediaCard.module.scss";
 
 export const MediaCard = ({ media, type }) => {
+  const title = media?.title ? media?.title : media?.name;
   const date = media.release_date ? media.release_date : media.first_air_date;
   const formattedDate = new Date(date).toLocaleDateString("en-GB", {
     day: "2-digit",
@@ -32,7 +33,7 @@ export const MediaCard = ({ media, type }) => {
       </Link>
       <div className={styles.content}>
         <div className={styles.infoWrapper}>
-          <h2 className={styles.title}>{media.title}</h2>
+          <h2 className={styles.title}>{title}</h2>
           <div className={styles.infoBlock}>
             <svg className="icon">
               <use xlinkHref="/assets/icon/sprite.svg#like" />
