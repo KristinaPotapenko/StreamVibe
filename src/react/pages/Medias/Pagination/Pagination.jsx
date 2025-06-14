@@ -4,6 +4,7 @@ import { ROUTES } from "../../../../utils/routes";
 import { getRouteWithId } from "../../../../scripts/helpers/getRouteWithId";
 import { SliderButton } from "../../../components/Slider/SliderButton/SliderButton";
 import styles from "./Pagination.module.scss";
+import { scrollToTop } from "../../../../scripts/helpers/scrollToTop";
 
 export const Pagination = ({ activePage, setActivePage }) => {
   const { totalPages: totalTrendingMoviesPages } = useSelector(
@@ -82,7 +83,10 @@ export const Pagination = ({ activePage, setActivePage }) => {
                 className={`${styles.item} ${
                   activePage === item ? styles.active : ""
                 }`}
-                onClick={handleSetActivePage}
+                onClick={(e) => {
+                  handleSetActivePage(e);
+                  scrollToTop();
+                }}
               >
                 {item}
               </button>
