@@ -1,0 +1,50 @@
+@use "../../../../styles/abstracts/media" as *;
+@use "../../../../styles/abstracts/mixins" as *;
+
+.pagination {
+  @include flex-center;
+
+  gap: 24px;
+  margin-bottom: 40px;
+
+  @include tablet {
+    margin-bottom: 0;
+  }
+}
+
+.list {
+  @include flex-center;
+
+  flex-wrap: wrap;
+  gap: 4px;
+  min-width: 440px;
+}
+
+.item {
+  @include flex-center;
+
+  min-width: 30px;
+  min-height: 30px;
+  padding: 4px;
+  color: var(--color-gray-60);
+  background-color: var(--color-black-08);
+  border: var(--border-dark-small-12);
+  border-radius: calc(var(--border-radius-small) / 4);
+  outline: none;
+  transition: all 0.5s ease;
+  cursor: pointer;
+
+  @include hover {
+    color: var(--primary-color-light);
+    background-color: var(--color-black-12);
+    border: var(--border-dark-15);
+    transform: scale(1.05);
+  }
+}
+
+.item.active {
+  color: var(--primary-color-light);
+  background-color: var(--color-black-12);
+  border: var(--border-dark-15);
+  transform: scale(1.05);
+}
