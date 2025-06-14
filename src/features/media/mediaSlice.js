@@ -5,7 +5,7 @@ import axios from "axios";
 export const fetchMediaData = createAsyncThunk(
   "media/fetchMediaData",
   async (
-    { mediaType, mediaId = null, genreId = null, top10 = false },
+    { page = 1, mediaType, mediaId = null, genreId = null, top10 = false },
     thunkAPI
   ) => {
     let url = `${BASE_URL}/3/`;
@@ -22,12 +22,12 @@ export const fetchMediaData = createAsyncThunk(
     if (mediaId) {
       url += `${checkedMediaType}/${mediaId}`;
     } else if (genreId) {
-      url += `discover/${checkedMediaType}?with_genres=${genreId}`;
-      if (top10) url += `&sort_by=popularity.desc&page=1`;
+      url += `discover/${checkedMediaType}?with_genres=${genreId}&page=${page}`;
+      if (top10) url += `&sort_by=popularity.desc&page=${page}`;
     } else if (top10) {
-      url += `${checkedMediaType}/popular?page=1`;
+      url += `${checkedMediaType}/popular?page=${page}`;
     } else {
-      url += `${checkedMediaType}/popular`;
+      url += `${checkedMediaType}/popular?page=${page}`;
     }
 
     try {
@@ -44,6 +44,7 @@ export const fetchMediaData = createAsyncThunk(
       return {
         type: mediaType,
         data: response.data,
+        pageCount: Math.min(response.data.total_pages, 500),
       };
     } catch (error) {
       return thunkAPI.rejectWithValue;
@@ -58,12 +59,21 @@ const mediaSlice = createSlice({
     tvs: [],
     tv: {},
     movie: {},
+    totalMoviesPages: "",
+    totalTvsPages: "",
   },
   extraReducers: (builder) => {
     builder.addCase(fetchMediaData.fulfilled, (state, { payload }) => {
-      const { type, data } = payload;
-      if (type === "movies") state.movies = data.results;
-      if (type === "tvs") state.tvs = data.results;
+      const { type, data, pageCount } = payload;
+      if (type === "movies") {
+        state.movies = data.results;
+        state.totalPagesMovies = pageCount;
+      }
+      if (type === "tvs") {
+        state.tvs = data.results;
+        state.totalPagesTvs = pageCount;
+      }
+
       if (type === "tv") state.tv = data;
       if (type === "movie") state.movie = data;
     });
