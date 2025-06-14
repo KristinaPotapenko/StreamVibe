@@ -67,11 +67,11 @@ const mediaSlice = createSlice({
       const { type, data, pageCount } = payload;
       if (type === "movies") {
         state.movies = data.results;
-        state.totalPagesMovies = pageCount;
+        state.totalMoviesPages = pageCount;
       }
       if (type === "tvs") {
         state.tvs = data.results;
-        state.totalPagesTvs = pageCount;
+        state.totalTvsPages = pageCount;
       }
 
       if (type === "tv") state.tv = data;
