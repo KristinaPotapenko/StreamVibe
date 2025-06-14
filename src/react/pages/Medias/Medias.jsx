@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -12,32 +12,37 @@ import { getTrendingNowTV } from "../../../features/tv/trendingNowTV/trendingNow
 import { getNewRealeasesTV } from "../../../features/tv/newReleasesTV/newReleasesTVSlice";
 import { getMustWatchTV } from "../../../features/tv/mustWatchTV/mustWatchTVSlice";
 
+import { Pagination } from "./Pagination/Pagination";
 import { MediaCard } from "../../components/card/MediaCard/MediaCard";
 import styles from "./Medias.module.scss";
 
 export const Medias = ({ isFirstSection = false }) => {
   const dispatch = useDispatch();
-  const trendingMovies = useSelector((state) => state.trendingMovies);
-  const newRealeasesMovies = useSelector((state) => state.newRealeasesMovies);
-  const mustWatchMovies = useSelector((state) => state.mustWatchMovies);
 
-  const trendingNowTV = useSelector((state) => state.trendingNowTV);
-  const newRealeasesTV = useSelector((state) => state.newRealeasesTV);
-  const mustWatchTV = useSelector((state) => state.mustWatchTV);
+  const { trendingMovies } = useSelector((state) => state.trendingMovies);
+  const { newRealeasesMovies } = useSelector(
+    (state) => state.newRealeasesMovies
+  );
+  const { mustWatchMovies } = useSelector((state) => state.mustWatchMovies);
+  const { trendingNowTV } = useSelector((state) => state.trendingNowTV);
+  const { newRealeasesTV } = useSelector((state) => state.newRealeasesTV);
+  const { mustWatchTV } = useSelector((state) => state.mustWatchTV);
 
   const movies = useSelector((state) => state.media.movies);
   const tvs = useSelector((state) => state.media.tvs);
+
+  const [activePage, setActivePage] = useState(1);
 
   const location = useLocation();
   const { mediaType, mediaId, genreId, isTopGenre } = useMediaQueryParams();
 
   const routeMap = {
-    [ROUTES.MOVIES_TRENDING]: trendingMovies.trendingMovies,
-    [ROUTES.MOVIES_UPCOMING]: newRealeasesMovies.newRealeasesMovies,
-    [ROUTES.MOVIES_POPULAR]: mustWatchMovies.mustWatchMovies,
-    [ROUTES.TV_TRENDING]: trendingNowTV.trendingNowTV,
-    [ROUTES.TV_UPCOMING]: newRealeasesTV.newRealeasesTV,
-    [ROUTES.TV_POPULAR]: mustWatchTV.mustWatchTV,
+    [ROUTES.MOVIES_TRENDING]: trendingMovies,
+    [ROUTES.MOVIES_UPCOMING]: newRealeasesMovies,
+    [ROUTES.MOVIES_POPULAR]: mustWatchMovies,
+    [ROUTES.TV_TRENDING]: trendingNowTV,
+    [ROUTES.TV_UPCOMING]: newRealeasesTV,
+    [ROUTES.TV_POPULAR]: mustWatchTV,
   };
 
   const matchedRoute = Object.keys(routeMap).find((route) =>
@@ -53,22 +58,38 @@ export const Medias = ({ isFirstSection = false }) => {
     : [];
 
   const routeDispatchMap = {
-    [ROUTES.MOVIES_TRENDING]: () => dispatch(getTrendingNowMovies()),
-    [ROUTES.MOVIES_UPCOMING]: () => dispatch(getNewRealeasesMovies()),
-    [ROUTES.MOVIES_POPULAR]: () => dispatch(getMustWatchMovies()),
-    [ROUTES.TV_TRENDING]: () => dispatch(getTrendingNowTV()),
-    [ROUTES.TV_UPCOMING]: () => dispatch(getNewRealeasesTV()),
-    [ROUTES.TV_POPULAR]: () => dispatch(getMustWatchTV()),
+    [ROUTES.MOVIES_TRENDING]: () => dispatch(getTrendingNowMovies(activePage)),
+    [ROUTES.MOVIES_UPCOMING]: () => dispatch(getNewRealeasesMovies(activePage)),
+    [ROUTES.MOVIES_POPULAR]: () => dispatch(getMustWatchMovies(activePage)),
+    [ROUTES.TV_TRENDING]: () => dispatch(getTrendingNowTV(activePage)),
+    [ROUTES.TV_UPCOMING]: () => dispatch(getNewRealeasesTV(activePage)),
+    [ROUTES.TV_POPULAR]: () => dispatch(getMustWatchTV(activePage)),
   };
 
   useEffect(() => {
     if (!matchedRoute) {
-      dispatch(fetchMediaData({ mediaType, mediaId, genreId, isTopGenre }));
+      dispatch(
+        fetchMediaData({
+          page: activePage,
+          mediaType,
+          mediaId,
+          genreId,
+          isTopGenre,
+        })
+      );
       return;
     }
 
     routeDispatchMap[matchedRoute]?.();
-  }, [dispatch, matchedRoute, mediaType, mediaId, genreId, isTopGenre]);
+  }, [
+    dispatch,
+    matchedRoute,
+    mediaType,
+    mediaId,
+    genreId,
+    isTopGenre,
+    activePage,
+  ]);
 
   const isMediaLoaded = Array.isArray(mediaList) && mediaList.length > 0;
   const normalizedMediaType =
@@ -90,6 +111,7 @@ export const Medias = ({ isFirstSection = false }) => {
             );
           })}
       </ul>
+      <Pagination activePage={activePage} setActivePage={setActivePage} />
     </section>
   );
 };
