@@ -20,6 +20,8 @@
   svg {
     @include square(32px);
 
+    color: var(--primary-color-light);
+
     @include desktop {
       @include square(30px);
     }
