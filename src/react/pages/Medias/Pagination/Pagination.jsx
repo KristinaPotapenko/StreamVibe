@@ -28,6 +28,10 @@ export const Pagination = ({ activePage, setActivePage }) => {
   const totalMoviesPage = useSelector((state) => state.media.totalMoviesPages);
   const totalTvsPage = useSelector((state) => state.media.totalTvsPages);
 
+  const searchMediaPage = useSelector(
+    ({ searchMedia }) => searchMedia.totalPages
+  );
+
   const [startPage, setStartPage] = useState(1);
 
   const pageMap = {
@@ -41,6 +45,7 @@ export const Pagination = ({ activePage, setActivePage }) => {
     [ROUTES.TV_TRENDING]: totalTrendingNowTVPages,
     [ROUTES.TV_UPCOMING]: totalNewRealeasesTVPages,
     [ROUTES.TV_POPULAR]: totalMustWatchTVPages,
+    [ROUTES.SEARCH]: searchMediaPage,
   };
 
   const matchedPage = Object.keys(pageMap).find((route) =>
@@ -59,7 +64,7 @@ export const Pagination = ({ activePage, setActivePage }) => {
 
   const handleNextPages = () => {
     setStartPage((prev) => {
-      if (prev + 10 > matchedPage) return prev;
+      if (prev + 10 > pageMap[matchedPage]) return prev;
       return prev + 10;
     });
   };
