@@ -6,6 +6,7 @@ import { Media } from "../react/pages/Media/Media";
 import { Medias } from "../react/pages/Medias/Medias";
 import { Support } from "../react/pages/Support/Support";
 import { Subscription } from "../react/pages/Subscription/Subscription";
+import { Search } from "../react/pages/Search/Search";
 
 export const AppRoutes = () => {
   return (
@@ -56,6 +57,7 @@ export const AppRoutes = () => {
       />
       <Route path={ROUTES.SUPPORT} element={<Support />} />
       <Route path={ROUTES.SUBSCRIPTIONS} element={<Subscription />} />
+      <Route path={ROUTES.SEARCH} element={<Search />} />
     </Routes>
   );
 };
