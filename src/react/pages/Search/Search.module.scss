@@ -39,7 +39,8 @@
     right: 24px;
     max-width: 24px;
     max-height: 24px;
-    color: var(--color-gray-60);
+    color: transparent;
+    stroke: var(--color-gray-60);
     transform: translateY(-50%);
   }
 }
