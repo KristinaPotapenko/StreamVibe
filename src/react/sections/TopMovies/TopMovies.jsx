@@ -10,6 +10,7 @@ import styles from "./TopMovies.module.scss";
 export const TopMovies = ({ isFirstSection = false }) => {
   const dispatch = useDispatch();
   const { topMovies } = useSelector(({ topMovies }) => topMovies);
+  const [showVideo, setShowVideo] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
 
   const touchStartX = useRef(0);
@@ -41,34 +42,46 @@ export const TopMovies = ({ isFirstSection = false }) => {
 
   return (
     <section
-      className={`section container ${isFirstSection ? "first-section" : ""} ${
-        styles.section
-      }`}
+      className={`section container ${isFirstSection ? "first-section" : ""} 
+     `}
     >
       <div
-        className={styles.sliderBg}
-        style={{
-          backgroundImage: `linear-gradient(0deg,rgba(0, 0, 0, 1) 16%, rgba(20, 20, 20, 0.26) 100%), url(${
-            topMovies[activeSlide]?.backdrop_path
-              ? baseImageURL + topMovies[activeSlide]?.backdrop_path
-              : FALLBACK_IMAGE
-          })`,
-        }}
+        className={showVideo ? undefined : styles.sliderBg}
+        style={
+          showVideo
+            ? undefined
+            : {
+                backgroundImage: `linear-gradient(0deg,rgba(0, 0, 0, 1) 16%, rgba(20, 20, 20, 0.26) 100%), url(${
+                  topMovies[activeSlide]?.backdrop_path
+                    ? baseImageURL + topMovies[activeSlide]?.backdrop_path
+                    : FALLBACK_IMAGE
+                })`,
+              }
+        }
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
         <SliderFadeAnimation activeSlide={activeSlide}>
-          <div className={styles.sliderContent}>
+          <div className={showVideo ? undefined : styles.sliderContent}>
             {topMovies.length > 0 && (
-              <MediaContent media={topMovies} activeSlide={activeSlide} />
+              <MediaContent
+                media={topMovies}
+                activeSlide={activeSlide}
+                isMovie={true}
+                showVideo={showVideo}
+                setShowVideo={setShowVideo}
+                isTopMovie={true}
+              />
             )}
-            <ScrollSlider
-              transparent={true}
-              totalSlides={topMovies.length}
-              visibleItems={1}
-              activeSlide={activeSlide}
-              setActiveSlide={setActiveSlide}
-            />
+            {!showVideo && (
+              <ScrollSlider
+                transparent={true}
+                totalSlides={topMovies.length}
+                visibleItems={1}
+                activeSlide={activeSlide}
+                setActiveSlide={setActiveSlide}
+              />
+            )}
           </div>
         </SliderFadeAnimation>
       </div>
