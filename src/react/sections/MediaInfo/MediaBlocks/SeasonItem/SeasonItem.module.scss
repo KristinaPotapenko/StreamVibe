@@ -8,10 +8,12 @@
   border: var(--border-dark-15);
   border-radius: var(--border-radius-medium);
 
-  button svg {
-    @include square(24px);
+  .infoHeader {
+    svg {
+      @include square(24px);
 
-    transform: rotate(-90deg);
+      transform: rotate(-90deg);
+    }
   }
 }
 
@@ -32,6 +34,7 @@
   position: relative;
   display: flex;
   gap: 32px;
+  width: 100%;
   max-height: 0;
   opacity: 0;
   overflow: hidden;
@@ -51,7 +54,9 @@
   }
 
   img {
+    width: 100%;
     max-width: 200px;
+    height: auto;
     border-radius: var(--border-radius-medium);
   }
 }
@@ -64,13 +69,16 @@
 
 .season.open {
   .details {
+    width: 100%;
     max-height: 500px;
     margin-top: 70px;
     opacity: 1;
     transform: translateY(0);
   }
 
-  button svg {
-    transform: rotate(90deg);
+  .infoHeader {
+    svg {
+      transform: rotate(90deg);
+    }
   }
 }
