@@ -1,15 +1,10 @@
 @use "../../../styles/abstracts/media" as *;
 @use "../../../styles/abstracts/mixins" as *;
 
-section.section {
-  height: 100vh;
-  margin-bottom: 8px;
-}
-
 .sliderBg {
-  @include square(100%);
-
   position: relative;
+  width: 100%;
+  height: 80vh;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -30,6 +25,12 @@ section.section {
     );
     z-index: 1;
   }
+}
+
+.sliderVideo {
+  position: relative;
+  width: 100%;
+  height: 50vh;
 }
 
 .sliderContent {
