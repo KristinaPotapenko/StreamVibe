@@ -10,6 +10,8 @@ import newRealeasesTVReducer from "./tv/newReleasesTV/newReleasesTVSlice";
 import mustWatchTVReducer from "./tv/mustWatchTV/mustWatchTVSlice";
 import mediaReducer from "./media/mediaSlice";
 import searchMediaReducer from "./searchMedia/searchMediaSlice";
+import movieVideoReducer from "./movies/movieVideo/movieVideoSlice";
+import tvSeasonVideoReducer from "./tv/tvSeasonVideo/tvSeasonVideoSlice";
 
 export const store = configureStore({
   reducer: {
@@ -24,5 +26,7 @@ export const store = configureStore({
     mustWatchTV: mustWatchTVReducer,
     media: mediaReducer,
     searchMedia: searchMediaReducer,
+    movieVideo: movieVideoReducer,
+    tvSeasonVideo: tvSeasonVideoReducer,
   },
 });
