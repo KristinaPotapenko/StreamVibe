@@ -7,57 +7,184 @@ import { Medias } from "../react/pages/Medias/Medias";
 import { Support } from "../react/pages/Support/Support";
 import { Subscription } from "../react/pages/Subscription/Subscription";
 import { Search } from "../react/pages/Search/Search";
+import { ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";
+import { Authentication } from "../react/pages/Authentication/Authentication";
 
 export const AppRoutes = () => {
+  const accountType = localStorage.getItem("accountType");
+
   return (
     <Routes>
-      <Route index element={<Home />} />
-      <Route path={ROUTES.BROWSE} element={<MoviesAndTV />} />
-      <Route path={ROUTES.MOVIE_DETAILS} element={<Media />} />
+      <Route path={ROUTES.HOME} element={<Home />} />
+      <Route
+        path={ROUTES.BROWSE}
+        element={
+          <ProtectedRoute
+            element={<MoviesAndTV />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
+      />
+      <Route
+        path={ROUTES.MOVIE_DETAILS}
+        element={
+          <ProtectedRoute
+            element={<Media />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
+      />
       <Route
         path={ROUTES.MOVIES_GENRE}
-        element={<Medias isFirstSection={true} />}
+        element={
+          <ProtectedRoute
+            element={<Medias isFirstSection={true} />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
       />
       <Route
         path={ROUTES.MOVIES_TOPGENRE}
-        element={<Medias isFirstSection={true} />}
+        element={
+          <ProtectedRoute
+            element={<Medias isFirstSection={true} />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
       />
       <Route
         path={ROUTES.MOVIES_TRENDING}
-        element={<Medias isFirstSection={true} />}
+        element={
+          <ProtectedRoute
+            element={<Medias isFirstSection={true} />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
       />
       <Route
         path={ROUTES.MOVIES_UPCOMING}
-        element={<Medias isFirstSection={true} />}
+        element={
+          <ProtectedRoute
+            element={<Medias isFirstSection={true} />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
       />
       <Route
         path={ROUTES.MOVIES_POPULAR}
-        element={<Medias isFirstSection={true} />}
+        element={
+          <ProtectedRoute
+            element={<Medias isFirstSection={true} />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
       />
-      <Route path={ROUTES.TV_DETAILS} element={<Media />} />
+      <Route
+        path={ROUTES.TV_DETAILS}
+        element={
+          <ProtectedRoute
+            element={<Media />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
+      />
       <Route
         path={ROUTES.TV_GENRE}
-        element={<Medias isFirstSection={true} />}
+        element={
+          <ProtectedRoute
+            element={<Medias isFirstSection={true} />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
       />
       <Route
         path={ROUTES.TV_TOPGENRE}
-        element={<Medias isFirstSection={true} />}
+        element={
+          <ProtectedRoute
+            element={<Medias isFirstSection={true} />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
       />
       <Route
         path={ROUTES.TV_TRENDING}
-        element={<Medias isFirstSection={true} />}
+        element={
+          <ProtectedRoute
+            element={<Medias isFirstSection={true} />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
       />
       <Route
         path={ROUTES.TV_UPCOMING}
-        element={<Medias isFirstSection={true} />}
+        element={
+          <ProtectedRoute
+            element={<Medias isFirstSection={true} />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
       />
       <Route
         path={ROUTES.TV_POPULAR}
-        element={<Medias isFirstSection={true} />}
+        element={
+          <ProtectedRoute
+            element={<Medias isFirstSection={true} />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
       />
-      <Route path={ROUTES.SUPPORT} element={<Support />} />
-      <Route path={ROUTES.SUBSCRIPTIONS} element={<Subscription />} />
-      <Route path={ROUTES.SEARCH} element={<Search />} />
+      <Route
+        path={ROUTES.SUPPORT}
+        element={
+          <ProtectedRoute
+            element={<Support />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
+      />
+      <Route
+        path={ROUTES.SUBSCRIPTIONS}
+        element={
+          <ProtectedRoute
+            element={<Subscription />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
+      />
+      <Route
+        path={ROUTES.SEARCH}
+        element={
+          <ProtectedRoute
+            element={<Search />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
+      />
+      <Route
+        path={ROUTES.AUTHENTICATION}
+        element={
+          <ProtectedRoute
+            element={<Authentication />}
+            redirectTo={ROUTES.HOME}
+          />
+        }
+      />
     </Routes>
   );
 };
