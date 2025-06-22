@@ -9,6 +9,7 @@ import { Subscription } from "../react/pages/Subscription/Subscription";
 import { Search } from "../react/pages/Search/Search";
 import { ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";
 import { Authentication } from "../react/pages/Authentication/Authentication";
+import { TvEpisodes } from "../react/pages/TvEpisodes/TvEpisodes";
 
 export const AppRoutes = () => {
   const accountType = localStorage.getItem("accountType");
@@ -141,6 +142,16 @@ export const AppRoutes = () => {
         element={
           <ProtectedRoute
             element={<Medias isFirstSection={true} />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
+      />
+      <Route
+        path={ROUTES.TV_EPISODES}
+        element={
+          <ProtectedRoute
+            element={<TvEpisodes isFirstSection={true} />}
             condition={accountType}
             redirectTo={ROUTES.HOME}
           />
