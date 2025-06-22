@@ -1,0 +1,15 @@
+.description {
+  color: var(--color-gray-97);
+  margin-bottom: 24px;
+}
+
+.buttons {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+
+  button {
+    width: 100%;
+    justify-content: center;
+  }
+}
