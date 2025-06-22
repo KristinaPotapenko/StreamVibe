@@ -12,6 +12,7 @@ export const ROUTES = {
 
   TV: "/tv",
   TV_DETAILS: "/tvs/:tvId",
+  TV_EPISODES: "/tvs/:tvId/:seasonId",
   TV_GENRE: "/tvs/genre/:genreId",
   TV_TOPGENRE: "/tvs/topGenre/:genreId",
   TV_TRENDING: "/tvs/trending",
