@@ -18,7 +18,7 @@ export const MediaContent = ({
   isTopMovie,
 }) => {
   const dispatch = useDispatch();
-
+  const accountType = localStorage.getItem("accountType");
   const { movieId } = useParams();
   const topMovieId = media[activeSlide]?.id;
 
@@ -64,8 +64,12 @@ export const MediaContent = ({
           </Button>
         )}
         <Actions>
-          <ActionsItem type="button" accent={true} href="plus" />
-          <ActionsItem type="button" accent={true} href="like" />
+          {accountType === "user" && (
+            <>
+              <ActionsItem type="button" accent={true} href="plus" />
+              <ActionsItem type="button" accent={true} href="like" />
+            </>
+          )}
           <ActionsItem type="button" accent={true} href="volume" />
         </Actions>
       </div>
