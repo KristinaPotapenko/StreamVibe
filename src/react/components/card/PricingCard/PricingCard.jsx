@@ -39,7 +39,7 @@ export const PricingCard = ({ id, title, description, price, activeTabs }) => {
         </div>
       </div>
       <div className={styles.buttons}>
-        <Link isDark={true} to="/login">
+        <Link isDark={true} to={ROUTES.SUBSCRIPTIONS}>
           Start Free Trial
         </Link>
         <Link to={ROUTES.SUBSCRIPTIONS}>Choose Plan</Link>
