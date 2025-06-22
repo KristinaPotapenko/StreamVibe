@@ -21,4 +21,5 @@ export const ROUTES = {
   SUPPORT: "/support",
   SUBSCRIPTIONS: "/subscriptions",
   SEARCH: "/search",
+  AUTHENTICATION: "/authentication",
 };
