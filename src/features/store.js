@@ -14,6 +14,7 @@ import movieVideoReducer from "./movies/movieVideo/movieVideoSlice";
 import tvSeasonVideoReducer from "./tv/tvSeasonVideo/tvSeasonVideoSlice";
 import guestAuthenticationReducer from "./authentication/guestAuthenticationSlice";
 import userAuthenticationReducer from "./authentication/userAuthenticationSlice";
+import tvEpisodesReducer from "./tv/tvEpisodes/tvEpisodesSlice";
 
 export const store = configureStore({
   reducer: {
@@ -32,5 +33,6 @@ export const store = configureStore({
     tvSeasonVideo: tvSeasonVideoReducer,
     guestAuthentication: guestAuthenticationReducer,
     userAuthentication: userAuthenticationReducer,
+    tvEpisodes: tvEpisodesReducer,
   },
 });
