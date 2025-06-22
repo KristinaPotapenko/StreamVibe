@@ -20,7 +20,8 @@
   svg {
     @include square(32px);
 
-    color: transparent;
+    fill: transparent;
+    color: var(--primary-color-light);
     stroke: var(--primary-color-light);
 
     @include desktop {
