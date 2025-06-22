@@ -1,14 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { BASE_URL } from "../../utils/constants";
+import { API_KEY, BASE_URL } from "../../utils/constants";
 
 const optionsRequestToken = {
   method: "GET",
   url: `${BASE_URL}/3/authentication/token/new`,
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZDM1ZDZlMDUzOWQ2M2FmODA3NGZmZTgzMzg2MjlmNyIsIm5iZiI6MTc0Nzk5OTA4MC40NDgsInN1YiI6IjY4MzA1OTY4MmQ1ZDVmYmNmYjA1NDQ3MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xBdgADr7TleB5hyfUvuFJuOWwQq3gUYeJCq6jlY9wuM",
+    Authorization: `Bearer ${API_KEY}`,
   },
 };
 
@@ -34,8 +33,7 @@ export const getSessionId = createAsyncThunk(
         headers: {
           accept: "application/json",
           "Content-Type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZDM1ZDZlMDUzOWQ2M2FmODA3NGZmZTgzMzg2MjlmNyIsIm5iZiI6MTc0Nzk5OTA4MC40NDgsInN1YiI6IjY4MzA1OTY4MmQ1ZDVmYmNmYjA1NDQ3MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xBdgADr7TleB5hyfUvuFJuOWwQq3gUYeJCq6jlY9wuM",
+          Authorization: `Bearer ${API_KEY}`,
         },
         data: JSON.stringify({
           request_token: requestToken,
