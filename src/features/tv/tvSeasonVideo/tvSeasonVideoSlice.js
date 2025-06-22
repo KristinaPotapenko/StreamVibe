@@ -8,7 +8,7 @@ export const getTvSeasonVideo = createAsyncThunk(
     try {
       const response = await axios.request({
         method: "GET",
-        url: `${BASE_URL}/3/tv/${tvId}/season/${seasonId}/videos?language=en-US`,
+        url: `${BASE_URL}/3/tv/${tvId}/videos?language=en-US`,
         headers: {
           accept: "application/json",
           Authorization: `Bearer ${API_KEY}`,

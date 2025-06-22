@@ -1,6 +1,6 @@
 import { baseImageURL, FALLBACK_IMAGE } from "../../../../utils/constants";
 import { MediaBlock } from "../MediaBlocks/MediaBlock";
-import { SeasonItem } from "../MediaBlocks/SeasonItem/SeasonItem";
+import { MediaItem } from "../MediaBlocks/MediaItem/MediaItem";
 import { Reviews } from "../../../components/Reviews/Reviews";
 import { Button } from "../../../components/ui/Button/Button";
 import styles from ".././MediaInfo.module.scss";
@@ -10,9 +10,16 @@ export const MediaMain = ({ description, companies, isMovie, seasons }) => {
     <div className={styles.infoWrapper}>
       {!isMovie && (
         <MediaBlock subtitle="Seasons and Episodes">
-          <ul className={styles.seasons}>
-            {seasons.map((season) => {
-              return <SeasonItem key={season.id} season={season} />;
+          <ul className={styles.medias}>
+            {seasons.map((season, index) => {
+              return (
+                <MediaItem
+                  key={season.id}
+                  media={season}
+                  isSeason={true}
+                  index={index}
+                />
+              );
             })}
           </ul>
         </MediaBlock>
