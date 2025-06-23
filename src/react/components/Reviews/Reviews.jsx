@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import { useWindowWidth } from "../../../scripts/hook/useWindowWidth";
-import { comments } from "./reviewsList";
+import { SectionTitle } from "../Section/SectionTitle/SectionTitle";
 import { ReviewsCard } from "./ReviewsCard/ReviewsCard";
 import { ScrollSlider } from "../Slider/ScrollSlider/ScrollSlider";
 import styles from "../Slider/Slider/Slider.module.scss";
@@ -11,6 +12,8 @@ export const Reviews = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [progress, setProgress] = useState(0);
   const sliderRef = useRef();
+
+  const reviews = useSelector(({ reviews }) => reviews.reviews);
 
   useEffect(() => {
     setActiveSlide(0);
@@ -50,40 +53,47 @@ export const Reviews = () => {
     };
   }, [windowWidth, activeSlide]);
 
-  const totalSlides = Math.ceil(comments.length / slides);
+  const totalSlides = Math.ceil(reviews.length / slides);
+
   return (
     <div className={stylesRev.wrapper}>
-      <div className={styles.sliderContainer}>
-        <div className={styles.sliderWrapper} ref={sliderRef}>
-          <ul
-            className={styles.cards}
-            style={windowWidth > 767 ? { transform } : undefined}
-          >
-            {comments.map((comment) => {
-              return (
-                <ReviewsCard
-                  key={comment.id}
-                  cardWidth={cardWidth}
-                  comment={comment}
-                />
-              );
-            })}
-          </ul>
+      {reviews.length === 0 ? (
+        <SectionTitle title="No reviews yet." />
+      ) : (
+        <div className={styles.sliderContainer}>
+          <div className={styles.sliderWrapper} ref={sliderRef}>
+            <ul
+              className={styles.cards}
+              style={windowWidth > 767 ? { transform } : undefined}
+            >
+              {reviews.map((comment) => {
+                return (
+                  <ReviewsCard
+                    key={comment.id}
+                    cardWidth={cardWidth}
+                    comment={comment}
+                  />
+                );
+              })}
+            </ul>
+          </div>
+          <div className={styles.progressBar}>
+            <div
+              className={styles.progressFill}
+              style={{ width: `${progress}%` }}
+            ></div>
+          </div>
         </div>
-        <div className={styles.progressBar}>
-          <div
-            className={styles.progressFill}
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
-      </div>
-      <ScrollSlider
-        small={true}
-        activeSlide={activeSlide}
-        setActiveSlide={setActiveSlide}
-        totalSlides={totalSlides}
-        visibleItems={slides}
-      />
+      )}
+      {reviews.length > 0 && (
+        <ScrollSlider
+          small={true}
+          activeSlide={activeSlide}
+          setActiveSlide={setActiveSlide}
+          totalSlides={totalSlides}
+          visibleItems={slides}
+        />
+      )}
     </div>
   );
 };
