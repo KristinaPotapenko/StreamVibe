@@ -2,13 +2,15 @@ import styles from "./Rate.module.scss";
 
 export const Rate = ({ average }) => {
   const rate = (Number(average) / 2).toFixed(2);
-  const fullStars = Math.floor(rate) - 1;
-  const partial = Math.ceil((rate - (fullStars + 1)) * 100);
-  const emptyStars = Math.ceil(rate);
+  const fullStars = Math.floor(rate);
+  const hasPartial = rate % 1 !== 0;
+  const partial = hasPartial ? Math.round((rate % 1) * 100) : 0;
+  const totalStars = 5;
+  const emptyStars = totalStars - fullStars - (hasPartial ? 1 : 0);
 
   return (
     <>
-      {Array.from({ length: 5 }).map((_, index) => {
+      {Array.from({ length: totalStars }).map((_, index) => {
         if (index + 1 <= fullStars) {
           return (
             <svg key={index} className={`${styles.full} icon`}>
@@ -28,7 +30,7 @@ export const Rate = ({ average }) => {
               </div>
             </div>
           );
-        } else if (index + 1 <= 5) {
+        } else if (index + 1 <= totalStars) {
           return (
             <svg key={index} className={`${styles.empty} icon`}>
               <use xlinkHref="/assets/icon/sprite.svg#star" />
