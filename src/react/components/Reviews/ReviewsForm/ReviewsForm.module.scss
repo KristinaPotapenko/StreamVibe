@@ -67,11 +67,5 @@
   }
   button {
     justify-content: center;
-
-    &:disabled {
-      color: var(--color-black-10);
-      background-color: var(--color-gray-65);
-      border: var(--border-dark-15);
-    }
   }
 }
