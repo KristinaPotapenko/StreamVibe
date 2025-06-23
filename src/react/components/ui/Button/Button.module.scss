@@ -23,6 +23,12 @@
     border: 2px solid var(--color-red-80);
   }
 
+  &:disabled {
+    color: var(--color-black-10);
+    background-color: var(--color-gray-65);
+    border: var(--border-dark-15);
+  }
+
   @include desktop {
     padding: 14px 24px;
   }
