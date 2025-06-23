@@ -70,7 +70,6 @@ export const MediaContent = ({
               <ActionsItem type="button" accent={true} href="like" />
             </>
           )}
-          <ActionsItem type="button" accent={true} href="volume" />
         </Actions>
       </div>
     </div>
