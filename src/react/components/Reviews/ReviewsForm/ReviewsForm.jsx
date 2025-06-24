@@ -52,8 +52,13 @@ export const ReviewsForm = ({ setShowModal }) => {
       comment: "",
     });
   };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   return (
-    <Modal setShowModal={setShowModal}>
+    <Modal onClose={handleCloseModal}>
       {submissionStatus === "submit" ? (
         <SectionTitle title="Review has been submitted!" />
       ) : (

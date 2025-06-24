@@ -19,9 +19,13 @@ function App() {
     }
   }, [accountType]);
 
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <div className="wrapper">
-      {showModal && <ModalWelcome setShowModal={setShowModal} />}
+      {showModal && <ModalWelcome onClose={handleCloseModal} />}
       <Header />
       <main>
         <AppRoutes />

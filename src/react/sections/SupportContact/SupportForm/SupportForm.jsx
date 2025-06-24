@@ -49,10 +49,14 @@ export const SupportForm = () => {
     });
   };
 
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <>
       {showModal && (
-        <Modal setShowModal={setShowModal}>
+        <Modal onClose={handleCloseModal}>
           {formStatus === "submit" ? (
             <SectionTitle title="Your message has been sent!" />
           ) : (

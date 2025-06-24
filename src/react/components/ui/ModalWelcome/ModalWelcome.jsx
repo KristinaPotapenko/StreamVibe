@@ -36,8 +36,12 @@ export const ModalWelcome = ({ setShowModal }) => {
     }
   }, [requestToken]);
 
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   return (
-    <Modal setShowModal={setShowModal}>
+    <Modal onClose={handleCloseModal}>
       <SectionTitle className={styles.title} title="Welcome!" />
       <p className={styles.description}>
         Please choose how you'd like to continue:
