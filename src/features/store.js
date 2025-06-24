@@ -16,6 +16,8 @@ import guestAuthenticationReducer from "./authentication/guestAuthenticationSlic
 import userAuthenticationReducer from "./authentication/userAuthenticationSlice";
 import tvEpisodesReducer from "./tv/tvEpisodes/tvEpisodesSlice";
 import reviewsReducer from "./reviews/reviewsSlice";
+import favoriteReducer from "./media/favoriteSlice";
+import watchlistReducer from "./media/watchlistSlice";
 
 export const store = configureStore({
   reducer: {
@@ -36,5 +38,7 @@ export const store = configureStore({
     userAuthentication: userAuthenticationReducer,
     tvEpisodes: tvEpisodesReducer,
     reviews: reviewsReducer,
+    favorite: favoriteReducer,
+    watchlist: watchlistReducer,
   },
 });
