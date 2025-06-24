@@ -2,6 +2,14 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getMovieVideo } from "../../../features/movies/movieVideo/movieVideoSlice";
+import {
+  addFavoriteMedia,
+  resetFavoriteSuccess,
+} from "../../../features/media/favoriteSlice";
+import {
+  addWatchlistMedia,
+  resetWatchlistSuccess,
+} from "../../../features/media/watchlistSlice";
 import { scrollToTop } from "../../../scripts/helpers/scrollToTop";
 import { Button } from "../ui/Button/Button";
 import { Actions } from "../Actions/Actions";
@@ -16,16 +24,31 @@ export const MediaContent = ({
   setShowVideo,
   isMovie,
   isTopMovie,
+  setShowModal,
 }) => {
   const dispatch = useDispatch();
+  const isSuccessFavorite = useSelector(({ favorite }) => favorite.success);
+  const isSuccessWatchlist = useSelector(({ watchlist }) => watchlist.success);
+
+  useEffect(() => {
+    if (isSuccessFavorite || isSuccessWatchlist) {
+      setShowModal(true);
+      dispatch(resetFavoriteSuccess());
+      dispatch(resetWatchlistSuccess());
+    }
+  }, [isSuccessFavorite, isSuccessWatchlist]);
+
   const accountType = localStorage.getItem("accountType");
+
   const { movieId } = useParams();
   const topMovieId = media[activeSlide]?.id;
 
   const videoKey = useSelector(({ movieVideo }) => movieVideo.movieKey);
 
+  const mediaId = isTopMovie ? topMovieId : movieId;
+
   useEffect(() => {
-    showVideo && dispatch(getMovieVideo(isTopMovie ? topMovieId : movieId));
+    showVideo && dispatch(getMovieVideo(mediaId));
   }, [showVideo]);
 
   return showVideo ? (
@@ -66,8 +89,34 @@ export const MediaContent = ({
         <Actions>
           {accountType === "user" && (
             <>
-              <ActionsItem type="button" accent={true} href="plus" />
-              <ActionsItem type="button" accent={true} href="like" />
+              <ActionsItem
+                type="button"
+                accent={true}
+                href="plus"
+                onClick={() => {
+                  dispatch(
+                    addWatchlistMedia({
+                      media_type: isMovie ? "movie" : "tv",
+                      media_id: mediaId,
+                      watchlist: true,
+                    })
+                  );
+                }}
+              />
+              <ActionsItem
+                type="button"
+                accent={true}
+                href="like"
+                onClick={() => {
+                  dispatch(
+                    addFavoriteMedia({
+                      media_type: isMovie ? "movie" : "tv",
+                      media_id: media.id,
+                      favorite: true,
+                    })
+                  );
+                }}
+              />
             </>
           )}
         </Actions>

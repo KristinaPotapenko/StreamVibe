@@ -1,13 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useFetchArguments } from "../../../scripts/hook/useFetchArguments";
-import { FreeTrial } from "../../sections/FreeTrial/FreeTrial";
-import { MediaInfo } from "../../sections/MediaInfo/MediaInfo";
-import { Preview } from "../../sections/Preview/Preview";
 import { fetchMediaData } from "../../../features/media/mediaSlice";
+import { useFetchArguments } from "../../../scripts/hook/useFetchArguments";
+import { Preview } from "../../sections/Preview/Preview";
+import { MediaInfo } from "../../sections/MediaInfo/MediaInfo";
+import { FreeTrial } from "../../sections/FreeTrial/FreeTrial";
 
 export const Media = () => {
   const dispatch = useDispatch();
+
+  const [showModal, setShowModal] = useState(false);
+
   const { movie, tv } = useSelector(({ media }) => media);
 
   const fetchArguments = useFetchArguments();
@@ -25,9 +28,21 @@ export const Media = () => {
   return (
     <>
       {isMediaLoaded && (
-        <Preview isFirstSection={true} media={currentMedia} isMovie={isMovie} />
+        <Preview
+          isFirstSection={true}
+          media={currentMedia}
+          isMovie={isMovie}
+          setShowModal={setShowModal}
+        />
       )}
-      {isMediaLoaded && <MediaInfo media={currentMedia} isMovie={isMovie} />}
+      {isMediaLoaded && (
+        <MediaInfo
+          media={currentMedia}
+          isMovie={isMovie}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
+      )}
       <FreeTrial />
     </>
   );

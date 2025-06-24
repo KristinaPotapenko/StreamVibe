@@ -3,7 +3,12 @@ import { baseImageURL, FALLBACK_IMAGE } from "../../../utils/constants";
 import { MediaContent } from "../../components/MediaContent/MediaContent";
 import styles from "./Preview.module.scss";
 
-export const Preview = ({ isFirstSection = false, media, isMovie }) => {
+export const Preview = ({
+  isFirstSection = false,
+  media,
+  isMovie,
+  setShowModal,
+}) => {
   const [showVideo, setShowVideo] = useState(false);
 
   return (
@@ -31,6 +36,7 @@ export const Preview = ({ isFirstSection = false, media, isMovie }) => {
             showVideo={showVideo}
             setShowVideo={setShowVideo}
             isMovie={isMovie}
+            setShowModal={setShowModal}
           />
         </div>
       </div>
