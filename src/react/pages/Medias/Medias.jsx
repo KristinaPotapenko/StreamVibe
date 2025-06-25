@@ -11,6 +11,10 @@ import { getNewRealeasesMovies } from "../../../features/movies/newReleasesMovie
 import { getTrendingNowTV } from "../../../features/tv/trendingNowTV/trendingNowTVSlice";
 import { getNewRealeasesTV } from "../../../features/tv/newReleasesTV/newReleasesTVSlice";
 import { getMustWatchTV } from "../../../features/tv/mustWatchTV/mustWatchTVSlice";
+import { getFavoritesMovies } from "../../../features/movies/favoritesMovies/favoritesMoviesSlice";
+import { getFavoritesTV } from "../../../features/tv/favoritesTV/favoritesTVSlice";
+import { getWatchlistMovies } from "../../../features/movies/watchlistMovies/watchlistMoviesSlice";
+import { getWatchlistTV } from "../../../features/tv/watchlistTV/watchlistTVSlice";
 
 import { Pagination } from "./Pagination/Pagination";
 import { MediaCard } from "../../components/card/MediaCard/MediaCard";
@@ -28,6 +32,16 @@ export const Medias = ({ isFirstSection = false }) => {
   const { newRealeasesTV } = useSelector((state) => state.newRealeasesTV);
   const { mustWatchTV } = useSelector((state) => state.mustWatchTV);
 
+  const favoritesMovies = useSelector(
+    ({ favoritesMovies }) => favoritesMovies.favoritesMovies
+  );
+  const watchlistMovies = useSelector(
+    ({ watchlistMovies }) => watchlistMovies.watchlistMovies
+  );
+
+  const favoritesTV = useSelector(({ favoritesTV }) => favoritesTV.favoritesTV);
+  const watchlistTV = useSelector(({ watchlistTV }) => watchlistTV.watchlistTV);
+
   const movies = useSelector((state) => state.media.movies);
   const tvs = useSelector((state) => state.media.tvs);
 
@@ -43,6 +57,10 @@ export const Medias = ({ isFirstSection = false }) => {
     [ROUTES.TV_TRENDING]: trendingNowTV,
     [ROUTES.TV_UPCOMING]: newRealeasesTV,
     [ROUTES.TV_POPULAR]: mustWatchTV,
+    [ROUTES.MOVIES_FAVORITE]: favoritesMovies,
+    [ROUTES.MOVIES_WATCHLIST]: watchlistMovies,
+    [ROUTES.TV_FAVORITE]: favoritesTV,
+    [ROUTES.TV_WATCHLIST]: watchlistTV,
   };
 
   const matchedRoute = Object.keys(routeMap).find((route) =>
@@ -64,6 +82,10 @@ export const Medias = ({ isFirstSection = false }) => {
     [ROUTES.TV_TRENDING]: () => dispatch(getTrendingNowTV(activePage)),
     [ROUTES.TV_UPCOMING]: () => dispatch(getNewRealeasesTV(activePage)),
     [ROUTES.TV_POPULAR]: () => dispatch(getMustWatchTV(activePage)),
+    [ROUTES.MOVIES_FAVORITE]: () => dispatch(getFavoritesMovies(activePage)),
+    [ROUTES.MOVIES_WATCHLIST]: () => dispatch(getWatchlistMovies(activePage)),
+    [ROUTES.TV_FAVORITE]: () => dispatch(getFavoritesTV(activePage)),
+    [ROUTES.TV_WATCHLIST]: () => dispatch(getWatchlistTV(activePage)),
   };
 
   useEffect(() => {

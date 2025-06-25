@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { ROUTES } from "../../../../utils/routes";
 import { getRouteWithId } from "../../../../scripts/helpers/getRouteWithId";
+import { scrollToTop } from "../../../../scripts/helpers/scrollToTop";
 import { SliderButton } from "../../../components/Slider/SliderButton/SliderButton";
 import styles from "./Pagination.module.scss";
-import { scrollToTop } from "../../../../scripts/helpers/scrollToTop";
 
 export const Pagination = ({ activePage, setActivePage }) => {
   const { totalPages: totalTrendingMoviesPages } = useSelector(
@@ -28,6 +28,19 @@ export const Pagination = ({ activePage, setActivePage }) => {
   const totalMoviesPage = useSelector((state) => state.media.totalMoviesPages);
   const totalTvsPage = useSelector((state) => state.media.totalTvsPages);
 
+  const totalFavoritesMoviesPage = useSelector(
+    ({ favoritesMovies }) => favoritesMovies.pagesCount
+  );
+  const totalWatchlistMoviesPage = useSelector(
+    ({ watchlistMovies }) => watchlistMovies.pagesCount
+  );
+  const totalFavoritesTVPage = useSelector(
+    ({ favoritesTV }) => favoritesTV.pagesCount
+  );
+  const totalWatchlistTVPage = useSelector(
+    ({ watchlistTV }) => watchlistTV.pagesCount
+  );
+
   const searchMediaPage = useSelector(
     ({ searchMedia }) => searchMedia.totalPages
   );
@@ -46,13 +59,20 @@ export const Pagination = ({ activePage, setActivePage }) => {
     [ROUTES.TV_UPCOMING]: totalNewRealeasesTVPages,
     [ROUTES.TV_POPULAR]: totalMustWatchTVPages,
     [ROUTES.SEARCH]: searchMediaPage,
+    [ROUTES.MOVIES_FAVORITE]: totalFavoritesMoviesPage,
+    [ROUTES.MOVIES_WATCHLIST]: totalWatchlistMoviesPage,
+    [ROUTES.TV_FAVORITE]: totalFavoritesTVPage,
+    [ROUTES.TV_WATCHLIST]: totalWatchlistTVPage,
   };
 
   const matchedPage = Object.keys(pageMap).find((route) =>
     location.pathname.includes(route)
   );
 
-  const pagesVisible = Array.from({ length: 10 }, (_, i) => startPage + i);
+  const pagesVisible = Array.from(
+    { length: Math.min(pageMap[matchedPage], 10) },
+    (_, i) => startPage + i
+  );
 
   if (startPage + 10 < pageMap[matchedPage]) pagesVisible.push("...");
   if (startPage + 10 < pageMap[matchedPage])
