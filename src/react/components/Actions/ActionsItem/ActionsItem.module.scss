@@ -62,3 +62,7 @@
     transition: all 0.3s ease;
   }
 }
+
+.actionsItem.active {
+  background-color: var(--color-red-45);
+}

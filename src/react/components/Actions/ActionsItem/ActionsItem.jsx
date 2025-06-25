@@ -5,12 +5,17 @@ import styles from "./ActionsItem.module.scss";
 export const ActionsItem = ({
   type = "link",
   accent,
+  active = false,
   href,
   route,
   onClick,
 }) => {
   return (
-    <li className={`${styles.actionsItem} ${accent ? styles.accent : ""}`}>
+    <li
+      className={`${styles.actionsItem} ${accent ? styles.accent : ""} ${
+        active ? styles.active : ""
+      }`}
+    >
       {type === "link" && (
         <Link to={route ? ROUTES[route] : ""} onClick={() => onClick()}>
           <svg className="icon">
