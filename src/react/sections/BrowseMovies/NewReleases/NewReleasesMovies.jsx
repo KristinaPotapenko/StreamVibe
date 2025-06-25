@@ -20,6 +20,7 @@ export const NewReleasesMovies = () => {
       title="New Releases"
       list={newRealeasesMovies}
       footer="releases"
+      shouldShowMoreCard={true}
     />
   );
 };
