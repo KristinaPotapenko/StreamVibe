@@ -18,6 +18,10 @@ import tvEpisodesReducer from "./tv/tvEpisodes/tvEpisodesSlice";
 import reviewsReducer from "./reviews/reviewsSlice";
 import favoriteReducer from "./media/favoriteSlice";
 import watchlistReducer from "./media/watchlistSlice";
+import favoritesMoviesReducer from "./movies/favoritesMovies/favoritesMoviesSlice";
+import favoritesTVReducer from "./tv/favoritesTV/favoritesTVSlice";
+import watchlistMoviesReducer from "./movies/watchlistMovies/watchlistMoviesSlice";
+import watchlistTVReducer from "./tv/watchlistTV/watchlistTVSlice";
 
 export const store = configureStore({
   reducer: {
@@ -40,5 +44,9 @@ export const store = configureStore({
     reviews: reviewsReducer,
     favorite: favoriteReducer,
     watchlist: watchlistReducer,
+    favoritesMovies: favoritesMoviesReducer,
+    favoritesTV: favoritesTVReducer,
+    watchlistMovies: watchlistMoviesReducer,
+    watchlistTV: watchlistTVReducer,
   },
 });
