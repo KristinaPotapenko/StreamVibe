@@ -88,6 +88,26 @@ export const AppRoutes = () => {
         }
       />
       <Route
+        path={ROUTES.MOVIES_FAVORITE}
+        element={
+          <ProtectedRoute
+            element={<Medias isFirstSection={true} />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
+      />
+      <Route
+        path={ROUTES.MOVIES_WATCHLIST}
+        element={
+          <ProtectedRoute
+            element={<Medias isFirstSection={true} />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
+      />
+      <Route
         path={ROUTES.TV_DETAILS}
         element={
           <ProtectedRoute
@@ -148,6 +168,26 @@ export const AppRoutes = () => {
         }
       />
       <Route
+        path={ROUTES.TV_FAVORITE}
+        element={
+          <ProtectedRoute
+            element={<Medias isFirstSection={true} />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
+      />
+      <Route
+        path={ROUTES.TV_WATCHLIST}
+        element={
+          <ProtectedRoute
+            element={<Medias isFirstSection={true} />}
+            condition={accountType}
+            redirectTo={ROUTES.HOME}
+          />
+        }
+      />
+      <Route
         path={ROUTES.TV_EPISODES}
         element={
           <ProtectedRoute
@@ -157,6 +197,7 @@ export const AppRoutes = () => {
           />
         }
       />
+
       <Route
         path={ROUTES.SUPPORT}
         element={
