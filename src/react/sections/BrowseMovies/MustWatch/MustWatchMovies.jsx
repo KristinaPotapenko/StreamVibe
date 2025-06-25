@@ -20,6 +20,7 @@ export const MustWatchMovies = () => {
       title="Must - Watch Movies"
       list={mustWatchMovies}
       footer="mustWatch"
+      shouldShowMoreCard={true}
     />
   );
 };
