@@ -4,6 +4,10 @@ import { Devices } from "../../sections/Devices/Devices";
 import { Questions } from "../../sections/Questions/Questions";
 import { Pricing } from "../../sections/Pricing/Pricing";
 import { FreeTrial } from "../../sections/FreeTrial/FreeTrial";
+import { FavoritesMovies } from "../../sections/FavoritesMovies/FavoritesMovies";
+import { FavoriteTV } from "../../sections/FavoriteTV/FavoriteTV";
+import { WatchlistMovies } from "../../sections/WatchlistMovies/WatchlistMovies";
+import { WatchlistTV } from "../../sections/WatchlistTV/WatchlistTV";
 
 export const Home = () => {
   return (
@@ -13,6 +17,10 @@ export const Home = () => {
       <Devices />
       <Questions />
       <Pricing />
+      <FavoritesMovies />
+      <WatchlistMovies />
+      <FavoriteTV />
+      <WatchlistTV />
       <FreeTrial />
     </>
   );
