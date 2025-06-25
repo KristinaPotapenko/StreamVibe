@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ROUTES } from "../../../../utils/routes";
 import { getNewRealeasesTV } from "../../../../features/tv/newReleasesTV/newReleasesTVSlice";
+import { ROUTES } from "../../../../utils/routes";
 import { Slider } from "../../../components/Slider/Slider/Slider";
 
 export const NewReleasesTV = () => {
@@ -22,6 +22,7 @@ export const NewReleasesTV = () => {
       title="New Releases"
       list={newRealeasesTV}
       footer="releases"
+      shouldShowMoreCard={true}
     />
   );
 };
