@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ROUTES } from "../../../../utils/routes";
 import { getMustWatchTV } from "../../../../features/tv/mustWatchTV/mustWatchTVSlice";
+import { ROUTES } from "../../../../utils/routes";
 import { Slider } from "../../../components/Slider/Slider/Slider";
 
 export const MustWatchTV = () => {
@@ -20,6 +20,7 @@ export const MustWatchTV = () => {
       title="Must - Watch TV"
       list={mustWatchTV}
       footer="mustWatch"
+      shouldShowMoreCard={true}
     />
   );
 };
