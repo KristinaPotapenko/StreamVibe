@@ -21,6 +21,7 @@ export const TrendingMovies = () => {
       title="Trending Now"
       list={trendingMovies}
       footer="trending"
+      shouldShowMoreCard={true}
     />
   );
 };
