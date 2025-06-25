@@ -9,6 +9,8 @@ export const ROUTES = {
   MOVIES_TRENDING: "/movies/trending",
   MOVIES_UPCOMING: "/movies/upcoming",
   MOVIES_POPULAR: "/movies/popular",
+  MOVIES_FAVORITE: "/movies/favorite",
+  MOVIES_WATCHLIST: "/movies/watchlist",
 
   TV: "/tv",
   TV_DETAILS: "/tvs/:tvId",
@@ -18,6 +20,8 @@ export const ROUTES = {
   TV_TRENDING: "/tvs/trending",
   TV_UPCOMING: "/tvs/upcoming",
   TV_POPULAR: "/tvs/popular",
+  TV_FAVORITE: "/tvs/favorite",
+  TV_WATCHLIST: "/tvs/watchlist",
 
   SUPPORT: "/support",
   SUBSCRIPTIONS: "/subscriptions",
