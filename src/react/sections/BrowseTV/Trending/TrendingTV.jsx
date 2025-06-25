@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ROUTES } from "../../../../utils/routes";
 import { getTrendingNowTV } from "../../../../features/tv/trendingNowTV/trendingNowTVSlice";
+import { ROUTES } from "../../../../utils/routes";
 import { Slider } from "../../../components/Slider/Slider/Slider";
 
 export const TrendingTV = () => {
@@ -20,6 +20,7 @@ export const TrendingTV = () => {
       title="Trending Shows Now"
       list={trendingNowTV}
       footer="trending"
+      shouldShowMoreCard={true}
     />
   );
 };
