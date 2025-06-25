@@ -18,7 +18,10 @@ export const addWatchlistMedia = createAsyncThunk(
         data: raw,
       });
 
-      return response.data.success;
+      return {
+        success: response.data.success,
+        message: response.data.status_message,
+      };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response?.data || error.message);
     }
@@ -31,12 +34,16 @@ const watchlist = createSlice({
   reducers: {
     resetWatchlistSuccess: (state) => {
       state.success = false;
+      state.message = "";
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(addWatchlistMedia.fulfilled, (state, { payload }) => {
-        state.success = payload;
+        const { success, message } = payload;
+
+        state.success = success;
+        state.message = message;
       })
       .addCase(addWatchlistMedia.rejected, (state, action) => {
         state.error = action.payload || action.error.message;

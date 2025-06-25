@@ -18,7 +18,10 @@ export const addFavoriteMedia = createAsyncThunk(
         data: raw,
       });
 
-      return response.data.success;
+      return {
+        success: response.data.success,
+        message: response.data.status_message,
+      };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response?.data || error.message);
     }
@@ -27,16 +30,20 @@ export const addFavoriteMedia = createAsyncThunk(
 
 const favorite = createSlice({
   name: "favorite",
-  initialState: { success: false, error: null },
+  initialState: { success: false, error: null, message: "" },
   reducers: {
     resetFavoriteSuccess: (state) => {
       state.success = false;
+      state.message = "";
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(addFavoriteMedia.fulfilled, (state, { payload }) => {
-        state.success = payload;
+        const { success, message } = payload;
+
+        state.success = success;
+        state.message = message;
       })
       .addCase(addFavoriteMedia.rejected, (state, action) => {
         state.error = action.payload || action.error.message;
