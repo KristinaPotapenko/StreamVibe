@@ -17,9 +17,8 @@ export const Slider = ({
   list,
   image,
   footer,
+  shouldShowMoreCard = false,
 }) => {
-  const showMoreCard = ["trending", "releases", "mustWatch"];
-  const shouldShowMoreCard = showMoreCard.includes(footer);
   const windowWidth = useWindowWidth();
   const [activeSlide, setActiveSlide] = useState(0);
   const [progress, setProgress] = useState(0);
