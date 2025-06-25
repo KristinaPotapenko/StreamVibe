@@ -12,6 +12,10 @@
   background-color: rgba(20, 20, 20, 0.8);
   z-index: 10;
   animation: fadeIn 0.3s ease-in-out;
+
+  h2 {
+    text-align: center;
+  }
 }
 
 .content {
