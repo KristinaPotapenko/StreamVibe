@@ -1,6 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { getMovieVideo } from "../../../features/movies/movieVideo/movieVideoSlice";
 import {
   addFavoriteMedia,
@@ -10,6 +9,10 @@ import {
   addWatchlistMedia,
   resetWatchlistSuccess,
 } from "../../../features/media/watchlistSlice";
+import { getWatchlistMovies } from "../../../features/movies/watchlistMovies/watchlistMoviesSlice";
+import { getWatchlistTV } from "../../../features/tv/watchlistTV/watchlistTVSlice";
+import { getFavoritesTV } from "../../../features/tv/favoritesTV/favoritesTVSlice";
+import { getFavoritesMovies } from "../../../features/movies/favoritesMovies/favoritesMoviesSlice";
 import { scrollToTop } from "../../../scripts/helpers/scrollToTop";
 import { Button } from "../ui/Button/Button";
 import { Actions } from "../Actions/Actions";
@@ -27,12 +30,47 @@ export const MediaContent = ({
   setShowModal,
 }) => {
   const dispatch = useDispatch();
+
+  const watchlistTV = useSelector(({ watchlistTV }) => watchlistTV.watchlistTV);
+  const watchlistMovies = useSelector(
+    ({ watchlistMovies }) => watchlistMovies.watchlistMovies
+  );
+  const favoritesTV = useSelector(({ favoritesTV }) => favoritesTV.favoritesTV);
+  const favoritesMovies = useSelector(
+    ({ favoritesMovies }) => favoritesMovies.favoritesMovies
+  );
+
+  const topMovieId = media[activeSlide]?.id;
+
+  const isInWatchlist = isMovie
+    ? watchlistMovies.some(
+        (movie) => movie.id === (isTopMovie ? topMovieId : media.id)
+      )
+    : watchlistTV.some((tv) => tv.id === (isTopMovie ? topMovieId : media.id));
+  const isInFavorites = isMovie
+    ? favoritesMovies.some(
+        (movie) => movie.id === (isTopMovie ? topMovieId : media.id)
+      )
+    : favoritesTV.some((tv) => tv.id === (isTopMovie ? topMovieId : media.id));
+
   const isSuccessFavorite = useSelector(({ favorite }) => favorite.success);
   const isSuccessWatchlist = useSelector(({ watchlist }) => watchlist.success);
+
+  const refreshUserLists = () => {
+    dispatch(getWatchlistTV());
+    dispatch(getWatchlistMovies());
+    dispatch(getFavoritesTV());
+    dispatch(getFavoritesMovies());
+  };
+
+  useEffect(() => {
+    refreshUserLists();
+  }, []);
 
   useEffect(() => {
     if (isSuccessFavorite || isSuccessWatchlist) {
       setShowModal(true);
+      refreshUserLists();
       dispatch(resetFavoriteSuccess());
       dispatch(resetWatchlistSuccess());
     }
@@ -40,12 +78,17 @@ export const MediaContent = ({
 
   const accountType = localStorage.getItem("accountType");
 
-  const { movieId } = useParams();
-  const topMovieId = media[activeSlide]?.id;
+  const title = useMemo(() => {
+    const item = topMovieId ? media[activeSlide] : media;
+    return item?.original_title || item?.original_name || "Untitled";
+  }, [topMovieId, media, activeSlide]);
 
   const videoKey = useSelector(({ movieVideo }) => movieVideo.movieKey);
 
-  const mediaId = isTopMovie ? topMovieId : movieId;
+  const mediaId = useMemo(
+    () => (isTopMovie ? topMovieId : media.id),
+    [isTopMovie, topMovieId, media]
+  );
 
   useEffect(() => {
     showVideo && dispatch(getMovieVideo(mediaId));
@@ -64,14 +107,10 @@ export const MediaContent = ({
     </div>
   ) : (
     <div className={styles.content}>
-      <SectionTitle
-        title={
-          media[activeSlide]?.original_title
-            ? media[activeSlide]?.original_title
-            : media[activeSlide]?.original_name
-        }
-      />
-      <p className={styles.description}>{media[activeSlide]?.overview}</p>
+      <SectionTitle title={title} />
+      <p className={styles.description}>
+        {topMovieId ? media[activeSlide]?.overview : media?.overview}
+      </p>
       <div className={styles.actions}>
         {isMovie && (
           <Button
@@ -90,6 +129,7 @@ export const MediaContent = ({
           {accountType === "user" && (
             <>
               <ActionsItem
+                active={isInWatchlist}
                 type="button"
                 accent={true}
                 href="plus"
@@ -98,12 +138,13 @@ export const MediaContent = ({
                     addWatchlistMedia({
                       media_type: isMovie ? "movie" : "tv",
                       media_id: mediaId,
-                      watchlist: true,
+                      watchlist: !isInWatchlist,
                     })
                   );
                 }}
               />
               <ActionsItem
+                active={isInFavorites}
                 type="button"
                 accent={true}
                 href="like"
@@ -111,8 +152,8 @@ export const MediaContent = ({
                   dispatch(
                     addFavoriteMedia({
                       media_type: isMovie ? "movie" : "tv",
-                      media_id: media.id,
-                      favorite: true,
+                      media_id: mediaId,
+                      favorite: !isInFavorites,
                     })
                   );
                 }}
