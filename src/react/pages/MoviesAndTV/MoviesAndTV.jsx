@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useWindowWidth } from "../../../scripts/hook/useWindowWidth";
+import { useMediaActionStatus } from "../../../scripts/hook/useMediaActionStatus";
 import { TopMovies } from "../../sections/TopMovies/TopMovies";
 import { Tabs } from "../../components/ui/Tabs/Tabs";
 import { BrowseMovies } from "../../sections/BrowseMovies/BrowseMovies";
 import { BrowseTV } from "../../sections/BrowseTV/BrowseTV";
+import { Modal } from "../../popups/Modal/Modal";
+import { SectionTitle } from "../../components/Section/SectionTitle/SectionTitle";
 import styles from "./MoviesAndTV.module.scss";
 
 export const MoviesAndTV = () => {
@@ -15,6 +18,11 @@ export const MoviesAndTV = () => {
   const isMobile = windowWidth < 768;
   const isDesktop = windowWidth >= 768;
 
+  const [showModal, setShowModal] = useState(false);
+
+  const { message, errorType, handleCloseModal } =
+    useMediaActionStatus(setShowModal);
+
   useEffect(() => {
     if (location.hash.includes("tv")) {
       setActiveTabs(1);
@@ -23,9 +31,21 @@ export const MoviesAndTV = () => {
     }
   }, [location.hash]);
 
-  return (
+  return showModal ? (
+    <Modal onClose={handleCloseModal}>
+      <SectionTitle
+        title={
+          errorType
+            ? `Oops! Failed to update ${errorType}. Please try again.`
+            : message === "Success."
+            ? "Great! Added to your list successfully."
+            : message
+        }
+      />
+    </Modal>
+  ) : (
     <>
-      <TopMovies isFirstSection={true} />
+      <TopMovies isFirstSection={true} setShowModal={setShowModal} />
       {isMobile && (
         <section className="section container">
           <>
