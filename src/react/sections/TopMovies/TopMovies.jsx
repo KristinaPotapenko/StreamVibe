@@ -7,7 +7,7 @@ import { ScrollSlider } from "../../components/Slider/ScrollSlider/ScrollSlider"
 import { SliderFadeAnimation } from "../../components/Slider/SliderFadeAnimation/SliderFadeAnimation";
 import styles from "./TopMovies.module.scss";
 
-export const TopMovies = ({ isFirstSection = false }) => {
+export const TopMovies = ({ isFirstSection = false, setShowModal }) => {
   const dispatch = useDispatch();
   const { topMovies } = useSelector(({ topMovies }) => topMovies);
   const [showVideo, setShowVideo] = useState(false);
@@ -71,6 +71,7 @@ export const TopMovies = ({ isFirstSection = false }) => {
                 showVideo={showVideo}
                 setShowVideo={setShowVideo}
                 isTopMovie={true}
+                setShowModal={setShowModal}
               />
             )}
             {!showVideo && (
