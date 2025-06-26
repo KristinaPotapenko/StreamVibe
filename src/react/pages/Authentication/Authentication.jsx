@@ -37,6 +37,4 @@ export const Authentication = () => {
   if (!requestToken) {
     return <Navigate to={ROUTES.HOME} replace />;
   }
-
-  return <div>Loading...</div>;
 };
