@@ -4,6 +4,7 @@ import { SectionTitle } from "../../../components/Section/SectionTitle/SectionTi
 import { Field } from "../../../components/forms/Field/Field";
 import { Button } from "../../../components/ui/Button/Button";
 import styles from "./SupportForm.module.scss";
+import { useNoScroll } from "../../../../scripts/hook/useNoScroll";
 
 export const SupportForm = () => {
   const [formStatus, setFormStatus] = useState("idle");
@@ -49,6 +50,8 @@ export const SupportForm = () => {
     });
   };
 
+  useNoScroll(showModal);
+
   const handleCloseModal = () => {
     setShowModal(false);
   };
@@ -58,7 +61,9 @@ export const SupportForm = () => {
       {showModal && (
         <Modal onClose={handleCloseModal}>
           {formStatus === "submit" ? (
-            <SectionTitle title="Your message has been sent!" />
+            <div className={styles.titleWrapper}>
+              <SectionTitle title="Your message has been sent!" />
+            </div>
           ) : (
             <h2 className={styles.message + " " + styles.error}>
               Oops! Something went wrong while sending your message. Please try

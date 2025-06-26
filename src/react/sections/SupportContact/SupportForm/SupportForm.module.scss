@@ -46,3 +46,10 @@
 .message.error {
   color: var(--color-red-50);
 }
+
+.titleWrapper {
+  margin-top: 24px;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
