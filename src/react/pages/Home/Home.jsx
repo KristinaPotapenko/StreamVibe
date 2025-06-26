@@ -10,6 +10,8 @@ import { WatchlistMovies } from "../../sections/WatchlistMovies/WatchlistMovies"
 import { WatchlistTV } from "../../sections/WatchlistTV/WatchlistTV";
 
 export const Home = () => {
+  const accountType = localStorage.getItem("accountType");
+
   return (
     <>
       <Hero />
@@ -17,10 +19,10 @@ export const Home = () => {
       <Devices />
       <Questions />
       <Pricing />
-      <FavoritesMovies />
-      <WatchlistMovies />
-      <FavoriteTV />
-      <WatchlistTV />
+      {accountType === "user" && <FavoritesMovies />}
+      {accountType === "user" && <WatchlistMovies />}
+      {accountType === "user" && <FavoriteTV />}
+      {accountType === "user" && <WatchlistTV />}
       <FreeTrial />
     </>
   );
