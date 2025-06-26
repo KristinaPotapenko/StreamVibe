@@ -29,6 +29,8 @@ export const MediaContent = ({
   isTopMovie,
   setShowModal,
 }) => {
+  const accountType = localStorage.getItem("accountType");
+
   const dispatch = useDispatch();
 
   const watchlistTV = useSelector(({ watchlistTV }) => watchlistTV.watchlistTV);
@@ -64,7 +66,9 @@ export const MediaContent = ({
   };
 
   useEffect(() => {
-    refreshUserLists();
+    {
+      accountType === "user" && refreshUserLists();
+    }
   }, []);
 
   useEffect(() => {
@@ -75,8 +79,6 @@ export const MediaContent = ({
       dispatch(resetWatchlistSuccess());
     }
   }, [isSuccessFavorite, isSuccessWatchlist]);
-
-  const accountType = localStorage.getItem("accountType");
 
   const title = useMemo(() => {
     const item = topMovieId ? media[activeSlide] : media;
