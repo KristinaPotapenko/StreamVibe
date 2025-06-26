@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "../../ui/Link/Link";
 import { ROUTES } from "../../../../utils/routes";
+import { scrollToTop } from "../../../../scripts/helpers/scrollToTop";
+import { Link } from "../../ui/Link/Link";
 import styles from "./PricingCard.module.scss";
 
-export const PricingCard = ({ id, title, description, price, activeTabs }) => {
+export const PricingCard = ({ title, description, price, activeTabs }) => {
   const [displayPrice, setDisplayPrice] = useState(price);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -39,10 +40,12 @@ export const PricingCard = ({ id, title, description, price, activeTabs }) => {
         </div>
       </div>
       <div className={styles.buttons}>
-        <Link isDark={true} to={ROUTES.SUBSCRIPTIONS}>
+        <Link isDark={true} to={ROUTES.SUBSCRIPTIONS} onClick={scrollToTop}>
           Start Free Trial
         </Link>
-        <Link to={ROUTES.SUBSCRIPTIONS}>Choose Plan</Link>
+        <Link to={ROUTES.SUBSCRIPTIONS} onClick={scrollToTop}>
+          Choose Plan
+        </Link>
       </div>
     </li>
   );
