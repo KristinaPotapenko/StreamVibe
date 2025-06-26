@@ -60,7 +60,9 @@ export const ReviewsForm = ({ setShowModal }) => {
   return (
     <Modal onClose={handleCloseModal}>
       {submissionStatus === "submit" ? (
-        <SectionTitle title="Review has been submitted!" />
+        <div className={styles.titleWrapper}>
+          <SectionTitle title="Review has been submitted!" />
+        </div>
       ) : (
         <>
           <SectionTitle title="Add Your Review" />
