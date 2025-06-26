@@ -6,26 +6,29 @@ import { MediaAside } from "./MediaAside/MediaAside";
 import styles from "./MediaInfo.module.scss";
 
 export const MediaInfo = ({ media, isMovie, showModal, setShowModal }) => {
-  const { message, errorType, handleCloseModal } =
+  const { message, error, handleCloseModal } =
     useMediaActionStatus(setShowModal);
 
   const date = media.release_date ? media.release_date : media?.first_air_date;
 
+  const accountType = localStorage.getItem("accountType");
+
   return (
-    <section className="section container">
-      {showModal ? (
+    <>
+      {showModal && accountType === "user" && (
         <Modal onClose={handleCloseModal}>
           <SectionTitle
             title={
-              errorType
-                ? `Oops! Failed to update ${errorType}. Please try again.`
+              error
+                ? `Oops! Failed to update. Please try again.`
                 : message === "Success."
                 ? "Great! Added to your list successfully."
                 : message
             }
           />
         </Modal>
-      ) : (
+      )}
+      <section className="section container">
         <div className={styles.wrapper}>
           <MediaMain
             description={media?.overview}
@@ -43,7 +46,7 @@ export const MediaInfo = ({ media, isMovie, showModal, setShowModal }) => {
             runtime={media?.runtime}
           />
         </div>
-      )}
-    </section>
+      </section>
+    </>
   );
 };
