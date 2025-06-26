@@ -5,12 +5,14 @@ import {
   getRequestToken,
   setAccountType,
 } from "../../../../features/authentication/userAuthenticationSlice";
+import { clearError } from "../../../../features/appStatusSlice";
+import { useNoScroll } from "../../../../scripts/hook/useNoScroll";
 import { Modal } from "../../../popups/Modal/Modal";
 import { SectionTitle } from "../../Section/SectionTitle/SectionTitle";
 import { Button } from "../Button/Button";
 import styles from "./ModalWelcome.module.scss";
 
-export const ModalWelcome = ({ setShowModal }) => {
+export const ModalWelcome = ({ showModal, setShowModal }) => {
   const dispatch = useDispatch();
   const requestToken = useSelector(
     ({ userAuthentication }) => userAuthentication.requestToken
@@ -36,7 +38,10 @@ export const ModalWelcome = ({ setShowModal }) => {
     }
   }, [requestToken]);
 
+  useNoScroll(showModal);
+
   const handleCloseModal = () => {
+    dispatch(clearError());
     setShowModal(false);
   };
 
