@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useWindowWidth } from "../../../scripts/hook/useWindowWidth";
 import { useMediaActionStatus } from "../../../scripts/hook/useMediaActionStatus";
+import { useNoScroll } from "../../../scripts/hook/useNoScroll";
 import { TopMovies } from "../../sections/TopMovies/TopMovies";
 import { Tabs } from "../../components/ui/Tabs/Tabs";
 import { BrowseMovies } from "../../sections/BrowseMovies/BrowseMovies";
@@ -20,8 +21,12 @@ export const MoviesAndTV = () => {
 
   const [showModal, setShowModal] = useState(false);
 
-  const { message, errorType, handleCloseModal } =
+  const accountType = localStorage.getItem("accountType");
+
+  const { message, error, handleCloseModal } =
     useMediaActionStatus(setShowModal);
+
+  useNoScroll(showModal);
 
   useEffect(() => {
     if (location.hash.includes("tv")) {
@@ -31,48 +36,50 @@ export const MoviesAndTV = () => {
     }
   }, [location.hash]);
 
-  return showModal ? (
-    <Modal onClose={handleCloseModal}>
-      <SectionTitle
-        title={
-          errorType
-            ? `Oops! Failed to update ${errorType}. Please try again.`
-            : message === "Success."
-            ? "Great! Added to your list successfully."
-            : message
-        }
-      />
-    </Modal>
-  ) : (
+  return (
     <>
+      {showModal && accountType === "user" && (
+        <Modal onClose={handleCloseModal}>
+          <SectionTitle
+            title={
+              error
+                ? "Oops! Failed to update. Please try again."
+                : message === "Success."
+                ? "Great! Added to your list successfully."
+                : message
+            }
+          />
+        </Modal>
+      )}
+
       <TopMovies isFirstSection={true} setShowModal={setShowModal} />
+
       {isMobile && (
         <section className="section container">
-          <>
-            <Tabs
-              tabs={["Movies", "TV"]}
-              activeTabs={activeTabs}
-              setActiveTabs={setActiveTabs}
-            />
-            <div className={styles.tabsContent}>
-              <div
-                className={`${styles.tabPanel} ${
-                  activeTabs === 0 ? styles.active : ""
-                }`}
-              >
-                <BrowseMovies />
-              </div>
-              <div
-                className={`${styles.tabPanel} ${
-                  activeTabs === 1 ? styles.active : ""
-                }`}
-              >
-                <BrowseTV />
-              </div>
+          <Tabs
+            tabs={["Movies", "TV"]}
+            activeTabs={activeTabs}
+            setActiveTabs={setActiveTabs}
+          />
+          <div className={styles.tabsContent}>
+            <div
+              className={`${styles.tabPanel} ${
+                activeTabs === 0 ? styles.active : ""
+              }`}
+            >
+              <BrowseMovies />
             </div>
-          </>
+            <div
+              className={`${styles.tabPanel} ${
+                activeTabs === 1 ? styles.active : ""
+              }`}
+            >
+              <BrowseTV />
+            </div>
+          </div>
         </section>
       )}
+
       {isDesktop && (
         <>
           <BrowseMovies />
