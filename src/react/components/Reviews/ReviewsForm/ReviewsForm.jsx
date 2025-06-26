@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addReviews } from "../../../../features/reviews/reviewsSlice";
+import { clearError } from "../../../../features/appStatusSlice";
 import { Modal } from "../../../popups/Modal/Modal";
 import { SectionTitle } from "../../Section/SectionTitle/SectionTitle";
 import { Label } from "../../forms/Label/Label";
@@ -54,6 +55,7 @@ export const ReviewsForm = ({ setShowModal }) => {
   };
 
   const handleCloseModal = () => {
+    dispatch(clearError());
     setShowModal(false);
   };
 
