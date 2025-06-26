@@ -1,10 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API_KEY, BASE_URL } from "../../../utils/constants";
+import { setError, setLoading } from "../../appStatusSlice";
 
 export const getTvEpisodeImages = createAsyncThunk(
   "tvEpisodes/getTvEpisodeImages",
   async ({ tvId, seasonId }, thunkAPI) => {
+    const { dispatch } = thunkAPI;
+    dispatch(setLoading(true));
+
     try {
       const response = await axios.request({
         method: "GET",
@@ -17,7 +21,12 @@ export const getTvEpisodeImages = createAsyncThunk(
 
       return response.data.posters;
     } catch (error) {
-      return thunkAPI.rejectWithValue;
+      dispatch(
+        setError(error.response?.data?.status_message || "Request failed")
+      );
+      return thunkAPI.rejectWithValue(error.response?.data || error.message);
+    } finally {
+      dispatch(setLoading(false));
     }
   }
 );
@@ -25,6 +34,9 @@ export const getTvEpisodeImages = createAsyncThunk(
 export const getTvEpisodeVideo = createAsyncThunk(
   "tvEpisodes/getTvEpisodeVideo",
   async ({ tvId, seasonId }, thunkAPI) => {
+    const { dispatch } = thunkAPI;
+    dispatch(setLoading(true));
+
     try {
       const response = await axios.request({
         method: "GET",
@@ -37,7 +49,12 @@ export const getTvEpisodeVideo = createAsyncThunk(
 
       return response.data.results;
     } catch (error) {
-      return thunkAPI.rejectWithValue;
+      dispatch(
+        setError(error.response?.data?.status_message || "Request failed")
+      );
+      return thunkAPI.rejectWithValue(error.response?.data || error.message);
+    } finally {
+      dispatch(setLoading(false));
     }
   }
 );
@@ -45,6 +62,9 @@ export const getTvEpisodeVideo = createAsyncThunk(
 export const getTvEpisodes = createAsyncThunk(
   "tvEpisodes/getTvEpisodes",
   async ({ tvId, seasonId }, thunkAPI) => {
+    const { dispatch } = thunkAPI;
+    dispatch(setLoading(true));
+
     try {
       const response = await axios.request({
         method: "GET",
@@ -57,7 +77,12 @@ export const getTvEpisodes = createAsyncThunk(
 
       return response.data.episodes;
     } catch (error) {
-      return thunkAPI.rejectWithValue;
+      dispatch(
+        setError(error.response?.data?.status_message || "Request failed")
+      );
+      return thunkAPI.rejectWithValue(error.response?.data || error.message);
+    } finally {
+      dispatch(setLoading(false));
     }
   }
 );

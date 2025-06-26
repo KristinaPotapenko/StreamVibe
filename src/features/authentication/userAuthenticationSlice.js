@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API_KEY, BASE_URL } from "../../utils/constants";
+import { setError, setLoading } from "../appStatusSlice";
 
 const optionsRequestToken = {
   method: "GET",
@@ -14,11 +15,19 @@ const optionsRequestToken = {
 export const getRequestToken = createAsyncThunk(
   "userAuthentication/getRequestToken",
   async (_, thunkAPI) => {
+    const { dispatch } = thunkAPI;
+    dispatch(setLoading(true));
+
     try {
       const response = await axios.request(optionsRequestToken);
       return response.data.request_token;
     } catch (error) {
-      return thunkAPI.rejectWithValue;
+      dispatch(
+        setError(error.response?.data?.status_message || "Request failed")
+      );
+      return thunkAPI.rejectWithValue(error.response?.data || error.message);
+    } finally {
+      dispatch(setLoading(false));
     }
   }
 );
@@ -26,6 +35,9 @@ export const getRequestToken = createAsyncThunk(
 export const getSessionId = createAsyncThunk(
   "userAuthentication/getSessionId",
   async (requestToken, thunkAPI) => {
+    const { dispatch } = thunkAPI;
+    dispatch(setLoading(true));
+
     try {
       const response = await axios.request({
         method: "POST",
@@ -41,7 +53,12 @@ export const getSessionId = createAsyncThunk(
       });
       return response.data.session_id;
     } catch (error) {
+      dispatch(
+        setError(error.response?.data?.status_message || "Request failed")
+      );
       return thunkAPI.rejectWithValue(error.response?.data || error.message);
+    } finally {
+      dispatch(setLoading(false));
     }
   }
 );
@@ -55,7 +72,6 @@ const userAuthentication = createSlice({
     accountType: accountType || null,
     requestToken: null,
     sessionId: sessionId || null,
-    error: null,
   },
   reducers: {
     setAccountType: (state, { payload }) => {
@@ -69,9 +85,6 @@ const userAuthentication = createSlice({
       })
       .addCase(getSessionId.fulfilled, (state, { payload }) => {
         state.sessionId = payload;
-      })
-      .addCase(getSessionId.rejected, (state, action) => {
-        state.error = action.payload || action.error.message;
       });
   },
 });

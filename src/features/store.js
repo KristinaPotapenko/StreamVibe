@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import appStatusReducer from "./appStatusSlice";
 import genresMoviesReducer from "./movies/genresMovies/genresMoviesSlice";
 import topMoviesReducer from "./movies/topRatedMovies/topMoviesSlice";
 import trendingNowReducer from "./movies/trendingNowMovies/trendingNowMoviesSlice";
@@ -25,6 +26,7 @@ import watchlistTVReducer from "./tv/watchlistTV/watchlistTVSlice";
 
 export const store = configureStore({
   reducer: {
+    appStatus: appStatusReducer,
     genresMovies: genresMoviesReducer,
     topMovies: topMoviesReducer,
     trendingMovies: trendingNowReducer,

@@ -1,10 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API_KEY, BASE_URL } from "../../../utils/constants";
+import { setError, setLoading } from "../../appStatusSlice";
 
 export const getMustWatchMovies = createAsyncThunk(
   "mustWatchMovies/getMustWatchMovie",
   async (page = 1, thunkAPI) => {
+    const { dispatch } = thunkAPI;
+    dispatch(setLoading(true));
+
     try {
       const response = await axios.request({
         method: "GET",
@@ -20,7 +24,12 @@ export const getMustWatchMovies = createAsyncThunk(
         pageCount: Math.min(response.data.total_pages, 500),
       };
     } catch (error) {
-      return thunkAPI.rejectWithValue;
+      dispatch(
+        setError(error.response?.data?.status_message || "Request failed")
+      );
+      return thunkAPI.rejectWithValue(error.response?.data || error.message);
+    } finally {
+      dispatch(setLoading(false));
     }
   }
 );

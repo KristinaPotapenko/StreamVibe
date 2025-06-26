@@ -1,10 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { account_id, API_KEY, BASE_URL } from "../../utils/constants";
+import { setError, setLoading } from "../appStatusSlice";
 
 export const addFavoriteMedia = createAsyncThunk(
   "favorite/addFavoriteMedia",
   async (raw, thunkAPI) => {
+    const { dispatch } = thunkAPI;
+    dispatch(setLoading(true));
+
     try {
       const session_id = localStorage.getItem("sessionId");
 
@@ -23,14 +27,19 @@ export const addFavoriteMedia = createAsyncThunk(
         message: response.data.status_message,
       };
     } catch (error) {
+      dispatch(
+        setError(error.response?.data?.status_message || "Request failed")
+      );
       return thunkAPI.rejectWithValue(error.response?.data || error.message);
+    } finally {
+      dispatch(setLoading(false));
     }
   }
 );
 
 const favorite = createSlice({
   name: "favorite",
-  initialState: { success: false, error: null, message: "" },
+  initialState: { success: false, message: "" },
   reducers: {
     resetFavoriteSuccess: (state) => {
       state.success = false;
@@ -38,16 +47,12 @@ const favorite = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder
-      .addCase(addFavoriteMedia.fulfilled, (state, { payload }) => {
-        const { success, message } = payload;
+    builder.addCase(addFavoriteMedia.fulfilled, (state, { payload }) => {
+      const { success, message } = payload;
 
-        state.success = success;
-        state.message = message;
-      })
-      .addCase(addFavoriteMedia.rejected, (state, action) => {
-        state.error = action.payload || action.error.message;
-      });
+      state.success = success;
+      state.message = message;
+    });
   },
 });
 

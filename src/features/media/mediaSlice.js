@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API_KEY, BASE_URL } from "../../utils/constants";
+import { setError, setLoading } from "../appStatusSlice";
 
 export const fetchMediaData = createAsyncThunk(
   "media/fetchMediaData",
@@ -8,6 +9,9 @@ export const fetchMediaData = createAsyncThunk(
     { page = 1, mediaType, mediaId = null, genreId = null, top10 = false },
     thunkAPI
   ) => {
+    const { dispatch } = thunkAPI;
+    dispatch(setLoading(true));
+
     let url = `${BASE_URL}/3/`;
     let checkedMediaType;
 
@@ -46,7 +50,12 @@ export const fetchMediaData = createAsyncThunk(
         pageCount: Math.min(response.data.total_pages, 500),
       };
     } catch (error) {
-      return thunkAPI.rejectWithValue;
+      dispatch(
+        setError(error.response?.data?.status_message || "Request failed")
+      );
+      return thunkAPI.rejectWithValue(error.response?.data || error.message);
+    } finally {
+      dispatch(setLoading(false));
     }
   }
 );

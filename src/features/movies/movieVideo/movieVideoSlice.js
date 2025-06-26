@@ -1,10 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API_KEY, BASE_URL } from "../../../utils/constants";
+import { setError, setLoading } from "../../appStatusSlice";
 
 export const getMovieVideo = createAsyncThunk(
   "movieVideo, getMovieVideo",
   async (id, thunkAPI) => {
+    const { dispatch } = thunkAPI;
+    dispatch(setLoading(true));
+
     try {
       const response = await axios.request({
         method: "GET",
@@ -17,7 +21,12 @@ export const getMovieVideo = createAsyncThunk(
 
       return response.data?.results[0]?.key;
     } catch (error) {
-      return thunkAPI.rejectWithValue;
+      dispatch(
+        setError(error.response?.data?.status_message || "Request failed")
+      );
+      return thunkAPI.rejectWithValue(error.response?.data || error.message);
+    } finally {
+      dispatch(setLoading(false));
     }
   }
 );
