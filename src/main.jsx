@@ -8,7 +8,7 @@ import "./styles/main.scss";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter basename="/StreamVibe">
+    <BrowserRouter basename="/StreamVibe/">
       <Provider store={store}>
         <App />
       </Provider>
