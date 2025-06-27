@@ -51,7 +51,7 @@
 
 ## 📷 Preview
 
-![StreamVibe Preview](https://github.com/KristinaPotapenko/StreamVibe/blob/main/static/preview-placeholder.png)  
+![StreamVibe Preview](https://github.com/KristinaPotapenko/StreamVibe/blob/master/projectStreamVibe.png)  
 
 ---
 
