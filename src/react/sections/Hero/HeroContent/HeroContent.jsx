@@ -16,7 +16,9 @@ export const HeroContent = () => {
       </p>
       <Link to={ROUTES.BROWSE} onClick={scrollToTop}>
         <svg className="icon">
-          <use xlinkHref="assets/icon/sprite.svg#play" />
+          <use
+            xlinkHref={`${import.meta.env.BASE_URL}assets/icon/sprite.svg#play`}
+          />
         </svg>
         Start Watching Now
       </Link>

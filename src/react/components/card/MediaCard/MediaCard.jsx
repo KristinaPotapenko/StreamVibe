@@ -36,7 +36,11 @@ export const MediaCard = ({ media, type }) => {
           <h2 className={styles.title}>{title}</h2>
           <div className={styles.infoBlock}>
             <svg className="icon">
-              <use xlinkHref="/assets/icon/sprite.svg#like" />
+              <use
+                xlinkHref={`${
+                  import.meta.env.BASE_URL
+                }assets/icon/sprite.svg#like`}
+              />
             </svg>
             <p className={styles.info}>{parseInt(media.popularity)}</p>
           </div>

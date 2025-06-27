@@ -10,14 +10,22 @@ export const Social = () => {
           rel="noopener noreferrer"
         >
           <svg className="icon">
-            <use xlinkHref="/assets/icon/sprite.svg#facebook" />
+            <use
+              xlinkHref={`${
+                import.meta.env.BASE_URL
+              }assets/icon/sprite.svg#facebook`}
+            />
           </svg>
         </a>
       </li>
       <li className={styles.item}>
         <a href="https://x.com/" target="_blank" rel="noopener noreferrer">
           <svg className="icon">
-            <use xlinkHref="/assets/icon/sprite.svg#twitter" />
+            <use
+              xlinkHref={`${
+                import.meta.env.BASE_URL
+              }assets/icon/sprite.svg#twitter`}
+            />
           </svg>
         </a>
       </li>
@@ -28,7 +36,11 @@ export const Social = () => {
           rel="noopener noreferrer"
         >
           <svg className="icon">
-            <use xlinkHref="/assets/icon/sprite.svg#linkedin" />
+            <use
+              xlinkHref={`${
+                import.meta.env.BASE_URL
+              }assets/icon/sprite.svg#linkedin`}
+            />
           </svg>
         </a>
       </li>

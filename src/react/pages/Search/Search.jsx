@@ -32,7 +32,11 @@ export const Search = () => {
           onChange={handleChangeMediaTitle}
         />
         <svg className="icon">
-          <use xlinkHref="/assets/icon/sprite.svg#search" />
+          <use
+            xlinkHref={`${
+              import.meta.env.BASE_URL
+            }assets/icon/sprite.svg#search`}
+          />
         </svg>
       </div>
       <ul className={styles.media}>

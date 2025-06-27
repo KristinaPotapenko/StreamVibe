@@ -34,13 +34,21 @@ export const Header = () => {
           </Actions>
           <button onClick={() => setIsOpen()} className={styles.closeButton}>
             <svg className="icon">
-              <use xlinkHref="/assets/icon/sprite.svg#close" />
+              <use
+                xlinkHref={`${
+                  import.meta.env.BASE_URL
+                }assets/icon/sprite.svg#close`}
+              />
             </svg>
           </button>
         </div>
         <button onClick={() => setIsOpen(true)} className={styles.burgerButton}>
           <svg className="icon">
-            <use xlinkHref="/assets/icon/sprite.svg#burger" />
+            <use
+              xlinkHref={`${
+                import.meta.env.BASE_URL
+              }assets/icon/sprite.svg#burger`}
+            />
           </svg>
         </button>
       </section>

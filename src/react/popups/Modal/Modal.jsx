@@ -6,7 +6,11 @@ export const Modal = ({ onClose, children }) => {
       <div className={styles.content}>
         <button className={styles.closeButton} onClick={onClose}>
           <svg className="icon">
-            <use xlinkHref="/assets/icon/sprite.svg#close" />
+            <use
+              xlinkHref={`${
+                import.meta.env.BASE_URL
+              }assets/icon/sprite.svg#close`}
+            />
           </svg>
         </button>
         {children}

@@ -56,7 +56,11 @@ export const MediaMain = ({ description, companies, isMovie, seasons }) => {
           action={
             <Button isDark={true} onClick={() => setShowModal((prev) => !prev)}>
               <svg className="icon">
-                <use xlinkHref="/assets/icon/sprite.svg#plus" />
+                <use
+                  xlinkHref={`${
+                    import.meta.env.BASE_URL
+                  }assets/icon/sprite.svg#plus`}
+                />
               </svg>
               Add Your Review
             </Button>

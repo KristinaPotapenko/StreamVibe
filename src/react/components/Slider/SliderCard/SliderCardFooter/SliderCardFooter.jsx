@@ -10,7 +10,11 @@ export const SliderCardCategoriesFooter = ({ path, name }) => {
       <p className={styles.text}>{name}</p>
       <Link to={path} onClick={scrollToTop}>
         <svg className="icon">
-          <use xlinkHref="/assets/icon/sprite.svg#arrow" />
+          <use
+            xlinkHref={`${
+              import.meta.env.BASE_URL
+            }assets/icon/sprite.svg#arrow`}
+          />
         </svg>
       </Link>
     </>
@@ -26,7 +30,11 @@ export const SliderCardGenresFooter = ({ path, name }) => {
       </div>
       <Link to={path} onClick={scrollToTop}>
         <svg className="icon">
-          <use xlinkHref="/assets/icon/sprite.svg#arrow" />
+          <use
+            xlinkHref={`${
+              import.meta.env.BASE_URL
+            }assets/icon/sprite.svg#arrow`}
+          />
         </svg>
       </Link>
     </>
@@ -40,13 +48,21 @@ export const SliderCardTrendingFooter = ({ name, average, popularity }) => {
       <div className={styles.details}>
         <div className={styles.infoWrapper}>
           <svg className="icon">
-            <use xlinkHref="/assets/icon/sprite.svg#star" />
+            <use
+              xlinkHref={`${
+                import.meta.env.BASE_URL
+              }assets/icon/sprite.svg#star`}
+            />
           </svg>
           <p className={styles.info}>{average}</p>
         </div>
         <div className={styles.infoWrapper}>
           <svg className="icon">
-            <use xlinkHref="/assets/icon/sprite.svg#like" />
+            <use
+              xlinkHref={`${
+                import.meta.env.BASE_URL
+              }assets/icon/sprite.svg#like`}
+            />
           </svg>
           <p className={styles.info}>{popularity}</p>
         </div>
@@ -77,7 +93,11 @@ export const SliderCardMustWatchFooter = ({ name, average, popularity }) => {
       <div className={styles.details}>
         <div className={styles.infoWrapper}>
           <svg className="icon">
-            <use xlinkHref="/assets/icon/sprite.svg#like" />
+            <use
+              xlinkHref={`${
+                import.meta.env.BASE_URL
+              }assets/icon/sprite.svg#like`}
+            />
           </svg>
           <p className={styles.info}>{popularity}</p>
         </div>

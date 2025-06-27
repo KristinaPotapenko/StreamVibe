@@ -16,7 +16,11 @@ export const MediaAside = ({
         <div className={styles.info}>
           <div className={styles.infoName}>
             <svg className="icon">
-              <use xlinkHref="/assets/icon/sprite.svg#calendar" />
+              <use
+                xlinkHref={`${
+                  import.meta.env.BASE_URL
+                }assets/icon/sprite.svg#calendar`}
+              />
             </svg>
             <p className={styles.subtitle}>Released Year</p>
           </div>
@@ -29,7 +33,11 @@ export const MediaAside = ({
         <div className={styles.info}>
           <div className={styles.infoName}>
             <svg className="icon">
-              <use xlinkHref="/assets/icon/sprite.svg#language" />
+              <use
+                xlinkHref={`${
+                  import.meta.env.BASE_URL
+                }assets/icon/sprite.svg#language`}
+              />
             </svg>
             <p className={styles.subtitle}>Available Languages</p>
           </div>
@@ -46,7 +54,11 @@ export const MediaAside = ({
         <div className={styles.info}>
           <div className={styles.infoName}>
             <svg className="icon">
-              <use xlinkHref="/assets/icon/sprite.svg#star" />
+              <use
+                xlinkHref={`${
+                  import.meta.env.BASE_URL
+                }assets/icon/sprite.svg#star`}
+              />
             </svg>
             <p className={styles.subtitle}>Ratings</p>
           </div>
@@ -61,7 +73,11 @@ export const MediaAside = ({
         <div className={styles.info}>
           <div className={styles.infoName}>
             <svg className="icon">
-              <use xlinkHref="/assets/icon/sprite.svg#blocks" />
+              <use
+                xlinkHref={`${
+                  import.meta.env.BASE_URL
+                }assets/icon/sprite.svg#blocks`}
+              />
             </svg>
             <p className={styles.subtitle}>Gernes</p>
           </div>

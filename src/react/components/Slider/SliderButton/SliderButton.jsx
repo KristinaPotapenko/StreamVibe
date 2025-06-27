@@ -10,7 +10,9 @@ export const SliderButton = ({ isRight, onClick, isGray }) => {
       onClick={onClick}
     >
       <svg className="icon">
-        <use xlinkHref="/assets/icon/sprite.svg#arrow" />
+        <use
+          xlinkHref={`${import.meta.env.BASE_URL}assets/icon/sprite.svg#arrow`}
+        />
       </svg>
     </button>
   );

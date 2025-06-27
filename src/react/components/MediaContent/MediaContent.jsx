@@ -122,7 +122,11 @@ export const MediaContent = ({
             }}
           >
             <svg className="icon">
-              <use xlinkHref="/assets/icon/sprite.svg#play" />
+              <use
+                xlinkHref={`${
+                  import.meta.env.BASE_URL
+                }assets/icon/sprite.svg#play`}
+              />
             </svg>
             Play Now
           </Button>

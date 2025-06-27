@@ -7,7 +7,9 @@ export const Logo = () => {
   return (
     <Link to={ROUTES.HOME} onClick={scrollToTop} className={styles.logo}>
       <svg className="icon">
-        <use xlinkHref="/assets/icon/sprite.svg#logo" />
+        <use
+          xlinkHref={`${import.meta.env.BASE_URL}assets/icon/sprite.svg#logo`}
+        />
       </svg>
     </Link>
   );

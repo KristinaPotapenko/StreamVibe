@@ -19,7 +19,11 @@ export const ActionsItem = ({
       {type === "link" && (
         <Link to={route ? ROUTES[route] : ""} onClick={() => onClick()}>
           <svg className="icon">
-            <use xlinkHref={`/assets/icon/sprite.svg#${href}`} />
+            <use
+              xlinkHref={`${
+                import.meta.env.BASE_URL
+              }assets/icon/sprite.svg#${href}`}
+            />
           </svg>
         </Link>
       )}
@@ -27,7 +31,11 @@ export const ActionsItem = ({
         <button onClick={() => onClick()}>
           {" "}
           <svg className="icon">
-            <use xlinkHref={`/assets/icon/sprite.svg#${href}`} />
+            <use
+              xlinkHref={`${
+                import.meta.env.BASE_URL
+              }assets/icon/sprite.svg#${href}`}
+            />
           </svg>
         </button>
       )}

@@ -62,7 +62,8 @@ export const MediaItem = ({ media, isSeason = false, imageInfo, index }) => {
         <div className={stylesMedia.info}>
           <p className={styles.name}>{media.name}</p>
           <p className={styles.episodes}>
-            {isSeason ? media.episode_count : media.episode_number} Episodes
+            {isSeason ? media.episode_count : media.episode_number}{" "}
+            {isSeason ? "Episodes" : "Episode"}
           </p>
         </div>
         <SliderButton onClick={openDetails} isGray={true} />
@@ -82,7 +83,11 @@ export const MediaItem = ({ media, isSeason = false, imageInfo, index }) => {
           <div className={styles.info}>
             <div className={styles.infoName}>
               <svg className="icon">
-                <use xlinkHref="/assets/icon/sprite.svg#star" />
+                <use
+                  xlinkHref={`${
+                    import.meta.env.BASE_URL
+                  }assets/icon/sprite.svg#star`}
+                />
               </svg>
               <p className={styles.subtitle}>Ratings</p>
             </div>
@@ -97,7 +102,11 @@ export const MediaItem = ({ media, isSeason = false, imageInfo, index }) => {
           <div className={styles.info}>
             <div className={styles.infoName}>
               <svg className="icon">
-                <use xlinkHref="/assets/icon/sprite.svg#calendar" />
+                <use
+                  xlinkHref={`${
+                    import.meta.env.BASE_URL
+                  }assets/icon/sprite.svg#calendar`}
+                />
               </svg>
               <p className={styles.subtitle}>Released Date</p>
             </div>
@@ -116,7 +125,11 @@ export const MediaItem = ({ media, isSeason = false, imageInfo, index }) => {
               }}
             >
               <svg className="icon">
-                <use xlinkHref="/assets/icon/sprite.svg#play" />
+                <use
+                  xlinkHref={`${
+                    import.meta.env.BASE_URL
+                  }assets/icon/sprite.svg#play`}
+                />
               </svg>
               Play Now
             </Button>

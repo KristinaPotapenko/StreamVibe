@@ -14,18 +14,30 @@ export const Rate = ({ average }) => {
         if (index + 1 <= fullStars) {
           return (
             <svg key={index} className={`${styles.full} icon`}>
-              <use xlinkHref="/assets/icon/sprite.svg#star" />
+              <use
+                xlinkHref={`${
+                  import.meta.env.BASE_URL
+                }assets/icon/sprite.svg#star`}
+              />
             </svg>
           );
         } else if (index + 1 >= fullStars && index + 1 < emptyStars) {
           return (
             <div key={index} className={styles.icon}>
               <svg className={`${styles.empty} icon`}>
-                <use xlinkHref="/assets/icon/sprite.svg#star" />
+                <use
+                  xlinkHref={`${
+                    import.meta.env.BASE_URL
+                  }assets/icon/sprite.svg#star`}
+                />
               </svg>
               <div className={styles.partial} style={{ width: `${partial}%` }}>
                 <svg className="icon">
-                  <use xlinkHref="/assets/icon/sprite.svg#star" />
+                  <use
+                    xlinkHref={`${
+                      import.meta.env.BASE_URL
+                    }assets/icon/sprite.svg#star`}
+                  />
                 </svg>
               </div>
             </div>
@@ -33,7 +45,11 @@ export const Rate = ({ average }) => {
         } else if (index + 1 <= totalStars) {
           return (
             <svg key={index} className={`${styles.empty} icon`}>
-              <use xlinkHref="/assets/icon/sprite.svg#star" />
+              <use
+                xlinkHref={`${
+                  import.meta.env.BASE_URL
+                }assets/icon/sprite.svg#star`}
+              />
             </svg>
           );
         }
