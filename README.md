@@ -20,13 +20,16 @@
 
 ## 🗂️ Page Structure
 
-- **Home**: Navigation Bar, Hero, Categories, Devices, FAQs, Pricing, Favorites, Watchlist, CTA, Footer  
-- **Movies & TV**: Genres, Top 10, Trending, New Releases, Must Watch, CTA, Footer  
-- **Open Movie / Open TV**: Video Player with Controls, Information, Cast, Episodes (for TV), CTA  
-- **Support**: Contact Form, FAQs, CTA  
-- **Subscription**: Plans, Features Comparison, CTA  
-- **Search**: Movie and TV results with pagination  
-- **Authentication**: Modal for choosing guest or login session, with access control
+| 📄 Page            | 🧩 Components                                                                 |
+|--------------------|------------------------------------------------------------------------------|
+| **🏠 Home**         | Navigation Bar, Hero, Categories, Devices, FAQs, Pricing, Favorites, Watchlist, CTA, Footer |
+| **🎞️ Movies & TV**  | Genres, Top 10, Trending, New Releases, Must Watch, CTA, Footer             |
+| **🎬 Open Movie**   | Video Player, Info, Cast, CTA, Footer                                       |
+| **📺 Open TV**      | Video Player, Info, Episodes, Cast, CTA, Footer                             |
+| **🔍 Search**       | Search Field, Results Grid, Pagination, Movie/TV Cards                      |
+| **📨 Support**      | Contact Form, FAQs, CTA, Footer                                             |
+| **💳 Subscription** | Plans, Features Comparison, CTA, Footer                                     |
+| **🔐 Authentication** | Modal: Choose guest or login, session handling, access control  
 
 ---
 
@@ -43,7 +46,7 @@
 
 ## 🧭 Future Improvements
 
-- 🔄 Syncing watchlist/favorites when switching from guest session to authenticated account  
+- 🔄 Dedicated login page for guest users who decide to create an account after exploring the app  
 - 🎯 Media content filtering by genre, rating, etc.  
 - 💳 Full subscription functionality with API integration
 
