@@ -10,6 +10,7 @@ import { Search } from "../react/pages/Search/Search";
 import { ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";
 import { Authentication } from "../react/pages/Authentication/Authentication";
 import { TvEpisodes } from "../react/pages/TvEpisodes/TvEpisodes";
+import { NotFound } from "../react/pages/NotFound/NotFound";
 
 export const AppRoutes = () => {
   const accountType = localStorage.getItem("accountType");
@@ -237,6 +238,7 @@ export const AppRoutes = () => {
           />
         }
       />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
